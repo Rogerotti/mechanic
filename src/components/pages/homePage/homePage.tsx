@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Layout from "../components/core/layout";
-import Searcher from "../components/searcher";
+import Layout from "../../core/layout";
+import Searcher from "../../searcher";
+import { useHistory } from "react-router-dom";
 // import { fetchAllCarBrands, fetchAllCarModels } from "../api/cars";
-import { IBrand, IModel, ICity } from "../interfaces";
+import { IBrand, IModel, ICity } from "../../../interfaces";
 // import { fetchAllCities } from "../api/region";
 
 interface Props { 
@@ -12,13 +13,13 @@ interface Props {
 }
 
 
-export const App: React.FC<Props> = () => {
+export const HomePage: React.FC<Props> = () => {
   const brands: IBrand[] = []
   const models: IModel[] = []
   const cities: ICity[] = []
   const [currentBrandId, setBrand] = useState<string | null>(null);
   const currentModels = currentBrandId ? models.filter(x => x.brandId === currentBrandId) : []
-
+  let history = useHistory()
   // useEffect(() => {
   //   const brands = await fetchAllCarBrands();
   //   const models = await fetchAllCarModels();
@@ -34,7 +35,7 @@ export const App: React.FC<Props> = () => {
         onSearchRequest={(_) => {
           console.log('... searching')
           setTimeout(() => {
-            // Router.push('/mechanics');
+            history.push('/mechanics');
           }, 1000)
         }}
         onBrandChange={(_, brand: IBrand | null) => {
@@ -58,5 +59,5 @@ export const App: React.FC<Props> = () => {
 //   }
 // }
 
-export default App;
+export default HomePage;
 

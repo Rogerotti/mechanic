@@ -1,9 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from './components/app';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Mechanics from "./components/pages/mechanics/mechanics";
+import HomePage from "./components/pages/homePage/homePage";
 
-// const Index = () => {
-//   return <div>TEST</div> //<App brands={[]} models={[]} cities={[]} />;
-// };
+const Index = () => {
+  return <Router>
+    <Route exact path="/">
+      <HomePage brands={[]} models={[]} cities={[]} />
+    </Route>
+    <Route path="/mechanics">
+      <Mechanics />
+    </Route>
+ 
 
-ReactDOM.render(<App brands={[]} models={[]} cities={[]} />, document.querySelector('#root'));
+    </Router>;
+};
+
+ReactDOM.render(<Index />, document.querySelector('#root'));

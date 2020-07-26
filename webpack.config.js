@@ -1,31 +1,43 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
+  template: __dirname + '/src/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
 
 module.exports = {
-    mode: 'none',
-    entry: {
-        app: path.join(__dirname, 'src', 'index.tsx')
-    },
-    target: 'web',
-    resolve: {
-        extensions: ['.ts', '.tsx', '.js']
-    },
-    module: {
-        rules: [
-            {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: '/node_modules/'
-            }
+  entry: './src/index.tsx',
+  devtool: 'inline-source-map',
+  plugins: [HTMLWebpackPluginConfig],
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
         ],
-    },
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.join(__dirname, 'src', 'index.html')
-        })
-    ]
-}
+      },
+    ],
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ],
+  },
+  devServer: {
+    publicPath: "/",
+    contentBase: "./src",
+    hot: true
+},
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
