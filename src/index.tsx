@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Mechanics from "./components/pages/mechanics/mechanics";
-import HomePage from "./components/pages/homePage/homePage";
+import MechanicsContainer from "./components/pages/mechanics/container";
+import HomePageContainer from "./components/pages/homePage/container";
 
 const Index = () => {
   return <Router>
     <Route exact path="/">
-      <HomePage brands={[]} models={[]} cities={[]} />
+      <HomePageContainer />
     </Route>
     <Route path="/mechanics">
-      <Mechanics />
+      <MechanicsContainer />
     </Route>
  
 
