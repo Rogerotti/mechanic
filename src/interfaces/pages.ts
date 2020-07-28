@@ -1,4 +1,4 @@
-import { IBrand, IModel, ICity } from ".";
+import { IBrand, IModel, ICity } from '.';
 
 export interface IHomePageProps {
   brands: IBrand[];

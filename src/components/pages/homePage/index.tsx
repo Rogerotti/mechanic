@@ -15,7 +15,7 @@ export const HomePage: React.FC<IHomePageProps> = ({ brands, models, cities }) =
     setBrand(brand ? brand.id : null);
   };
 
-  let history = useHistory()
+  const history = useHistory()
 
   return (
     <Layout>
