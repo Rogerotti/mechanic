@@ -1,14 +1,10 @@
-import React from "react";
-import { makeStyles, ThemeProvider } from "@material-ui/core/styles";
-import Header from "../header";
-import Footer from "../footer";
-import { FOOTER_HEIGHT } from "../footer/constants";
-import useTranslation from "../../../translations/hooks";
+import React from 'react';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import Header from '../header';
+import Footer from '../footer';
+import { FOOTER_HEIGHT } from '../footer/constants';
+import useTranslation from '../../../translations/hooks';
 import { theme } from '../../../theme';
-
-
-interface LayoutProps {
-}
 
 const useStyles = makeStyles({
   layout: {
@@ -17,7 +13,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Layout: React.FC<LayoutProps> = ({ children}) => {
+const Layout: React.FC<unknown> = ({ children }) => {
   const classes = useStyles();
   const { getText } = useTranslation();
   return (
@@ -26,10 +22,9 @@ const Layout: React.FC<LayoutProps> = ({ children}) => {
         <Header title={getText('headerName')} />
         {children}
       </div>
-      <Footer/>
+      <Footer />
     </ThemeProvider>
   );
 };
-
 
 export default Layout;

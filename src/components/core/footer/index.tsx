@@ -1,11 +1,8 @@
-import React from "react";
+import React from 'react';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import { makeStyles } from "@material-ui/core/styles";
-import { FOOTER_HEIGHT } from "./constants";
-
-interface FooterProps {
-}
+import { makeStyles } from '@material-ui/core/styles';
+import { FOOTER_HEIGHT } from './constants';
 
 const useStyles = makeStyles({
   footer: {
@@ -13,20 +10,20 @@ const useStyles = makeStyles({
   },
   socialMediaIcon: {
     width: '100px',
-    height: '100px'
-  }
+    height: '100px',
+  },
 });
 
-
-const Footer: React.FC<FooterProps> = () => {
+const Footer: React.FC<unknown> = () => {
   const classes = useStyles();
   return (
-   <footer className={classes.footer}>
-    <div>
+    <footer className={classes.footer}>
+      <div>
         <FacebookIcon className={classes.socialMediaIcon} color="primary" />
         <TwitterIcon className={classes.socialMediaIcon} />
-    </div>
-  </footer>
-)}
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

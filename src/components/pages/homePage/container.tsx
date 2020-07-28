@@ -1,5 +1,5 @@
-import React from "react";
-import { useFetchCarBrands, useFetchCarModels, useFetchCities } from "../../../api/hooks";
+import React from 'react';
+import { useFetchCarBrands, useFetchCarModels, useFetchCities } from '../../../api/hooks';
 import HomePage from '.';
 
 export const HomePageContainer: React.FC = () => {
@@ -7,9 +7,7 @@ export const HomePageContainer: React.FC = () => {
   const models = useFetchCarModels();
   const cities = useFetchCities();
 
-  return (
-    <HomePage brands={brands} models={models} cities={cities} />
-  );
+  return <HomePage brands={brands} models={models} cities={cities} />;
 };
 
 export default HomePageContainer;
