@@ -24,26 +24,33 @@ interface SearcherProps {
 
 const useStyles = makeStyles({
   root: {
-    width: '75%',
-    margin: 'auto',
+    // width: '75%',
+    // margin: 'auto',
     marginTop: 30,
   },
   brandSearcher: {
-    width: 300,
+    // width: 300,
     marginRight: 10,
   },
   modelSearcher: {
-    width: 300,
+    // width: 300,
     marginRight: 10,
   },
-  button: {
+  buttonContainer: {
     display: 'flex',
-    margin: 'auto',
+  },
+  button: {
+    backgroundColor: '#ee7f79',
+    color: 'white',
+    width: 150,
   },
   container: {
     padding: 30,
   },
   tabs: {},
+  indicator: {
+    backgroundColor: '#ee7f79',
+  },
 });
 
 const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChange, onSearchRequest }) => {
@@ -54,11 +61,14 @@ const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChan
     <Paper className={classes.root} elevation={3}>
       <Paper color="secondary">
         <Tabs
+          classes={{
+            indicator: classes.indicator,
+          }}
           className={classes.tabs}
           value={selectedTab}
           onChange={(_, value) => setSelectedTab(value)}
           variant="fullWidth"
-          indicatorColor="secondary"
+          // indicatorColor="secondary"
           textColor="primary"
         >
           <Tab value={1} icon={<PermIdentityIcon />} label={getText('mechanic')} />
@@ -68,7 +78,7 @@ const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChan
       </Paper>
 
       <Grid className={classes.container} container>
-        <Grid item md={3}>
+        <Grid item md={3} sm={6}>
           <Autocomplete
             className={classes.modelSearcher}
             options={cities}
@@ -77,7 +87,7 @@ const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChan
             renderInput={(params) => <TextField {...params} label={getText('city')} variant="outlined" />}
           />
         </Grid>
-        <Grid item md={3}>
+        <Grid item md={3} sm={6}>
           <Autocomplete
             className={classes.brandSearcher}
             options={brands}
@@ -87,7 +97,7 @@ const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChan
             renderInput={(params) => <TextField {...params} label={getText('brand')} variant="outlined" />}
           />
         </Grid>
-        <Grid item md={3}>
+        <Grid item md={3} sm={6}>
           <Autocomplete
             className={classes.modelSearcher}
             options={models}
@@ -97,12 +107,15 @@ const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChan
             renderInput={(params) => <TextField {...params} label={getText('vehicleModel')} variant="outlined" />}
           />
         </Grid>
-        <Grid className={classes.button} item md={3}>
-          <Box display="block">
+        <Grid className={classes.buttonContainer} item md={3} sm={6}>
+          <Button className={classes.button} variant="contained" onClick={onSearchRequest}>
+            {getText('search')}
+          </Button>
+          {/* <Box display="block">
             <Button variant="contained" color="primary" onClick={onSearchRequest}>
               {getText('search')}
             </Button>
-          </Box>
+          </Box> */}
         </Grid>
       </Grid>
     </Paper>

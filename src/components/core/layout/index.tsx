@@ -11,6 +11,13 @@ const useStyles = makeStyles({
     minHeight: `calc(100% - ${FOOTER_HEIGHT}px);`,
     position: 'relative',
   },
+  test: {
+    // backgroundImage: 'url("../../../assets/background.jpg")',
+    // backgroundPosition: 'center',
+    // backgroundRepeat: 'no-repeat',
+    // backgroundSize: 'cover',
+    // height: '100vh',
+  },
 });
 
 const Layout: React.FC<unknown> = ({ children }) => {
@@ -18,11 +25,13 @@ const Layout: React.FC<unknown> = ({ children }) => {
   const { getText } = useTranslation();
   return (
     <ThemeProvider theme={theme}>
-      <div className={classes.layout}>
-        <Header title={getText('headerName')} />
-        {children}
+      <div className={classes.test}>
+        <div className={classes.layout}>
+          <Header title={getText('headerName')} />
+          {children}
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </ThemeProvider>
   );
 };

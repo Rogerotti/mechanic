@@ -1,5 +1,5 @@
 import React from 'react';
-// import logo from '../../../assets/logo.svg'
+import logo from '../../../assets/logo3.png';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Box from '@material-ui/core/Box';
@@ -12,6 +12,10 @@ interface HeaderProps {
 }
 
 const useStyles = makeStyles({
+  root: {
+    background: 'transparent',
+    boxShadow: 'none',
+  },
   text: {
     fontSize: 32,
     textAlign: 'center',
@@ -19,21 +23,45 @@ const useStyles = makeStyles({
   logo: {
     width: '50px',
   },
+  logo2: {
+    width: '24px',
+    height: '24px',
+    color: '#f6f8fa',
+    marginLeft: 40,
+  },
+  test2: {
+    fontWeight: 'bold',
+  },
+  test: {
+    backgroundColor: '#ee7f79',
+    color: 'white',
+  },
 });
 
 const Header: React.FC<HeaderProps> = ({ title }) => {
   const classes = useStyles();
   return (
-    <AppBar color="secondary" position="static">
+    <AppBar
+      classes={{
+        root: classes.root,
+      }}
+      position="static"
+    >
       <Toolbar>
+        <img className={classes.logo2} src={logo} />
+        <Typography className={classes.test2} color="primary" variant="body1" component="h2">
+          name
+        </Typography>
         <Box m={['auto']} display="flex">
           {/* <img className={classes.logo} src={logo} /> */}
-          <Typography color="primary" className={classes.text} variant="h2">
-            {title}
-          </Typography>
         </Box>
 
-        <Button>Mechanik</Button>
+        <Button className={classes.test} variant="contained">
+          Mechanik
+        </Button>
+        {/* <Button variant="contained" color="primary">
+          Mechanik
+        </Button> */}
       </Toolbar>
     </AppBar>
   );

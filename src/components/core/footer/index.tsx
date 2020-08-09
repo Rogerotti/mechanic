@@ -1,6 +1,6 @@
 import React from 'react';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
+// import FacebookIcon from '@material-ui/icons/Facebook';
+// import TwitterIcon from '@material-ui/icons/Twitter';
 import { makeStyles } from '@material-ui/core/styles';
 import { FOOTER_HEIGHT } from './constants';
 
@@ -18,10 +18,10 @@ const Footer: React.FC<unknown> = () => {
   const classes = useStyles();
   return (
     <footer className={classes.footer}>
-      <div>
+      {/* <div>
         <FacebookIcon className={classes.socialMediaIcon} color="primary" />
         <TwitterIcon className={classes.socialMediaIcon} />
-      </div>
+      </div> */}
     </footer>
   );
 };
