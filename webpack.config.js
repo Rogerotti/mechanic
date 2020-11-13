@@ -4,7 +4,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   template: __dirname + '/src/index.html',
   filename: 'index.html',
-  inject: 'body'
+  inject: 'body',
 });
 
 module.exports = {
@@ -29,13 +29,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ],
+    extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {
-    publicPath: "/",
-    contentBase: "./src",
-    hot: true
-},
+    publicPath: '/',
+    contentBase: './src',
+    historyApiFallback: true,
+    hot: true,
+  },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),

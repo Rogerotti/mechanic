@@ -12,10 +12,14 @@ export const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: '#323232',
+      main: '#ee7f79',
+      contrastText: '#ffffff',
     },
     secondary: {
       main: '#ffac41',
+    },
+    text: {
+      primary: '#0e1111',
     },
   },
 });

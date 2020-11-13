@@ -8,7 +8,7 @@ import { makeStyles, ThemeProvider, CssBaseline, Typography, Box } from '@materi
 import Header from '../../core/header';
 
 const useStyles = makeStyles({
-  test: {
+  container: {
     // backgroundImage: 'url("../../../assets/background.jpg")',
     // backgroundPosition: 'center',
     // backgroundRepeat: 'no-repeat',
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     backgroundColor: '#f6f8fa',
     height: '80vh',
   },
-  test1: {
+  boldFont: {
     fontWeight: 'bold',
   },
 });
@@ -31,28 +31,15 @@ export const HomePage: React.FC<IHomePageProps> = ({ brands, models, cities, onS
   };
 
   return (
-    // <Layout>
-    //   <div className={classes.test}>
-    //     <Searcher
-    //       brands={brands}
-    //       models={modelsForCurrentBrand}
-    //       cities={cities}
-    //       onSearchRequest={() => {
-    //         onSearchRequest(currentBrandId, '', '');
-    //       }}
-    //       onBrandChange={onBrandChange}
-    //     />
-    //   </div>
-    // </Layout>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={classes.test}>
+      <div className={classes.container}>
         <Header title="test" />
         <Box marginTop={20} mx={40}>
-          <Typography className={classes.test1} color="primary" variant="h2">
+          <Typography className={classes.boldFont} color="textPrimary" variant="h2">
             Search
           </Typography>
-          <Typography color="primary" variant="h3">
+          <Typography color="textPrimary" variant="h3">
             you best mechanic
           </Typography>
           <Searcher

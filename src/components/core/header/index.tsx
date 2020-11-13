@@ -49,7 +49,7 @@ const Header: React.FC<HeaderProps> = ({ title }) => {
     >
       <Toolbar>
         <img className={classes.logo2} src={logo} />
-        <Typography className={classes.test2} color="primary" variant="body1" component="h2">
+        <Typography className={classes.test2} color="textPrimary" variant="body1" component="h2">
           name
         </Typography>
         <Box m={['auto']} display="flex">

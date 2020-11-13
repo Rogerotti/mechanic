@@ -12,7 +12,15 @@ export const fetchAllCities = async (): Promise<ICity[]> => {
       console.error('fetchAllCities', exception);
       return [
         { id: 'wa', name: 'Warszawa' },
-        { id: 'cz', name: 'Czeladź' },
+        { id: 'kr', name: 'Kraków' },
+        { id: 'lo', name: 'Łódź' },
+        { id: 'wr', name: 'Wrocław' },
+        { id: 'po', name: 'Poznań' },
+        { id: 'gd', name: 'Gdańsk' },
+        { id: 'sz', name: 'Szczecin' },
+        { id: 'by', name: 'Bydgoszcz' },
+        { id: 'lu', name: 'Lublin' },
+        { id: 'bi', name: 'Białystok' },
       ];
     });
 };

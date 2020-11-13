@@ -13,6 +13,9 @@ export const fetchAllCarBrands = async (): Promise<IBrand[]> => {
       return [
         { id: 'bmw', name: 'BMW' },
         { id: 'sc', name: 'Skoda' },
+        { id: 'vl', name: 'Volkswagen' },
+        { id: 'op', name: 'Opel' },
+        { id: 'fr', name: 'Ford' },
       ];
     });
 };

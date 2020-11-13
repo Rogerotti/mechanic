@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import HomeWorkIcon from '@material-ui/icons/HomeWork';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -48,9 +50,6 @@ const useStyles = makeStyles({
     padding: 30,
   },
   tabs: {},
-  indicator: {
-    backgroundColor: '#ee7f79',
-  },
 });
 
 const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChange, onSearchRequest }) => {
@@ -61,15 +60,11 @@ const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChan
     <Paper className={classes.root} elevation={3}>
       <Paper color="secondary">
         <Tabs
-          classes={{
-            indicator: classes.indicator,
-          }}
           className={classes.tabs}
           value={selectedTab}
           onChange={(_, value) => setSelectedTab(value)}
           variant="fullWidth"
-          // indicatorColor="secondary"
-          textColor="primary"
+          indicatorColor="primary"
         >
           <Tab value={1} icon={<PermIdentityIcon />} label={getText('mechanic')} />
           <Tab value={2} disabled icon={<HomeWorkIcon />} label={getText('workshop')} />
@@ -84,7 +79,21 @@ const Searcher: React.FC<SearcherProps> = ({ brands, models, cities, onBrandChan
             options={cities}
             getOptionSelected={(option, value) => option.id === value.id}
             getOptionLabel={(option) => option.name}
-            renderInput={(params) => <TextField {...params} label={getText('city')} variant="outlined" />}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label={getText('city')}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  startAdornment: (
+                    <InputAdornment position="end">
+                      <LocationOnIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            )}
           />
         </Grid>
         <Grid item md={3} sm={6}>
