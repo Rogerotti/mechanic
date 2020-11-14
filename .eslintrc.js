@@ -20,6 +20,7 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 'off',
+    'react/display-name': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { args: 'after-used', varsIgnorePattern: '^_' }],
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
