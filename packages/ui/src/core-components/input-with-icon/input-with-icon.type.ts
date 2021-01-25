@@ -6,5 +6,6 @@ export interface IInputWithIconProps {
   icon: IconEnum;
   value?: string;
   placeholder: string;
+  isPassword?: boolean;
   onChange?: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void;
 }

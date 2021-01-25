@@ -9,6 +9,7 @@ export const InputWithIcon: React.FC<IInputWithIconProps> = ({
   icon,
   value,
   placeholder,
+  isPassword,
   onChange,
 }) => {
   const Icon = selectIconComponent(icon);
@@ -28,6 +29,7 @@ export const InputWithIcon: React.FC<IInputWithIconProps> = ({
         className: inputClassName,
         onChange,
         value: currentValue,
+        type: isPassword ? 'password' : undefined,
         placeholder,
         startAdornment: (
           <InputAdornment position="start">

@@ -7,6 +7,8 @@ export interface ILoginPanelProps {
   onSingupClick?: () => void;
   onLoginClick?: () => void;
 
+  loginPlaceholderLabel?: string;
+  passwordPlaceholderLabel?: string;
   signinLabel?: string;
   signupLabel?: string;
   loginLabel?: string;

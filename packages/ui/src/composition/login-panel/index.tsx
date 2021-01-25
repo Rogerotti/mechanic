@@ -19,6 +19,8 @@ export const LoginPanel: React.FC<ILoginPanelProps> = ({
   onLoginClick,
   onSingupClick,
 
+  loginPlaceholderLabel,
+  passwordPlaceholderLabel,
   loginLabel,
   signinLabel,
   signupLabel,
@@ -44,7 +46,7 @@ export const LoginPanel: React.FC<ILoginPanelProps> = ({
           inputClassName={classes.input}
           className={classes.inputContainer}
           icon={IconEnum.User}
-          placeholder="login"
+          placeholder={loginPlaceholderLabel}
           onChange={onUserChange}
           value={username}
         />
@@ -52,9 +54,10 @@ export const LoginPanel: React.FC<ILoginPanelProps> = ({
           inputClassName={classes.input}
           className={classes.inputContainer}
           icon={IconEnum.Lock}
-          placeholder="password"
+          placeholder={passwordPlaceholderLabel}
           onChange={onPassChange}
           value={password}
+          isPassword
         />
       </Box>
 
