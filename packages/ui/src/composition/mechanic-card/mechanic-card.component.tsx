@@ -1,89 +1,32 @@
 import React from 'react';
 import clsx from 'clsx';
-import Rating from '@material-ui/lab/Rating';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import StarRateIcon from '@material-ui/icons/StarRate';
-import { Typography, Paper, Button, Divider } from '@material-ui/core';
-import ChipList from '../../core/chipList';
-import useTranslation from '../../../translations/hooks';
+import { Typography, Paper, Button } from '@material-ui/core';
+import ChipList from '../../core-components/chip-list';
+import { IMechanicCardProps } from './mechanic-card.types';
+import { useStyles } from './mechanic-card.styles';
 
-interface MechanicCardProps {
-  className: string;
-  id: string;
-  image: string;
-  name: string;
-  lastName: string;
-  location: string;
-  raiting: number;
-  raitingCount: number;
-  generalBrands: any[];
-  additionalBrands: any[];
-  generalSpecialization: any[];
-  additionalSpecialization: any[];
-  onClick: (id: string) => void;
-  description: string;
-}
-
-const useStyles = makeStyles((theme) => ({
-  card: {
-    display: 'flex',
-    width: 600,
-    height: 'auto',
-    backgroundColor: 'white',
-    borderRadius: 15,
-    // padding: 25,
-  },
-  image: {
-    height: '100%',
-    width: '170px',
-    borderBottomLeftRadius: 15,
-    borderTopLeftRadius: 15,
-  },
-  content: {
-    paddingLeft: 10,
-    minWidth: '45%',
-  },
-  chipList: {
-    marginTop: 5,
-  },
-  divider: {
-    width: 3,
-    marginRight: 5,
-    background: theme.palette.primary.light,
-  },
-  rateButton: {
-    width: 25,
-    height: 25,
-  },
-  submit: {
-    width: 150,
-    // fontSize: 20,
-  },
-  ble: {
-    fontWeight: 'bold',
-  },
-}));
-
-const MechanicCard: React.FC<MechanicCardProps> = ({
+const MechanicCard: React.FC<IMechanicCardProps> = ({
   className,
   id,
   onClick,
-  description,
   image,
   name,
   lastName,
   location,
-  raiting,
-  raitingCount,
   generalBrands,
   additionalBrands,
   generalSpecialization,
   additionalSpecialization,
+  bookText,
+  specializationText,
+  getMoreText,
+  showLessText,
 }) => {
   const classes = useStyles();
-  const { getText } = useTranslation();
+
   return (
     <Paper className={clsx(className, classes.card)}>
       <img className={classes.image} src={image} />
@@ -111,18 +54,14 @@ const MechanicCard: React.FC<MechanicCardProps> = ({
               className={classes.rateButton}
               endIcon={<StarRateIcon />}
               onClick={() => {
-                onClick(id);
+                if (onClick) {
+                  onClick(id);
+                }
               }}
             >
               4.9
             </Button>
           </Box>
-          {/* <Box display="flex" height="50%">
-  
-          </Box>
-          <Box display="flex" height="50%">
-         
-          </Box> */}
         </Box>
         <Box display="flex" height="55%">
           <Box paddingLeft={2}>
@@ -131,12 +70,16 @@ const MechanicCard: React.FC<MechanicCardProps> = ({
               label="Docelowe marki samochodu"
               general={generalBrands}
               additional={additionalBrands}
+              getMoreText={getMoreText}
+              showLessText={showLessText}
             />
             <ChipList
               className={classes.chipList}
-              label={getText('specialization')}
+              label={specializationText}
               general={generalSpecialization}
               additional={additionalSpecialization}
+              getMoreText={getMoreText}
+              showLessText={showLessText}
             />
           </Box>
         </Box>
@@ -146,34 +89,15 @@ const MechanicCard: React.FC<MechanicCardProps> = ({
             color="primary"
             className={classes.submit}
             onClick={() => {
-              onClick(id);
+              if (onClick) {
+                onClick(id);
+              }
             }}
           >
-            {getText('book')}
+            {bookText}
           </Button>
         </Box>
       </Box>
-
-      {/* <Box display="block">
-        <Typography variant="h6">
-          {name} {lastName}
-        </Typography>
-        <Typography variant="h6">{location}</Typography>
-        <Box>
-          <ChipList
-            className={classes.chipList}
-            label={getText('brands')}
-            general={generalBrands}
-            additional={additionalBrands}
-          />
-          <ChipList
-            className={classes.chipList}
-            label={getText('specialization')}
-            general={generalSpecialization}
-            additional={additionalSpecialization}
-          />
-        </Box>
-      </Box> */}
     </Paper>
   );
 };

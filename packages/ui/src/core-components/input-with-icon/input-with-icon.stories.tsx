@@ -10,6 +10,15 @@ export default {
   component: InputWithIcon,
   decorators: [withKnobs],
   argTypes: {
+    value: {
+      name: 'value',
+      description: 'When value is set not to undefined we control the change of the value in component',
+      type: { name: 'string', required: false },
+      defaultValue: undefined,
+      control: {
+        type: 'text',
+      },
+    },
     icon: {
       control: {
         type: 'select',

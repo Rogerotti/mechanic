@@ -1,46 +1,77 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
+
 import { ILoginPanelProps } from './login-panel.types';
 import { InputWithIcon } from '../../core-components/input-with-icon';
 import { IconEnum } from '../../utils/icons/icons.types';
-import { useStyles } from './login-panel.styles'
-import { Typography } from '@material-ui/core';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
-export const LoginPanel: React.FC<ILoginPanelProps> = ({ username, password }) => {
+import { useStyles } from './login-panel.styles';
+
+import Divider from '../../core-components/divider';
+
+export const LoginPanel: React.FC<ILoginPanelProps> = ({
+  username,
+  password,
+
+  onUsernameChange,
+  onPasswordChange,
+  onLoginClick,
+  onSingupClick,
+
+  loginLabel,
+  signinLabel,
+  signupLabel,
+  separatorLabel,
+}) => {
   const classes = useStyles();
 
+  const onUserChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    onUsernameChange?.(event.target.value);
+  };
+
+  const onPassChange = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    onPasswordChange?.(event.target.value);
+  };
+
   return (
-    <Box className={classes.root} padding={1} width="50%">
+    <Box padding={1} width="100%">
       <Box textAlign="center" mb={3}>
-        <Typography variant="h4" >Sign in</Typography>
+        <Typography variant="h4">{signinLabel}</Typography>
       </Box>
       <Box display="block">
-        <InputWithIcon inputClassName={classes.input} className={classes.inputContainer} icon={IconEnum.User} placeholder="login" />
-        <InputWithIcon inputClassName={classes.input} className={classes.inputContainer} icon={IconEnum.Lock} placeholder="password" />
+        <InputWithIcon
+          inputClassName={classes.input}
+          className={classes.inputContainer}
+          icon={IconEnum.User}
+          placeholder="login"
+          onChange={onUserChange}
+          value={username}
+        />
+        <InputWithIcon
+          inputClassName={classes.input}
+          className={classes.inputContainer}
+          icon={IconEnum.Lock}
+          placeholder="password"
+          onChange={onPassChange}
+          value={password}
+        />
       </Box>
-     
-    <Box width="100%" mt={1}>
-      <Button color="primary" variant="contained" className={classes.button} >Log in</Button>
-    </Box>
 
-    <Box mt={3} textAlign="center">
-      <Typography variant="body1" >Or Sing Up Using</Typography>
-    </Box>
-   
-    <Box mt={1} textAlign="center">
-      <FacebookIcon fontSize="large" className={classes.facebookIcon} />
-      <TwitterIcon fontSize="large" className={classes.twitterIcon} />
-    </Box>
+      <Box width="100%" mt={1}>
+        <Button onClick={onLoginClick} color="primary" variant="contained" className={classes.button}>
+          <Typography>{loginLabel}</Typography>
+        </Button>
+      </Box>
+      <Box width="100%" mt={3}>
+        <Divider orientation={'horizontal'} text={separatorLabel} />
+      </Box>
 
-    <Box mt={1} textAlign="center">
-      <Typography variant="body1" >Or</Typography>
-    </Box>
-
-    <Box textAlign="center" mt={1}>
-      <Button color="primary" variant="text" >Sing in</Button>
-    </Box>
+      <Box color="white" textAlign="center" mt={1}>
+        <Button onClick={onSingupClick} variant="text">
+          {signupLabel}
+        </Button>
+      </Box>
     </Box>
   );
 };

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "types": ["jest", "node"],
+    "outDir": "./dist/",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
@@ -8,11 +9,9 @@
     "module": "es6",
     "target": "es5",
     "jsx": "react",
-    "allowJs": true,
-    "esModuleInterop": true
+    "allowJs": true
   },
-  "paths": {
-    "@project/ui": ["../ui/src"],
-    "@project/ui/*": ["../ui/src/*"]
-  }
+  "include": [
+    "src/**/*"
+  ]
 }

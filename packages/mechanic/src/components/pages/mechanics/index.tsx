@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import Layout from '../../core/layout';
 import { theme } from '../../../theme';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import MechanicCard from '../../cards/mechanicCard2';
+// import MechanicCard from '../../../../../ui/src/composition/mechanic-card';
 import januszImage from '../../../assets/janusz.jpg';
 import mechanicImage from '../../../assets/mechanic.jpg';
 import {
@@ -227,23 +227,7 @@ const MechanicsPage: React.FC<unknown> = () => {
         </div>
         <div className={classes.center}>
           {mechanics.map((mechanic) => (
-            <MechanicCard
-              key={mechanic.id}
-              className={classes.card}
-              id={mechanic.id}
-              name={mechanic.name}
-              lastName={mechanic.lastName}
-              location={mechanic.location}
-              raiting={mechanic.raiting}
-              raitingCount={mechanic.raitingCount}
-              description={mechanic.description}
-              image={mechanic.image}
-              onClick={reservationClick}
-              generalBrands={generalBrands}
-              additionalBrands={additionalBrands}
-              generalSpecialization={generalSpecialization}
-              additionalSpecialization={additionalSpecialization}
-            />
+            <div />
           ))}
         </div>
       </Box>
@@ -252,3 +236,20 @@ const MechanicsPage: React.FC<unknown> = () => {
 };
 
 export default MechanicsPage;
+// <MechanicCard
+//   key={mechanic.id}
+//   className={classes.card}
+//   id={mechanic.id}
+//   name={mechanic.name}
+//   lastName={mechanic.lastName}
+//   location={mechanic.location}
+//   raiting={mechanic.raiting}
+//   raitingCount={mechanic.raitingCount}
+//   description={mechanic.description}
+//   image={mechanic.image}
+//   onClick={reservationClick}
+//   generalBrands={generalBrands}
+//   additionalBrands={additionalBrands}
+//   generalSpecialization={generalSpecialization}
+//   additionalSpecialization={additionalSpecialization}
+// />
