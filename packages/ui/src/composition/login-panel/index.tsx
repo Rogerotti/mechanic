@@ -37,7 +37,7 @@ export const LoginPanel: React.FC<ILoginPanelProps> = ({
   };
 
   return (
-    <Box padding={1} width="100%">
+    <Box padding={1} width="100%" bgcolor="primary.main" borderRadius={10}>
       <Box textAlign="center" mb={3}>
         <Typography variant="h4">{signinLabel}</Typography>
       </Box>
@@ -62,7 +62,7 @@ export const LoginPanel: React.FC<ILoginPanelProps> = ({
       </Box>
 
       <Box width="100%" mt={1}>
-        <Button onClick={onLoginClick} color="primary" variant="contained" className={classes.button}>
+        <Button onClick={onLoginClick} color="secondary" variant="contained" className={classes.button}>
           <Typography>{loginLabel}</Typography>
         </Button>
       </Box>

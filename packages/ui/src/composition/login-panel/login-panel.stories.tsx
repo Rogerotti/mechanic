@@ -47,7 +47,7 @@ const Template: Story<ComponentProps<typeof LoginPanel>> = ({ username, password
   }, [username]);
 
   useEffect(() => {
-    setCurrentUsername(password);
+    setCurrentPassword(password);
   }, [password]);
 
   const onUsernameChange = (value: string) => {

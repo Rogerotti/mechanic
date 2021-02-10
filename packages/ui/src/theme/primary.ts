@@ -14,6 +14,9 @@ export default createMuiTheme({
     secondary: {
       main: '#ffac41',
     },
+    blue: {
+      main: 'blue',
+    },
     text: {
       primary: '#0e1111',
       secondary: indigo[300],

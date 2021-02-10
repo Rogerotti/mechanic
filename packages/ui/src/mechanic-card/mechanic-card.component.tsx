@@ -4,7 +4,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import Box from '@material-ui/core/Box';
 import StarRateIcon from '@material-ui/icons/StarRate';
 import { Typography, Paper, Button } from '@material-ui/core';
-import ChipList from '../../core-components/chip-list';
+import ChipList from '../core-components/chip-list';
 import { IMechanicCardProps } from './mechanic-card.types';
 import { useStyles } from './mechanic-card.styles';
 

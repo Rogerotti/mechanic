@@ -1,9 +1,9 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
-import ThemeProvider from '../../theme';
+import ThemeProvider from '../theme';
 import MechanicCard from './mechanic-card.component';
-import januszImage from '../../assets/mechanic.jpg';
+import januszImage from '../assets/mechanic.jpg';
 
 export default {
   title: 'Composition/Mechanic Card',
