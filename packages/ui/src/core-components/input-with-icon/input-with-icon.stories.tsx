@@ -1,6 +1,5 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
-import ThemeProvider from '../../theme';
 import { withKnobs } from '@storybook/addon-knobs';
 import { InputWithIcon } from '.';
 import { IconEnum } from '../../utils/icons/icons.types';
@@ -28,11 +27,7 @@ export default {
   },
 };
 
-const Template: Story<ComponentProps<typeof InputWithIcon>> = (args) => (
-  <ThemeProvider>
-    <InputWithIcon {...args} />
-  </ThemeProvider>
-);
+const Template: Story<ComponentProps<typeof InputWithIcon>> = (args) => <InputWithIcon {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {

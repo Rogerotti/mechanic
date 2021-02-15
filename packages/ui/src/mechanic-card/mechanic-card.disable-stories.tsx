@@ -1,7 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
-import ThemeProvider from '../theme';
 import MechanicCard from './mechanic-card.component';
 import januszImage from '../assets/mechanic.jpg';
 
@@ -11,11 +10,7 @@ export default {
   decorators: [withKnobs],
 };
 
-const Template: Story<ComponentProps<typeof MechanicCard>> = (args) => (
-  <ThemeProvider>
-    <MechanicCard {...args} />
-  </ThemeProvider>
-);
+const Template: Story<ComponentProps<typeof MechanicCard>> = (args) => <MechanicCard {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {

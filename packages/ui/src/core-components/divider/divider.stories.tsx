@@ -1,6 +1,5 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
-import ThemeProvider from '../../theme';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Divider } from './divider.component';
 
@@ -23,11 +22,7 @@ export default {
   },
 };
 
-const Template: Story<ComponentProps<typeof Divider>> = (args) => (
-  <ThemeProvider>
-    <Divider {...args} />
-  </ThemeProvider>
-);
+const Template: Story<ComponentProps<typeof Divider>> = (args) => <Divider {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {};

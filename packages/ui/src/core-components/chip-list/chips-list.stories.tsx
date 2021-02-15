@@ -1,6 +1,5 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
-import ThemeProvider from '../../theme';
 import { withKnobs } from '@storybook/addon-knobs';
 import ChipList from './chip-list.component';
 
@@ -10,11 +9,7 @@ export default {
   decorators: [withKnobs],
 };
 
-const Template: Story<ComponentProps<typeof ChipList>> = (args) => (
-  <ThemeProvider>
-    <ChipList {...args} />
-  </ThemeProvider>
-);
+const Template: Story<ComponentProps<typeof ChipList>> = (args) => <ChipList {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {

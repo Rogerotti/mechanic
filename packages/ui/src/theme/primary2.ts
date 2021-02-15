@@ -1,19 +1,21 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import grey from '@material-ui/core/colors/grey';
-// import orange from '@material-ui/core/colors/orange';
 import red from '@material-ui/core/colors/red';
+
+const orangeMain = '#ff8c00';
+const white = '#ffffff';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: grey[900],
-      light: grey[300],
+      light: grey[800],
       dark: '#000000',
       contrastText: '#ffffff',
     },
     secondary: {
-      main: '#ff8c00',
+      main: orangeMain,
       contrastText: '#ffffff',
     },
     text: {
@@ -40,6 +42,34 @@ const theme = createMuiTheme({
       root: {
         '&:hover': {
           backgroundColor: '#353839',
+        },
+      },
+    },
+    MuiFormControl: {
+      root: {
+        backgroundColor: grey[900],
+      },
+    },
+    MuiFormLabel: {
+      root: {
+        color: orangeMain,
+        '&:focus': {
+          color: orangeMain,
+        },
+      },
+      focused: {
+        color: orangeMain,
+      },
+    },
+    MuiInputBase: {
+      root: {
+        color: white,
+      },
+    },
+    MuiOutlinedInput: {
+      root: {
+        '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {
+          borderColor: orangeMain,
         },
       },
     },
