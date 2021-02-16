@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.tsx",
+  "typings": "main.d.ts",
   "scripts": {
-    "start": "start-storybook -p 9001 -c .storybook",
+    "start": "start-storybook -s ./public -p 9001 -c .storybook",
     "lint": "eslint src/**",
     "lint:fix": "eslint src/** --fix"
   },
@@ -22,6 +23,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
+
   "devDependencies": {
     "@storybook/cli": "^6.1.15",
     "@storybook/react": "^6.1.15",

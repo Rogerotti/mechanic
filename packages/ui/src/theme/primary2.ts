@@ -66,6 +66,11 @@ const theme = createMuiTheme({
         color: white,
       },
     },
+    MuiTab: {
+      textColorSecondary: {
+        color: '#ffffff',
+      },
+    },
     MuiOutlinedInput: {
       root: {
         '&:hover:not($disabled):not($focused):not($error) $notchedOutline': {

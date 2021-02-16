@@ -1,8 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
-import { Box } from '@material-ui/core';
-import januszImage from '../../assets/logo.svg';
+import logoImage from '../../../public/logo.svg';
 import { Header } from '.';
 
 export default {
@@ -12,28 +11,23 @@ export default {
 };
 
 const Template: Story<ComponentProps<typeof Header>> = ({ ...args }) => {
-  return (
-    <Header
-      {...args}
-      logo={januszImage}
-      links={[
-        {
-          text: 'Pricing',
-          href: 'price',
-        },
-        {
-          text: 'About us',
-          href: 'about-us',
-        },
-        {
-          text: 'Contact',
-          href: 'contact',
-        },
-      ]}
-    />
-  );
+  return <Header {...args} />;
 };
 
 export const Basic = Template.bind({});
 
-Basic.args = {};
+Basic.args = {
+  logo: logoImage,
+  loginText: 'zaloguj',
+  registerText: 'zarejestruj',
+  links: [
+    {
+      text: 'O nas',
+      href: 'about',
+    },
+    {
+      text: 'Cennik',
+      href: 'price',
+    },
+  ],
+};

@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   test: {
-    // backgroundImage: 'url("../../../assets/background.jpg")',
+    // backgroundImage: 'url("../../../public/background.jpg")',
     // backgroundPosition: 'center',
     // backgroundRepeat: 'no-repeat',
     // backgroundSize: 'cover',

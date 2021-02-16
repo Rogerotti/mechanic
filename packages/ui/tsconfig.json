@@ -11,10 +11,15 @@
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": [
+      "./types"
+    ]
   },
   "include": [
     "src/**/*",
+    "public/**/*",
+    "types/**/*",
     "setup-tests.ts"
   ]
 }

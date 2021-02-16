@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import MechanicCard from './mechanic-card.component';
-import januszImage from '../assets/mechanic.jpg';
+import januszImage from '../public/mechanic.jpg';
 
 export default {
   title: 'Composition/Mechanic Card',

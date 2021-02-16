@@ -6,8 +6,8 @@ import Layout from '../../core/layout';
 import { theme } from '../../../theme';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 // import MechanicCard from '../../../../../ui/src/composition/mechanic-card';
-import januszImage from '../../../assets/janusz.jpg';
-import mechanicImage from '../../../assets/mechanic.jpg';
+import januszImage from '../../../public/janusz.jpg';
+import mechanicImage from '../../../public/mechanic.jpg';
 import {
   FormControl,
   FormLabel,

@@ -7,7 +7,7 @@ import { useStyles } from './header.styles';
 import { AppBar, Hidden, Menu, MenuItem, Toolbar } from '@material-ui/core';
 import { Button } from '../../core-components/button';
 
-export const Header: React.FC<IHeaderProps> = ({ logo, links }) => {
+export const Header: React.FC<IHeaderProps> = ({ loginText, registerText, logo, links }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -46,8 +46,8 @@ export const Header: React.FC<IHeaderProps> = ({ logo, links }) => {
         </Hidden>
 
         <Box display="flex" marginLeft="auto">
-          <Button color="primary" rounded text="Login" variant="text" />
-          <Button color="secondary" rounded text="Sing Up" variant="contained" />
+          <Button color="primary" rounded text={loginText} variant="text" />
+          <Button color="secondary" rounded text={registerText} variant="contained" />
         </Box>
       </Toolbar>
     </AppBar>

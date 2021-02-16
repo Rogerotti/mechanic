@@ -1,26 +1,35 @@
-{
-  // const [selectedTab, setSelectedTab] = useState(1);
-  /* <Paper color="primary" className={classes.root} elevation={3}> */
-}
-{
-  /* <Box
-        className={classes.test}
-        borderTop={1}
-        borderColor="primary.light"
-        borderLeft={1}
-        boxShadow={22}
-        borderRadius={5}
+import React, { useState } from 'react';
+
+import Box from '@material-ui/core/Box';
+import { Tab, Tabs as TabsMUI } from '@material-ui/core';
+
+import { ITabsProps } from './tabs.types';
+import { useStyles } from './tabs.styles';
+
+export const Tabs: React.FC<ITabsProps> = ({ items }) => {
+  const classes = useStyles();
+  const [selectedTab, setSelectedTab] = useState(1);
+
+  return (
+    <Box
+      className={classes.test}
+      borderTop={1}
+      borderColor="primary.light"
+      borderLeft={1}
+      boxShadow={22}
+      borderRadius={5}
+    >
+      <TabsMUI
+        className={classes.test2}
+        value={selectedTab}
+        onChange={(_, value) => setSelectedTab(value)}
+        variant="fullWidth"
+        color="red"
+        textColor="secondary"
+        indicatorColor="secondary"
       >
-        <Tabs
-          value={selectedTab}
-          onChange={(_, value) => setSelectedTab(value)}
-          variant="fullWidth"
-          textColor="secondary"
-          indicatorColor="secondary"
-        >
-          <Tab color="primary.main" value={1} icon={<PermIdentityIcon />} label="Trenerzy" />
-          <Tab value={2} icon={<HomeWorkIcon />} label={'Placówki'} />
-          <Tab value={3} icon={<LocalAtmIcon />} label={'Firmy'} />
-        </Tabs>
-      </Box> */
-}
+        {items && items.map((item) => <Tab key={item.id} value={item.id} icon={item.icon} label={item.value} />)}
+      </TabsMUI>
+    </Box>
+  );
+};
