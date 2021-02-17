@@ -5,8 +5,6 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '50px',
     [theme.breakpoints.up('sm')]: {
-      // width: 'initial',
-      // height: 'initial', // zalezy jaki buttony chce
       borderRadius: '30px',
       height: '50px',
       width: '150px',

@@ -2,63 +2,15 @@ import React from 'react';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
-import { Grid, Theme, Typography } from '@material-ui/core';
+import { Theme, Typography } from '@material-ui/core';
 import { useStyles } from './searching.styles';
 import { Button } from '../../core-components/button';
 import { Dropdown } from '../../core-components/dropdown';
 import { MultiSelect } from '../../core-components/multi-select/multi-select.component';
+import { ISearchingProps } from './searching.types';
 
-interface ISearchingProps {
-  header: string;
-  subHeader: string;
-}
-
-export interface ICity {
-  id: string;
-  value: string;
-}
-
-export const Searching: React.FC<ISearchingProps> = ({ header, subHeader }) => {
+export const Searching: React.FC<ISearchingProps> = ({ header, subHeader, cities, categories }) => {
   const classes = useStyles();
-
-  const cities: ICity[] = [
-    {
-      value: 'Krakow',
-      id: 'KRK',
-    },
-    {
-      value: 'Warszawa',
-      id: 'WWA',
-    },
-    {
-      value: 'Barłożnia Gościeszyńska',
-      id: 'test',
-    },
-  ];
-
-  const categories: ICity[] = [
-    {
-      value: 'MMA',
-      id: 'mma',
-    },
-    {
-      value: 'Pływanie',
-      id: 'swim',
-    },
-    {
-      value: 'ćwiczenie',
-      id: 'swim',
-    },
-    {
-      value: 'Jakas tam dluga nzaw',
-      id: 'aaa',
-    },
-    {
-      value: 'eeeeeeet',
-      id: 'switettem',
-    },
-  ];
-
   const isNotMobile = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
 
   return (

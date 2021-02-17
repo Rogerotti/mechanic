@@ -18,6 +18,8 @@ export const HomePage: React.FC<IHomePageProps> = ({
   rightMenuLinks,
   tabs,
   steps,
+  cities,
+  categories,
   howItWorksSelectedTabId,
   onHowItWorksTabChange,
 }) => {
@@ -26,7 +28,7 @@ export const HomePage: React.FC<IHomePageProps> = ({
   return (
     <Box bgcolor="primary.main">
       <Header links={links} rightMenuLinks={rightMenuLinks} logo={logo} username={username} />
-      <Searching header={searchHeader} subHeader={searchSubheader} />
+      <Searching header={searchHeader} subHeader={searchSubheader} cities={cities} categories={categories} />
       <HowItWorks
         header={howItWorksHeader}
         steps={steps}

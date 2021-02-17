@@ -1,7 +1,4 @@
-interface IListItem {
-  id: string;
-  value: string;
-}
+import { IListItem } from '../../../types/core';
 
 export interface IMultiSelectProps {
   label: string;

@@ -145,4 +145,19 @@ Basic.args = {
       icon: <LocalAtmIcon />,
     },
   ],
+  cities: [
+    {
+      id: 'krk',
+      value: 'Kraków',
+    },
+    { id: 'wwa', value: 'Warszawa' },
+  ],
+  categories: [
+    {
+      id: 'swim',
+      value: 'Pływanie',
+    },
+    { id: 'mma', value: 'MMA' },
+    { id: 'bjj', value: 'Brazylijskie jiu jitsu' },
+  ],
 };
