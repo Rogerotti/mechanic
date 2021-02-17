@@ -6,4 +6,6 @@ export interface ITabItem {
 
 export interface ITabsProps {
   items: ITabItem[];
+  selectedTabId?: string;
+  onChange?: (value: string) => void;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
-import { Typography } from '@material-ui/core';
+import { Grid, Theme, Typography } from '@material-ui/core';
 import { useStyles } from './searching.styles';
 import { Button } from '../../core-components/button';
 import { Dropdown } from '../../core-components/dropdown';
@@ -29,6 +30,10 @@ export const Searching: React.FC<ISearchingProps> = ({ header, subHeader }) => {
       value: 'Warszawa',
       id: 'WWA',
     },
+    {
+      value: 'Barłożnia Gościeszyńska',
+      id: 'test',
+    },
   ];
 
   const categories: ICity[] = [
@@ -44,8 +49,18 @@ export const Searching: React.FC<ISearchingProps> = ({ header, subHeader }) => {
       value: 'ćwiczenie',
       id: 'swim',
     },
+    {
+      value: 'Jakas tam dluga nzaw',
+      id: 'aaa',
+    },
+    {
+      value: 'eeeeeeet',
+      id: 'switettem',
+    },
   ];
-  // className={classes.borderRadiusTop}
+
+  const isNotMobile = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
+
   return (
     <Box width="100%" bgcolor="primary.main">
       <div className={classes.root}>
@@ -53,11 +68,11 @@ export const Searching: React.FC<ISearchingProps> = ({ header, subHeader }) => {
           className={classes.root}
           boxShadow={15}
           minHeight={300}
+          borderColor="primary.light"
           bgcolor="primary.main"
           justifyContent="center"
           alignItems="center"
           borderTop={1}
-          borderColor="primary.light"
           borderLeft={1}
         >
           <Box justifyContent="center" pt={10}>
@@ -69,15 +84,33 @@ export const Searching: React.FC<ISearchingProps> = ({ header, subHeader }) => {
             </Typography>
           </Box>
 
-          <Box display="flex" justifyContent="center" alignItems="center" pt={10} pb={10}>
-            <Box minWidth={400} color="#191919" marginLeft={1}>
+          <Box
+            display={{ xs: 'block', sm: 'flex' }}
+            justifyContent="center"
+            alignItems="center"
+            pt={{ xs: 2, md: 10 }}
+            pb={{ xs: 0, md: 10 }}
+          >
+            <Box width="100%" maxWidth={{ xs: '100%', sm: 350, lg: 400 }} color="#191919">
               <MultiSelect label="Kategorie" placeholder="Wyszukaj" items={categories} />
             </Box>
-            <Box minWidth={300} color="#191919" marginLeft={2}>
+            <Box
+              width="100%"
+              mt={{ xs: 2, sm: 0 }}
+              maxWidth={{ xs: '100%', sm: 200, lg: 275 }}
+              color="#191919"
+              marginLeft={{ sm: 2 }}
+            >
               <Dropdown label="Miasto" items={cities} />
             </Box>
-            <Box marginLeft={1}>
-              <Button text="Szukaj" rounded={true} variant="contained" color="secondary" />
+            <Box width={{ xs: '100%', sm: 'initial' }} mt={{ xs: 2, sm: 0 }} marginLeft={{ sm: 1 }}>
+              <Button
+                className={classes.button}
+                text="Szukaj"
+                rounded={isNotMobile ? true : false}
+                variant="contained"
+                color="secondary"
+              />
             </Box>
           </Box>
         </Box>

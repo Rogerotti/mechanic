@@ -18,8 +18,6 @@ export const Basic = Template.bind({});
 
 Basic.args = {
   logo: logoImage,
-  loginText: 'zaloguj',
-  registerText: 'zarejestruj',
   links: [
     {
       text: 'O nas',
@@ -27,6 +25,16 @@ Basic.args = {
     },
     {
       text: 'Cennik',
+      href: 'price',
+    },
+  ],
+  rightMenuLinks: [
+    {
+      text: 'Zaloguj',
+      href: 'about',
+    },
+    {
+      text: 'Zarejestruj',
       href: 'price',
     },
   ],

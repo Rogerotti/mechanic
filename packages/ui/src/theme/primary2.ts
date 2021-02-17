@@ -6,6 +6,19 @@ import red from '@material-ui/core/colors/red';
 const orangeMain = '#ff8c00';
 const white = '#ffffff';
 
+// Default by Material-UI
+// xs, extra-small: 0 - 599px
+// sm, small: 600 - 959px
+// md, medium: 960 - 1279px
+// lg, large: 1280 - 1919px
+// xl, extra-large: 1920px - ifinity
+
+// With this theme
+// xs, extra-small: 0 - 599px
+// sm, small: 600 - 799px
+// md, medium: 800 - 1023px
+// lg, large: 1024 - 1439px
+// xl, extra-large: 1440px - infinity
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -48,6 +61,7 @@ const theme = createMuiTheme({
     MuiFormControl: {
       root: {
         backgroundColor: grey[900],
+        borderRadius: '5px',
       },
     },
     MuiFormLabel: {

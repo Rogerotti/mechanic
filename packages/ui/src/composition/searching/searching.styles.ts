@@ -1,13 +1,16 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme) => ({
-  borderRadiusTop: {
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  borderRadiusBottom: {
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
+  button: {
+    width: '100%',
+    height: '50px',
+    [theme.breakpoints.up('sm')]: {
+      // width: 'initial',
+      // height: 'initial', // zalezy jaki buttony chce
+      borderRadius: '30px',
+      height: '50px',
+      width: '150px',
+    },
   },
   subHeader: {
     paddingTop: 5,
@@ -17,12 +20,5 @@ export const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    // height: '100vh',
   },
-  test: {
-    backgroundColor: theme.palette.primary.main,
-  },
-  buttonContainer: {},
-  modelSearcher: {},
-  container: {},
 }));

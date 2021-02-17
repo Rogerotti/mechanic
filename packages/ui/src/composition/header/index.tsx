@@ -2,21 +2,31 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { IHeaderProps } from './header.types';
 import { useStyles } from './header.styles';
-import { AppBar, Hidden, Menu, MenuItem, Toolbar } from '@material-ui/core';
+import { AppBar, Hidden, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
 import { Button } from '../../core-components/button';
 
-export const Header: React.FC<IHeaderProps> = ({ loginText, registerText, logo, links }) => {
+export const Header: React.FC<IHeaderProps> = ({ username, logo, links, rightMenuLinks }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
 
-  const handleClick = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+  const handleClickHamburgerMenu = (event: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClickRightMenu = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setAnchorEl2(event.currentTarget);
+  };
+
+  const handleCloseHamburgerMenu = () => {
     setAnchorEl(null);
+  };
+
+  const handleCloseRightMenu = () => {
+    setAnchorEl2(null);
   };
 
   return (
@@ -24,11 +34,19 @@ export const Header: React.FC<IHeaderProps> = ({ loginText, registerText, logo, 
       <Toolbar>
         <Hidden mdUp>
           <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon onClick={handleClick} />
-            <Menu id="hamburger-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
+            <MenuIcon onClick={handleClickHamburgerMenu} />
+            <Menu
+              id="hamburger-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleCloseHamburgerMenu}
+            >
+              {links?.map((link) => (
+                <MenuItem key={link.href} onClick={handleCloseHamburgerMenu}>
+                  {link.text}
+                </MenuItem>
+              ))}
             </Menu>
           </IconButton>
         </Hidden>
@@ -45,9 +63,28 @@ export const Header: React.FC<IHeaderProps> = ({ loginText, registerText, logo, 
           </Box>
         </Hidden>
 
-        <Box display="flex" marginLeft="auto">
-          <Button color="primary" rounded text={loginText} variant="text" />
-          <Button color="secondary" rounded text={registerText} variant="contained" />
+        <Box display="flex" marginLeft="auto" alignItems="center">
+          <Hidden implementation="css" xsDown>
+            <Box textAlign="center" maxWidth={150}>
+              {username && <Typography>Witaj, {username}</Typography>}
+            </Box>
+          </Hidden>
+
+          <Box ml={2}>
+            <div onClick={handleClickRightMenu}>
+              <AccountCircleIcon className={classes.userIcon} />
+            </div>
+          </Box>
+
+          <Menu id="simple-menu" anchorEl={anchorEl2} open={Boolean(anchorEl2)} onClose={handleCloseRightMenu}>
+            <Box bgcolor="primary.main">
+              {rightMenuLinks.map((link) => (
+                <MenuItem key={link.href} onClick={handleCloseRightMenu}>
+                  {link.text}
+                </MenuItem>
+              ))}
+            </Box>
+          </Menu>
         </Box>
       </Toolbar>
     </AppBar>

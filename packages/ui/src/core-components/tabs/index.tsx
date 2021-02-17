@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Box from '@material-ui/core/Box';
 import { Tab, Tabs as TabsMUI } from '@material-ui/core';
 
 import { ITabsProps } from './tabs.types';
-import { useStyles } from './tabs.styles';
 
-export const Tabs: React.FC<ITabsProps> = ({ items }) => {
-  const classes = useStyles();
-  const [selectedTab, setSelectedTab] = useState(1);
+export const Tabs: React.FC<ITabsProps> = ({ items, selectedTabId, onChange }) => {
+  const [selectedTab, setSelectedTab] = useState<string>(undefined);
+
+  useEffect(() => {
+    if (items.find((item) => item.id === selectedTabId)) {
+      setSelectedTab(selectedTabId);
+    }
+  }, [selectedTabId]);
+
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const onChangeCallback = (_: React.ChangeEvent<{}>, value: string) => {
+    onChange?.(value);
+    setSelectedTab(value);
+  };
 
   return (
-    <Box
-      className={classes.test}
-      borderTop={1}
-      borderColor="primary.light"
-      borderLeft={1}
-      boxShadow={22}
-      borderRadius={5}
-    >
+    <Box bgcolor="primary" borderColor="primary.light">
       <TabsMUI
-        className={classes.test2}
         value={selectedTab}
-        onChange={(_, value) => setSelectedTab(value)}
+        onChange={onChangeCallback}
         variant="fullWidth"
         color="red"
         textColor="secondary"

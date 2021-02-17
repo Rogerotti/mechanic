@@ -1,3 +1,5 @@
+import { ITabsProps } from '../../core-components/tabs/tabs.types';
+
 export interface IStep {
   number: number;
   header: string;
@@ -8,4 +10,7 @@ export interface IStep {
 export interface IHowItWorksProps {
   header: string;
   steps: IStep[];
+  tabs: ITabsProps['items'];
+  selectedTabId?: string;
+  onTabChange?: (value: string) => void;
 }
