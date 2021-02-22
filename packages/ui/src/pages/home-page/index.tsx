@@ -7,6 +7,7 @@ import { Searching } from '../../composition/searching';
 import { HowItWorks } from '../../composition/how-it-works';
 import { IHomePageProps } from './home-page.types';
 import { useStyles } from './home-page.styles';
+import { Footer } from '../../composition/footer';
 
 export const HomePage: React.FC<IHomePageProps> = ({
   logo,
@@ -36,6 +37,8 @@ export const HomePage: React.FC<IHomePageProps> = ({
         selectedTabId={howItWorksSelectedTabId}
         onTabChange={onHowItWorksTabChange}
       />
+
+      <Footer />
     </Box>
   );
 };

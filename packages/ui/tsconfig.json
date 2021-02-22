@@ -5,6 +5,7 @@
     "outDir": "./dist/",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
+    "downlevelIteration":true,
     "moduleResolution": "node",
     "sourceMap": true,
     "module": "es6",

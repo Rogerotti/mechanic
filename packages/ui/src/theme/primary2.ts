@@ -46,6 +46,11 @@ const theme = createMuiTheme({
         backgroundColor: '#ff8c00',
       },
     },
+    MuiTypography: {
+      body2: {
+        fontSize: '0.6rem',
+      },
+    },
     MuiMenu: {
       paper: {
         backgroundColor: grey[900],

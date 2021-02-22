@@ -1,9 +1,12 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 import search from '../../../public/search.svg';
 import rate from '../../../public/rate.svg';
 import password from '../../../public/pass.svg';
+
 import { HowItWorks } from '.';
 
 export default {
@@ -24,6 +27,10 @@ const stepSubHeader =
 
 Basic.args = {
   header: 'How it works',
+  tabs: [
+    { id: 'first', value: 'podopieczny', icon: <PermIdentityIcon /> },
+    { id: 'second', value: 'trener', icon: <LocalAtmIcon /> },
+  ],
   steps: [
     {
       number: 1,

@@ -2,7 +2,6 @@ import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import { MultiSelect } from './multi-select.component';
-import { Box } from '@material-ui/core';
 
 export default {
   title: 'Core Components/MultiSelect',
@@ -11,11 +10,7 @@ export default {
   argTypes: {},
 };
 
-const Template: Story<ComponentProps<typeof MultiSelect>> = (args) => (
-  <Box width={500} minHeight={200} bgcolor="primary.main" paddingTop={10}>
-    <MultiSelect {...args} />
-  </Box>
-);
+const Template: Story<ComponentProps<typeof MultiSelect>> = (args) => <MultiSelect {...args} />;
 
 export const Basic = Template.bind({});
 Basic.args = {
