@@ -11,6 +11,8 @@ export const translations: Translations = {
     mainSearchHeader: 'Chcesz lepszych efektów?',
     mainSearchSubheader: 'Znajdź lepszego trenera!',
     howItWorksHeader: 'Jak to działa?',
+    protege: 'Podopieczny',
+    trainer: 'Trener',
 
     brand: 'Marka pojazdu',
     brands: 'Marki pojazdu',
