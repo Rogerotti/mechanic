@@ -4,11 +4,11 @@ import { select } from '@storybook/addon-knobs';
 
 import Primary from './primary';
 import Secondary from './secondary';
-import Primary2 from './primary2';
 
-const themes = { Primary2: Primary2, Primary: Primary, Secondary: Secondary };
+const themes = { Primary: Primary, Secondary: Secondary };
 const themeNames = Object.keys(themes);
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default ({ children }) => {
   const theme = select('Theme', themeNames, themeNames[0], 'Themes');
 

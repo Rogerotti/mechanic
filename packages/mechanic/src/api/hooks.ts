@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { fetchAllCarBrands, fetchAllCarModels } from './cars';
 import { fetchAllCities } from './region';
-import { IBrand, IModel, ICity } from '../interfaces';
+import { ICategory, ICity } from '../interfaces';
+import { fetchAllCategories } from './buisness';
 
 function fetchArrayModel<T>(fetchFunction: () => Promise<T[]>): T[] {
   const [data, setData] = useState<T[]>([]);
@@ -17,14 +17,24 @@ function fetchArrayModel<T>(fetchFunction: () => Promise<T[]>): T[] {
   return data;
 }
 
-export const useFetchCarBrands = (): IBrand[] => {
-  return fetchArrayModel<IBrand>(fetchAllCarBrands);
-};
+export function useMappedData<T, P>(data: T, mapFunction: (d: T) => P[]): P[] {
+  const [mapedData, setMappedData] = useState<P[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = mapFunction(data);
+      setMappedData(result);
+    };
 
-export const useFetchCarModels = (): IModel[] => {
-  return fetchArrayModel<IModel>(fetchAllCarModels);
-};
+    fetchData();
+  }, [data]);
+
+  return mapedData;
+}
 
 export const useFetchCities = (): ICity[] => {
   return fetchArrayModel<ICity>(fetchAllCities);
+};
+
+export const useFetchCategories = (): ICategory[] => {
+  return fetchArrayModel<ICategory>(fetchAllCategories);
 };

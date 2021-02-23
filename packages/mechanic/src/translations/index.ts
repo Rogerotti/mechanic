@@ -6,22 +6,12 @@ interface Translations {
 }
 
 export const translations: Translations = {
-  en: {
-    brand: 'Brand',
-    brands: 'Brands',
-    vehicleModel: 'Vehicle model',
-    city: 'City',
-    search: 'Search',
-    mechanic: 'Mechanic',
-    workshop: 'Workshop',
-    headerName: 'Najlepszy mechanik',
-    pricing: 'Pricing',
-    book: 'Book',
-    specialization: 'Specialization',
-    showLess: 'Show less',
-    more: 'More',
-  },
+  en: {},
   pl: {
+    mainSearchHeader: 'Chcesz lepszych efektów?',
+    mainSearchSubheader: 'Znajdź lepszego trenera!',
+    howItWorksHeader: 'Jak to działa?',
+
     brand: 'Marka pojazdu',
     brands: 'Marki pojazdu',
     vehicleModel: 'Model pojazdu',

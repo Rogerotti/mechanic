@@ -20,7 +20,7 @@ export const HowItWorks: React.FC<IHowItWorksProps> = ({ header, steps, tabs, se
       </Box>
 
       <Box mt={3}>
-        <Tabs items={tabs} selectedTabId={selectedTabId ?? tabs?.[0].id} onChange={onTabChange} />
+        <Tabs items={tabs} selectedTabId={selectedTabId ?? tabs?.[0]?.id} onChange={onTabChange} />
       </Box>
 
       <Box display="flex" justifyContent="center" flexWrap="wrap" pt={10} p={3}>

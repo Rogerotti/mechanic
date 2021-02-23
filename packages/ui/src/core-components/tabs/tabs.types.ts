@@ -1,7 +1,7 @@
 export interface ITabItem {
   id: string;
   value: string;
-  icon?: string;
+  icon?: JSX.Element;
 }
 
 export interface ITabsProps {

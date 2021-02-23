@@ -5,4 +5,5 @@ export interface ISearchingProps {
   subHeader: string;
   cities: IListItem[];
   categories: IListItem[];
+  backgroudImage?: string;
 }

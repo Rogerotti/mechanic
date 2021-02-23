@@ -3,6 +3,7 @@ import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
+import background from '../../../public/tlo.jpg';
 import logoImage from '../../../public/logo3.svg';
 import search from '../../../public/search.svg';
 import rate from '../../../public/rate.svg';
@@ -15,6 +16,7 @@ import calendarTrainer from '../../../public/calendarTrainer.svg';
 import personal from '../../../public/personal.svg';
 import gym from '../../../public/gym.svg';
 import { HomePage } from '.';
+import Layout from '../../composition/layout';
 
 export default {
   title: 'Pages/Home Page',
@@ -92,28 +94,7 @@ const Template: Story<ComponentProps<typeof HomePage>> = ({ tabs, ...args }) => 
     setSelectedTabId(value);
   };
 
-  return (
-    <HomePage
-      {...args}
-      tabs={tabs}
-      steps={showForUser ? stepsForUser : stepsForTrainer}
-      howItWorksSelectedTabId={selectedTabId}
-      onHowItWorksTabChange={onHowItWorksTabChange}
-    />
-  );
-};
-
-export const Basic = Template.bind({});
-
-Basic.args = {
-  logo: logoImage,
-  searchHeader: 'Chcesz lepszych efektów? ',
-  searchSubheader: 'Znajdź lepszego trenera!',
-  howItWorksHeader: 'Jak to dziala?',
-  loginText: 'zaloguj',
-  registerText: 'zarejestruj',
-  username: 'Roger',
-  links: [
+  const headerLinks = [
     {
       text: 'O nas',
       href: 'about',
@@ -122,8 +103,9 @@ Basic.args = {
       text: 'Cennik',
       href: 'price',
     },
-  ],
-  rightMenuLinks: [
+  ];
+
+  const headerRightMenuLinks = [
     {
       text: 'Zaloguj',
       href: 'about',
@@ -132,7 +114,38 @@ Basic.args = {
       text: 'Zarejestruj',
       href: 'price',
     },
-  ],
+  ];
+  const headerUsername = 'Roger';
+
+  return (
+    <Layout
+      headerLinks={headerLinks}
+      headerRightMenuLinks={headerRightMenuLinks}
+      headerUsername={headerUsername}
+      headerLogo={logoImage}
+      footerLogo={logoImage}
+    >
+      <HomePage
+        {...args}
+        tabs={tabs}
+        searchBackgroundImage={background}
+        steps={showForUser ? stepsForUser : stepsForTrainer}
+        howItWorksSelectedTabId={selectedTabId}
+        onHowItWorksTabChange={onHowItWorksTabChange}
+      />
+    </Layout>
+  );
+};
+
+export const Basic = Template.bind({});
+
+Basic.args = {
+  searchHeader: 'Chcesz lepszych efektów? ',
+  searchSubheader: 'Znajdź lepszego trenera!',
+  howItWorksHeader: 'Jak to dziala?',
+  loginText: 'zaloguj',
+  registerText: 'zarejestruj',
+
   tabs: [
     {
       id: '1',

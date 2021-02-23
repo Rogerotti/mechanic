@@ -1,16 +1,14 @@
-import { ILink, IListItem } from '../../../types/core';
+import { IListItem } from '../../../types/core';
 import { IHowItWorksProps } from '../../composition/how-it-works/how-it-works.types';
 import { ITabsProps } from '../../core-components/tabs/tabs.types';
 
 export interface IHomePageProps {
   name: string;
-  logo: string;
   searchHeader: string;
   searchSubheader: string;
-  username?: string;
+  searchBackgroundImage?: string;
   tabs: ITabsProps['items'];
-  links: ILink[];
-  rightMenuLinks: ILink[];
+
   cities: IListItem[];
   categories: IListItem[];
   howItWorksHeader: string;

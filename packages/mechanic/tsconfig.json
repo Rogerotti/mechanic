@@ -3,6 +3,7 @@
     "types": ["jest", "node"],
     "outDir": "./dist/",
     "noImplicitAny": true,
+    "downlevelIteration": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "sourceMap": true,

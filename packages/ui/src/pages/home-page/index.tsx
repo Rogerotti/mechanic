@@ -10,13 +10,11 @@ import { useStyles } from './home-page.styles';
 import { Footer } from '../../composition/footer';
 
 export const HomePage: React.FC<IHomePageProps> = ({
-  logo,
   searchHeader,
   searchSubheader,
+  searchBackgroundImage,
   howItWorksHeader,
-  username,
-  links,
-  rightMenuLinks,
+
   tabs,
   steps,
   cities,
@@ -28,8 +26,13 @@ export const HomePage: React.FC<IHomePageProps> = ({
 
   return (
     <Box bgcolor="primary.main">
-      <Header links={links} rightMenuLinks={rightMenuLinks} logo={logo} username={username} />
-      <Searching header={searchHeader} subHeader={searchSubheader} cities={cities} categories={categories} />
+      <Searching
+        header={searchHeader}
+        subHeader={searchSubheader}
+        cities={cities}
+        categories={categories}
+        backgroudImage={searchBackgroundImage}
+      />
       <HowItWorks
         header={howItWorksHeader}
         steps={steps}
@@ -37,8 +40,6 @@ export const HomePage: React.FC<IHomePageProps> = ({
         selectedTabId={howItWorksSelectedTabId}
         onTabChange={onHowItWorksTabChange}
       />
-
-      <Footer />
     </Box>
   );
 };

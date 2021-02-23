@@ -13,10 +13,4 @@ export const useStyles = makeStyles((theme) => ({
   subHeader: {
     paddingTop: 5,
   },
-  root: {
-    backgroundImage: 'url("/tlo.jpg")',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-  },
 }));
