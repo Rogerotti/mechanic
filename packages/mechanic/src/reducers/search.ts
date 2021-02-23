@@ -1,14 +1,13 @@
-import { SEARCH_MECHANICS, SearchMechanicsAction, SearchMechanic } from '../store/search/types';
+import { SEARCH_TRAINERS, SearchTrainerssAction, SearchTrainers } from '../store/search/types';
 
-const initialState: SearchMechanic = {
-  brand: '',
+const initialState: SearchTrainers = {
+  categories: [],
   city: '',
-  model: '',
 };
 
-export function searchReducer(state = initialState, action: SearchMechanicsAction): SearchMechanic {
+export function searchReducer(state = initialState, action: SearchTrainerssAction): SearchTrainers {
   switch (action.type) {
-    case SEARCH_MECHANICS:
+    case SEARCH_TRAINERS:
       return {
         ...action.payload,
       };

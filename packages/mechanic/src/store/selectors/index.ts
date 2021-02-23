@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
-import { SearchMechanic } from '../search/types';
+import { SearchTrainers } from '../search/types';
 import { IStoreTypes } from '../types';
 
-export const getCurrentBrand = createSelector<IStoreTypes, SearchMechanic, SearchMechanic['brand']>(
+export const getCurrentCategories = createSelector<IStoreTypes, SearchTrainers, SearchTrainers['categories']>(
   (state) => state.searchReducer,
-  (searchReducer) => searchReducer.brand,
+  (searchReducer) => searchReducer.categories,
 );

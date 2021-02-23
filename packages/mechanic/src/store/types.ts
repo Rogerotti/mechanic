@@ -1,5 +1,5 @@
-import { SearchMechanic } from './search/types';
+import { SearchTrainers } from './search/types';
 
 export interface IStoreTypes {
-  searchReducer: SearchMechanic;
+  searchReducer: SearchTrainers;
 }

@@ -11,7 +11,7 @@ import { rootReducer } from './reducers';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from '../../ui/src/theme/primary';
-import HomePageContainer from './components/pages/homePage/container';
+import HomePageContainer from './components/pages/home-page/container';
 
 const store = createStore(rootReducer, composeWithDevTools());
 

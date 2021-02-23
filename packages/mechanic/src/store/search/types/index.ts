@@ -1,12 +1,11 @@
-export interface SearchMechanic {
-  brand: string;
-  model: string;
+export interface SearchTrainers {
+  categories: string[];
   city: string;
 }
 
-export const SEARCH_MECHANICS = 'SEARCH_MECHANICS';
+export const SEARCH_TRAINERS = 'SEARCH_TRAINERS';
 
-export interface SearchMechanicsAction {
-  type: typeof SEARCH_MECHANICS;
-  payload: SearchMechanic;
+export interface SearchTrainerssAction {
+  type: typeof SEARCH_TRAINERS;
+  payload: SearchTrainers;
 }

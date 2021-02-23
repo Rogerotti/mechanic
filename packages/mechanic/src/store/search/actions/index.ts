@@ -1,8 +1,8 @@
-import { SEARCH_MECHANICS, SearchMechanic, SearchMechanicsAction } from '../types';
+import { SEARCH_TRAINERS, SearchTrainers, SearchTrainerssAction } from '../types';
 
-export function searchMechanics(searchMechanic: SearchMechanic): SearchMechanicsAction {
+export function searchTrainers(searchTrainers: SearchTrainers): SearchTrainerssAction {
   return {
-    type: SEARCH_MECHANICS,
-    payload: searchMechanic,
+    type: SEARCH_TRAINERS,
+    payload: searchTrainers,
   };
 }

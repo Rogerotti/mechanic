@@ -1,36 +1,15 @@
 import React from 'react';
 import headerLogo from '../../../public/logo.svg';
 import { Layout as UILayout } from '../../../../../ui/src/composition/layout';
+import { getHeaderLinks, getHeaderRightMenuLinks } from '../../../content-data/header';
 
 export const Layout: React.FC<unknown> = ({ children }) => {
-  const headerLinks = [
-    {
-      text: 'O nas',
-      href: 'about',
-    },
-    {
-      text: 'Cennik',
-      href: 'price',
-    },
-  ];
-
-  const headerRightMenuLinks = [
-    {
-      text: 'Zaloguj',
-      href: 'about',
-    },
-    {
-      text: 'Zarejestruj',
-      href: 'price',
-    },
-  ];
-
   return (
     <>
       <UILayout
-        headerLinks={headerLinks}
+        headerLinks={getHeaderLinks()}
+        headerRightMenuLinks={getHeaderRightMenuLinks()}
         headerLogo={headerLogo}
-        headerRightMenuLinks={headerRightMenuLinks}
         footerLogo={headerLogo}
       >
         {children}
