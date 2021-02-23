@@ -3,9 +3,8 @@ import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
-import search from '../../../public/search.svg';
-import rate from '../../../public/rate.svg';
-import password from '../../../public/pass.svg';
+import search from '../../../public/how-it-works/protege/search.svg';
+import rate from '../../../public/how-it-works/protege/thumbUp.svg';
 
 import { HowItWorks } from '.';
 
@@ -48,7 +47,7 @@ Basic.args = {
       number: 3,
       header: stepHeader,
       subHeader: stepSubHeader,
-      icon: password,
+      icon: rate,
     },
     {
       number: 4,
@@ -60,7 +59,7 @@ Basic.args = {
       number: 5,
       header: stepHeader,
       subHeader: stepSubHeader,
-      icon: password,
+      icon: rate,
     },
     {
       number: 6,

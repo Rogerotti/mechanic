@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import { StepCard } from '.';
-import search from '../../../public/search.svg';
+import search from '../../../public/how-it-works/protege/search.svg';
 
 export default {
   title: 'Core Components/Step Card',

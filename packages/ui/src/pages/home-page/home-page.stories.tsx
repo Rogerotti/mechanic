@@ -3,18 +3,22 @@ import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
-import background from '../../../public/tlo.jpg';
-import logoImage from '../../../public/logo3.svg';
-import search from '../../../public/search.svg';
-import rate from '../../../public/rate.svg';
-import analytics from '../../../public/analytics.svg';
-import register from '../../../public/register.svg';
-import pay from '../../../public/pay.svg';
-import calendar from '../../../public/calendar.svg';
-import advert from '../../../public/adv.svg';
-import calendarTrainer from '../../../public/calendarTrainer.svg';
-import personal from '../../../public/personal.svg';
-import gym from '../../../public/gym.svg';
+import background from '../../../public/searchBackground.jpg';
+import logoImage from '../../../public/logo.svg';
+
+import register from '../../../public/how-it-works/register.svg';
+
+import search from '../../../public/how-it-works/protege/search.svg';
+import rate from '../../../public/how-it-works/protege/thumbUp.svg';
+import pay from '../../../public/how-it-works/protege/debitCard.svg';
+import calendar from '../../../public/how-it-works/protege/calendar.svg';
+import gym from '../../../public/how-it-works/protege/gym.svg';
+
+import analyticsIcon from '../../../public/how-it-works/trainer/analytics.svg';
+import advert from '../../../public/how-it-works/trainer/advertisment.svg';
+import calendarTrainer from '../../../public/how-it-works/trainer/calendar.svg';
+import personal from '../../../public/how-it-works/trainer/trainer.svg';
+
 import { HomePage } from '.';
 import Layout from '../../composition/layout';
 
@@ -86,7 +90,7 @@ const Template: Story<ComponentProps<typeof HomePage>> = ({ tabs, ...args }) => 
       number: 5,
       header: 'Analizuj opinie klientów',
       subHeader: 'Sprawdź jak udoskonalić swoje zajęcia poprzez opinie klientów',
-      icon: analytics,
+      icon: analyticsIcon,
     },
   ];
 

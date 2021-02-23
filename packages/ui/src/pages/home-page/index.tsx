@@ -2,12 +2,10 @@ import React from 'react';
 
 import Box from '@material-ui/core/Box';
 
-import { Header } from '../../composition/header';
 import { Searching } from '../../composition/searching';
 import { HowItWorks } from '../../composition/how-it-works';
 import { IHomePageProps } from './home-page.types';
 import { useStyles } from './home-page.styles';
-import { Footer } from '../../composition/footer';
 
 export const HomePage: React.FC<IHomePageProps> = ({
   searchHeader,
