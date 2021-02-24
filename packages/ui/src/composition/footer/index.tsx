@@ -3,7 +3,7 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import { IFooterProps } from './footer.types';
 import { useStyles } from './footer.styles';
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Box, Grid, Typography, Link } from '@material-ui/core';
 
 export const Footer: React.FC<IFooterProps> = ({ logo, linksInOneColumn = 3 }) => {
   const classes = useStyles();
@@ -17,7 +17,7 @@ export const Footer: React.FC<IFooterProps> = ({ logo, linksInOneColumn = 3 }) =
 
   return (
     <footer>
-      <Box bgcolor="secondary.main" display="flex" alignItems="center" pt={4} pb={4} pl={4} pr={4}>
+      <Box bgcolor="primary.main" display="flex" alignItems="center" pt={4} pb={4} pl={4} pr={4}>
         <img className={classes.logo} src={logo} />
 
         <Box width="100%" justifyContent="center" display="flex">
@@ -29,7 +29,10 @@ export const Footer: React.FC<IFooterProps> = ({ logo, linksInOneColumn = 3 }) =
                   {linksToUse.map((link) => {
                     return (
                       <Grid key={link} item>
-                        {link}
+                        <Link className={classes.cursor} color="textPrimary">
+                          {' '}
+                          {link}
+                        </Link>
                       </Grid>
                     );
                   })}
@@ -40,7 +43,7 @@ export const Footer: React.FC<IFooterProps> = ({ logo, linksInOneColumn = 3 }) =
         </Box>
       </Box>
 
-      <Box bgcolor="secondary.light" display="flex" alignItems="center">
+      <Box bgcolor="primary.dark" display="flex" alignItems="center">
         <Box ml={5}>
           <Typography variant="body2">{companyName}</Typography>
         </Box>
