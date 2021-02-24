@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["jest", "node"],
+    "types": ["@types/jest", "node"],
     "outDir": "./dist/",
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
@@ -23,7 +23,6 @@
   "include": [
     "src/**/*",
     "public/**/*",
-    "src/types/**/*",
     "setup-tests.ts"
   ]
 }

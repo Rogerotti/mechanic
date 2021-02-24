@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import { Searching } from '../../composition/searching';
 import { HowItWorks } from '../../composition/how-it-works';
 import { IHomePageProps } from './home-page.types';
-import { useStyles } from './home-page.styles';
 
 export const HomePage: React.FC<IHomePageProps> = ({
   searchHeader,
@@ -20,8 +19,6 @@ export const HomePage: React.FC<IHomePageProps> = ({
   howItWorksSelectedTabId,
   onHowItWorksTabChange,
 }) => {
-  const classes = useStyles();
-
   return (
     <Box bgcolor="primary.main">
       <Searching
