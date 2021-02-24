@@ -3,9 +3,10 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import { Grid, Typography } from '@material-ui/core';
 
-import { StepCard } from '../../core-components/step-card';
+import { StepCard } from '@core-components/step-card';
+import { Tabs } from '@core-components/tabs';
+
 import { IHowItWorksProps } from './how-it-works.types';
-import { Tabs } from '../../core-components/tabs';
 import { useStyles } from './how-it-works.styles';
 
 export const HowItWorks: React.FC<IHowItWorksProps> = ({ header, steps, tabs, selectedTabId, onTabChange }) => {

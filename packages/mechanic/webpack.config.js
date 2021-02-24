@@ -33,6 +33,11 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      '@ui': path.resolve(__dirname, '../ui/src/'),
+      '@core-components': path.resolve(__dirname, '../ui/src/core-components/'),
+      '@assets': path.resolve(__dirname, 'src/public/'),
+    },
     extensions: ['.tsx', '.ts', '.js'],
   },
   devServer: {

@@ -3,21 +3,22 @@ import React from 'react';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
 
-import { ITabItem } from '../../../ui/src/core-components/tabs/tabs.types';
+import { ITabItem } from '@ui/core-components/tabs/tabs.types';
+import { IStep } from '@ui/composition/how-it-works/how-it-works.types';
+
+import searchIcon from '@assets/how-it-works/protege/search.svg';
+import registerIcon from '@assets/how-it-works/protege/register.svg';
+import calendarIcon from '@assets/how-it-works/protege/calendar.svg';
+import debitCardIcon from '@assets/how-it-works/protege/debitCard.svg';
+import gymIcon from '@assets/how-it-works/protege/gym.svg';
+import thumbUpIcon from '@assets/how-it-works/protege/thumbUp.svg';
+
+import advertisementIcon from '@assets/how-it-works/trainer/advertisement.svg';
+import calendarTrainerIcon from '@assets/how-it-works/trainer/calendar.svg';
+import trainerIcon from '@assets/how-it-works/trainer/trainer.svg';
+import analyticsIcon from '@assets/how-it-works/trainer/analytics.svg';
+
 import useTranslation from '../translations/hooks';
-import { IStep } from '../../../ui/src/composition/how-it-works/how-it-works.types';
-
-import searchIcon from '../public/how-it-works/protege/search.svg';
-import registerIcon from '../public/how-it-works/protege/register.svg';
-import calendarIcon from '../public/how-it-works/protege/calendar.svg';
-import debitCardIcon from '../public/how-it-works/protege/debitCard.svg';
-import gymIcon from '../public/how-it-works/protege/gym.svg';
-import thumbUpIcon from '../public/how-it-works/protege/thumbUp.svg';
-
-import advertisementIcon from '../public/how-it-works/trainer/advertisement.svg';
-import calendarTrainerIcon from '../public/how-it-works/trainer/calendar.svg';
-import trainerIcon from '../public/how-it-works/trainer/trainer.svg';
-import analyticsIcon from '../public/how-it-works/trainer/analytics.svg';
 
 const PROTEGE_ID = 'protege';
 const TRAINER_ID = 'trainer';

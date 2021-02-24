@@ -1,4 +1,4 @@
-import { ITabsProps } from '../../core-components/tabs/tabs.types';
+import { ITabsProps } from '@core-components/tabs/tabs.types';
 
 export interface IStep {
   number: number;

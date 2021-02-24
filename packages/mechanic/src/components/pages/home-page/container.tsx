@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 // import { useHistory } from 'react-router-dom';
 
-import searchBackground from '../../../public/searchBackground.jpg';
+import { HomePage } from '@ui/pages/home-page';
+import { IListItem } from '@ui/types/core';
+
+import searchBackground from '@assets/searchBackground.jpg';
 
 // import { searchMechanics } from '../../../store/search/actions';
 import useTranslation from '../../../translations/hooks';
 import { useFetchCategories, useFetchCities, useMappedData } from '../../../api/hooks';
-
-import { HomePage } from '../../../../../ui/src/pages/home-page';
-import { IListItem } from '../../../../../ui/types/core';
 
 import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';

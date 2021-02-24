@@ -1,4 +1,4 @@
-import { IListItem } from '../../../types/core';
+import { IListItem } from '../../types/core';
 
 export interface ISearchingProps {
   header: string;

@@ -3,8 +3,8 @@ import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
-import search from '../../../public/how-it-works/protege/search.svg';
-import rate from '../../../public/how-it-works/protege/thumbUp.svg';
+import search from '@assets//how-it-works/protege/search.svg';
+import rate from '@assets/how-it-works/protege/thumbUp.svg';
 
 import { HowItWorks } from '.';
 

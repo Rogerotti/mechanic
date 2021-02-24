@@ -1,4 +1,4 @@
-import { ILink } from '../../../types/core';
+import { ILink } from '../../types/core';
 
 export interface IHeaderProps {
   logo: string;

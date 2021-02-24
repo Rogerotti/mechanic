@@ -3,10 +3,12 @@ import React from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
 import { Theme, Typography } from '@material-ui/core';
+
+import { Button } from '@core-components/button';
+import { Dropdown } from '@core-components/dropdown';
+import { MultiSelect } from '@core-components/multi-select/multi-select.component';
+
 import { useStyles } from './searching.styles';
-import { Button } from '../../core-components/button';
-import { Dropdown } from '../../core-components/dropdown';
-import { MultiSelect } from '../../core-components/multi-select/multi-select.component';
 import { ISearchingProps } from './searching.types';
 
 export const Searching: React.FC<ISearchingProps> = ({ header, subHeader, cities, categories, backgroudImage }) => {

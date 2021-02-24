@@ -10,7 +10,7 @@ import Error from './components/core/error';
 import { rootReducer } from './reducers';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import theme from '../../ui/src/theme/primary';
+import theme from '@ui/theme/primary';
 import HomePageContainer from './components/pages/home-page/container';
 
 const store = createStore(rootReducer, composeWithDevTools());

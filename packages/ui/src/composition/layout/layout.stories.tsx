@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
-import headerLogo from '../../../public/logo.svg';
+import headerLogo from '@assets/logo.svg';
 import { Layout } from '.';
 import { Box } from '@material-ui/core';
 

@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "types": ["jest", "node"],
     "outDir": "./dist/",
@@ -14,13 +13,17 @@
     "allowJs": true,
     "esModuleInterop": true,
     "typeRoots": [
-      "./types"
-    ]
+      "src/types"
+    ],
+    "paths": {
+      "@assets/*": ["./public/*"],
+      "@core-components/*": ["./src/core-components/*"],
+    }
   },
   "include": [
     "src/**/*",
     "public/**/*",
-    "types/**/*",
+    "src/types/**/*",
     "setup-tests.ts"
   ]
 }

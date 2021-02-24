@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
-import logoImage from '../../../public/logo.svg';
+import logoImage from '@assets/logo.svg';
 import { Footer } from '.';
 
 export default {

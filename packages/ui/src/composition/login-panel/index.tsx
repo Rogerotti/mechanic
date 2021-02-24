@@ -3,12 +3,13 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import { Typography } from '@material-ui/core';
 
+import { InputWithIcon } from '@core-components/input-with-icon';
+import Divider from '@core-components/divider';
+
 import { ILoginPanelProps } from './login-panel.types';
-import { InputWithIcon } from '../../core-components/input-with-icon';
+
 import { IconEnum } from '../../utils/icons/icons.types';
 import { useStyles } from './login-panel.styles';
-
-import Divider from '../../core-components/divider';
 
 export const LoginPanel: React.FC<ILoginPanelProps> = ({
   username,

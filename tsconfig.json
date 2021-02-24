@@ -9,10 +9,6 @@
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
   },
-  "paths": {
-    "@project/ui": ["../ui/src"],
-    "@project/ui/*": ["../ui/src/*"]
-  }
 }

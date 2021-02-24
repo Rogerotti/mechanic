@@ -1,6 +1,7 @@
-import { IListItem } from '../../../types/core';
+import { ITabsProps } from '@core-components/tabs/tabs.types';
+
+import { IListItem } from '../../types/core';
 import { IHowItWorksProps } from '../../composition/how-it-works/how-it-works.types';
-import { ITabsProps } from '../../core-components/tabs/tabs.types';
 
 export interface IHomePageProps {
   name: string;

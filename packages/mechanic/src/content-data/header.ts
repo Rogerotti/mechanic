@@ -1,4 +1,4 @@
-import { ILink } from '../../../ui/types/core';
+import { ILink } from '@ui/types/core';
 import useTranslation from '../translations/hooks';
 
 export const getHeaderLinks = (): ILink[] => {

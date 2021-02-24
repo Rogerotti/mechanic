@@ -1,12 +1,15 @@
 import React from 'react';
+
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { AppBar, Hidden, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+
+import { Button } from '@core-components/button';
+
 import { IHeaderProps } from './header.types';
 import { useStyles } from './header.styles';
-import { AppBar, Hidden, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
-import { Button } from '../../core-components/button';
 
 export const Header: React.FC<IHeaderProps> = ({ username, logo, links, rightMenuLinks }) => {
   const classes = useStyles();

@@ -1,23 +1,25 @@
 import React, { ComponentProps, useState } from 'react';
+
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
+
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import LocalAtmIcon from '@material-ui/icons/LocalAtm';
-import background from '../../../public/searchBackground.jpg';
-import logoImage from '../../../public/logo.svg';
 
-import register from '../../../public/how-it-works/register.svg';
+import background from '@assets/searchBackground.jpg';
+import logoImage from '@assets/logo.svg';
+import register from '@assets/how-it-works/register.svg';
 
-import search from '../../../public/how-it-works/protege/search.svg';
-import rate from '../../../public/how-it-works/protege/thumbUp.svg';
-import pay from '../../../public/how-it-works/protege/debitCard.svg';
-import calendar from '../../../public/how-it-works/protege/calendar.svg';
-import gym from '../../../public/how-it-works/protege/gym.svg';
+import search from '@assets/how-it-works/protege/search.svg';
+import rate from '@assets/how-it-works/protege/thumbUp.svg';
+import pay from '@assets/how-it-works/protege/debitCard.svg';
+import calendar from '@assets/how-it-works/protege/calendar.svg';
+import gym from '@assets/how-it-works/protege/gym.svg';
 
-import analyticsIcon from '../../../public/how-it-works/trainer/analytics.svg';
-import advert from '../../../public/how-it-works/trainer/advertisment.svg';
-import calendarTrainer from '../../../public/how-it-works/trainer/calendar.svg';
-import personal from '../../../public/how-it-works/trainer/trainer.svg';
+import analyticsIcon from '@assets/how-it-works/trainer/analytics.svg';
+import advert from '@assets/how-it-works/trainer/advertisment.svg';
+import calendarTrainer from '@assets/how-it-works/trainer/calendar.svg';
+import personal from '@assets/how-it-works/trainer/trainer.svg';
 
 import { HomePage } from '.';
 import Layout from '../../composition/layout';

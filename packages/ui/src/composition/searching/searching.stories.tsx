@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
-import background from '../../../public/searchBackground.jpg';
+import background from '@assets/searchBackground.jpg';
 
 import { Searching } from '.';
 
