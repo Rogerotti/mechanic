@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
-import { SearchTrainersReducerState } from '../search/types';
-import { AuthenticationReducerState } from '../authentication/types';
-import { IStoreTypes } from '../types';
+import { SearchTrainersReducerState } from '@redux/types/search';
+import { AuthenticationReducerState } from '@redux/types/authentication';
+import { IStoreTypes } from '@redux/types/store';
 
 export const getCurrentCategories = createSelector<
   IStoreTypes,

@@ -4,7 +4,7 @@ import headerLogo from '@assets/logo.svg';
 import { useHistory } from 'react-router-dom';
 
 import { getHeaderLinks, getHeaderRightMenuLinks } from '../../../content-data/header';
-import { getAuthorization } from '../../../store/selectors';
+import { getAuthorization } from '../../../redux/selectors';
 import { useSelector } from 'react-redux';
 
 export const Layout: React.FC<unknown> = ({ children }) => {

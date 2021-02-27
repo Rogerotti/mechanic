@@ -16,6 +16,7 @@
       "@ui": ["../ui/src"],
       "@ui/*": ["../ui/src/*"],
       "@assets/*": ["./src/public/*"],
+      "@redux/*": ["./src/redux/*"],
     }
   },
   "include": [

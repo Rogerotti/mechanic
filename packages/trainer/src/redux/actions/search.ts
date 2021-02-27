@@ -1,4 +1,4 @@
-import { SEARCH_TRAINERS, SearchTrainersReducerState, SearchTrainerssAction } from '../types';
+import { SEARCH_TRAINERS, SearchTrainersReducerState, SearchTrainerssAction } from '@redux/types/search';
 
 export function searchTrainers(searchTrainers: SearchTrainersReducerState): SearchTrainerssAction {
   return {

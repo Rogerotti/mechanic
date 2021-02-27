@@ -38,6 +38,7 @@ module.exports = {
       '@ui': path.resolve(__dirname, '../ui/src/'),
       '@core-components': path.resolve(__dirname, '../ui/src/core-components/'),
       '@assets': path.resolve(__dirname, 'src/public/'),
+      '@redux': path.resolve(__dirname, 'src/redux/'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },

@@ -1,4 +1,4 @@
-import { SEARCH_TRAINERS, SearchTrainerssAction, SearchTrainersReducerState } from '../store/search/types';
+import { SEARCH_TRAINERS, SearchTrainerssAction, SearchTrainersReducerState } from '@redux/types/search';
 
 const initialState: SearchTrainersReducerState = {
   categories: [],

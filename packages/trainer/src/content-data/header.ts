@@ -1,6 +1,6 @@
 import { ILink, LinkEnum } from '@ui/types/core';
 import { useDispatch } from 'react-redux';
-import { logout } from '../store/authentication/actions';
+import { logout } from '@redux/actions/authentication';
 import useTranslation from '../translations/hooks';
 
 export const getHeaderLinks = (): ILink[] => {
