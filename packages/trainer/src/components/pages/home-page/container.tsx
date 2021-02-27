@@ -1,39 +1,57 @@
 import React, { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { HomePage } from '@ui/pages/home-page';
 import { IListItem } from '@ui/types/core';
 
 import searchBackground from '@assets/searchBackground.jpg';
+import { searchTrainers } from '@redux/actions/search';
 
-// import { searchMechanics } from '../../../store/search/actions';
 import useTranslation from '../../../translations/hooks';
 import { useFetchCategories, useFetchCities, useMappedData } from '../../../api/hooks';
 
 import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
+import { getRedirect } from '@redux/selectors';
+import { useHistory } from 'react-router-dom';
 
 export const HomePageContainer: React.FC = () => {
-  // const dispatch = useDispatch();
-  // const history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { getText } = useTranslation();
-  const categories = useMappedData(useFetchCategories(), (categories): IListItem[] =>
+  const allCategories = useMappedData(useFetchCategories(), (categories): IListItem[] =>
     categories.map((city) => ({ id: city.id, value: city.name })),
   );
 
-  const cities = useMappedData(useFetchCities(), (cities): IListItem[] =>
+  const allCities = useMappedData(useFetchCities(), (cities): IListItem[] =>
     cities.map((city) => ({ id: city.id, value: city.name })),
   );
+
+  const [city, setCity] = useState<IListItem | undefined>(undefined);
+  const [categories, setCategories] = useState<IListItem[]>([]);
 
   const howItWorksTabs = getHowItWorksTabs();
   const [selectedTabId, setSelectedTabId] = useState(howItWorksTabs[0].id);
   const howItWorksSteps = getHowItWorksSteps(selectedTabId);
 
-  // const onSearch = (brandId: string, modelId: string, cityId: string) => {
-  //   dispatch(searchMechanics({ brand: brandId, model: modelId, city: cityId }));
-  //   history.push('mechanics');
-  // };
+  const shouldRedirect = useSelector(getRedirect);
+
+  if (shouldRedirect) {
+    // zrobic w layout akcje
+    history.push('/trainers');
+  }
+
+  const onCityChange = (value: IListItem) => {
+    setCity(value);
+  };
+
+  const onCategoriesChange = (values: IListItem[]) => {
+    setCategories(values);
+  };
+
+  const onSearch = () => {
+    dispatch(searchTrainers(city, categories));
+  };
 
   const onHowItWorksTabChange = (id: string): void => {
     setSelectedTabId(id);
@@ -46,13 +64,16 @@ export const HomePageContainer: React.FC = () => {
         searchHeader={getText('mainSearchHeader')}
         searchSubheader={getText('mainSearchSubheader')}
         howItWorksHeader={getText('howItWorksHeader')}
-        cities={cities}
-        categories={categories}
+        cities={allCities}
+        categories={allCategories}
         tabs={howItWorksTabs}
         onHowItWorksTabChange={onHowItWorksTabChange}
         howItWorksSelectedTabId={selectedTabId}
         steps={howItWorksSteps}
         searchBackgroundImage={searchBackground}
+        onCityChange={onCityChange}
+        onCategoriesChange={onCategoriesChange}
+        onSearchClick={onSearch}
       />
     </Layout>
   );

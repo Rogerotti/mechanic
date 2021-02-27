@@ -20,3 +20,12 @@ export const getAuthorization = createSelector<
   (state) => state.authenticationReducer,
   (authenticationReducer) => authenticationReducer?.isAuthenticated,
 );
+
+export const getRedirect = createSelector<
+  IStoreTypes,
+  SearchTrainersReducerState,
+  SearchTrainersReducerState['redirect']
+>(
+  (state) => state.searchReducer,
+  (searchReducer) => searchReducer?.redirect,
+);

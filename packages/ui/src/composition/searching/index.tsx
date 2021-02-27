@@ -10,10 +10,25 @@ import { MultiSelect } from '@core-components/multi-select/multi-select.componen
 
 import { useStyles } from './searching.styles';
 import { ISearchingProps } from './searching.types';
+import { IListItem } from '../../types/core';
 
-export const Searching: React.FC<ISearchingProps> = ({ header, subHeader, cities, categories, backgroudImage }) => {
+export const Searching: React.FC<ISearchingProps> = ({
+  header,
+  subHeader,
+  cities,
+  categories,
+  backgroudImage,
+  onSearchClick,
+  onCategoriesChange,
+  onCityChange,
+}) => {
   const classes = useStyles();
   const isNotMobile = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
+
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const onCityChangeCallback = (event: React.ChangeEvent<{}>, value: IListItem) => {
+    onCityChange?.(value);
+  };
 
   return (
     <Box width="100%" bgcolor="primary.main">
@@ -50,7 +65,7 @@ export const Searching: React.FC<ISearchingProps> = ({ header, subHeader, cities
           pb={{ xs: 0, md: 10 }}
         >
           <Box width="100%" maxWidth={{ xs: '100%', sm: 350, lg: 400 }} color="#191919">
-            <MultiSelect label="Kategorie" placeholder="Wyszukaj" items={categories} />
+            <MultiSelect label="Kategorie" placeholder="Wyszukaj" items={categories} onChange={onCategoriesChange} />
           </Box>
           <Box
             width="100%"
@@ -59,11 +74,12 @@ export const Searching: React.FC<ISearchingProps> = ({ header, subHeader, cities
             color="#191919"
             marginLeft={{ sm: 2 }}
           >
-            <Dropdown label="Miasto" items={cities} />
+            <Dropdown label="Miasto" items={cities} onChange={onCityChangeCallback} />
           </Box>
           <Box width={{ xs: '100%', sm: 'initial' }} mt={{ xs: 2, sm: 0 }} marginLeft={{ sm: 1 }}>
             <Button
               className={classes.button}
+              onClick={onSearchClick}
               text="Szukaj"
               rounded={isNotMobile ? true : false}
               variant="contained"

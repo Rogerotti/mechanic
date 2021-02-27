@@ -6,4 +6,6 @@ export interface IDropdownProps {
   label: string;
   icon?: ReactNode;
   items: IListItem[];
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  onChange?: (event: React.ChangeEvent<{}>, value: IListItem) => void;
 }

@@ -5,7 +5,7 @@ import { InputAdornment, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useStyles } from './dropdown.styles';
 
-export const Dropdown: React.FC<IDropdownProps> = ({ label, items, className, icon: IconComponent }) => {
+export const Dropdown: React.FC<IDropdownProps> = ({ label, items, className, icon: IconComponent, onChange }) => {
   const classes = useStyles();
 
   return (
@@ -17,6 +17,7 @@ export const Dropdown: React.FC<IDropdownProps> = ({ label, items, className, ic
       }}
       options={items}
       color="secondary"
+      onChange={onChange}
       getOptionSelected={(option, value) => option.id === value.id}
       getOptionLabel={(option) => option.value}
       renderInput={(params) => (
