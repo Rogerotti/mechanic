@@ -12,7 +12,6 @@ export default {
 };
 
 const Template: Story<ComponentProps<typeof Searching>> = ({ ...args }) => {
-  console.log(background);
   return <Searching {...args} />;
 };
 

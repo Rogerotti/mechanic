@@ -5,20 +5,19 @@ import { IFooterProps } from './footer.types';
 import { useStyles } from './footer.styles';
 import { Box, Grid, Typography, Link } from '@material-ui/core';
 
-export const Footer: React.FC<IFooterProps> = ({ logo, linksInOneColumn = 3 }) => {
-  const classes = useStyles();
+export const Footer: React.FC<IFooterProps> = ({ classes, logo, linksInOneColumn = 3 }) => {
+  const footerClasses = useStyles();
   const companyName = '© Roger Software';
   const companyEmail = 'roger.skrzypczyk@gmail.com';
   const links = ['pricing', 'about us', 'testing', 'automotion', 'leave', 'monolit', 'lorem', 'atest', 'inventory'];
   const columnsLength = Math.ceil(links.length / linksInOneColumn);
-  console.log(columnsLength);
 
   const columns = [...Array(columnsLength).keys()];
 
   return (
-    <footer>
+    <footer className={classes?.footer}>
       <Box bgcolor="primary.main" display="flex" alignItems="center" pt={4} pb={4} pl={4} pr={4}>
-        <img className={classes.logo} src={logo} />
+        <img className={footerClasses.logo} src={logo} />
 
         <Box width="100%" justifyContent="center" display="flex">
           {columns.map((columnNumber) => {
@@ -29,7 +28,7 @@ export const Footer: React.FC<IFooterProps> = ({ logo, linksInOneColumn = 3 }) =
                   {linksToUse.map((link) => {
                     return (
                       <Grid key={link} item>
-                        <Link className={classes.cursor} color="textPrimary">
+                        <Link className={footerClasses.cursor} color="textPrimary">
                           {' '}
                           {link}
                         </Link>
@@ -51,8 +50,8 @@ export const Footer: React.FC<IFooterProps> = ({ logo, linksInOneColumn = 3 }) =
         <Box display="flex" marginLeft="auto" mr={4} alignItems="center" height={50}>
           <Typography variant="body2">{companyEmail}</Typography>
           <Box display="flex" ml={2}>
-            <FacebookIcon className={classes.cursor} />
-            <TwitterIcon className={classes.cursor} />
+            <FacebookIcon className={footerClasses.cursor} />
+            <TwitterIcon className={footerClasses.cursor} />
           </Box>
         </Box>
       </Box>

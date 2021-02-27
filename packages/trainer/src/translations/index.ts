@@ -16,6 +16,7 @@ export const translations: Translations = {
     aboutUs: 'O nas',
     priceList: 'Cennik',
     login: 'Zaloguj',
+    logout: 'Wyloguj',
     register: 'Zarejestruj',
 
     city: 'Miasto',

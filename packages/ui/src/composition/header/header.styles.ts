@@ -4,6 +4,7 @@ export const useStyles = makeStyles(({ palette }) => ({
   logo: {
     height: 50,
     width: 100,
+    cursor: 'pointer',
   },
   userIcon: {
     width: 40,

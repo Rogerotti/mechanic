@@ -1,5 +1,6 @@
-import { SearchTrainers } from './search/types';
-
+import { SearchTrainersReducerState } from './search/types';
+import { AuthenticationReducerState } from './authentication/types';
 export interface IStoreTypes {
-  searchReducer: SearchTrainers;
+  searchReducer: SearchTrainersReducerState;
+  authenticationReducer: AuthenticationReducerState;
 }

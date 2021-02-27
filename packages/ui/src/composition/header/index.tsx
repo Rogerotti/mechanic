@@ -1,17 +1,16 @@
 import React from 'react';
-
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { AppBar, Hidden, Menu, MenuItem, Toolbar, Typography } from '@material-ui/core';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
-import { Button } from '@core-components/button';
+import Link from '@core-components/link';
 
 import { IHeaderProps } from './header.types';
 import { useStyles } from './header.styles';
 
-export const Header: React.FC<IHeaderProps> = ({ username, logo, links, rightMenuLinks }) => {
+export const Header: React.FC<IHeaderProps> = ({ username, logo, links, rightMenuLinks, onLogoClick }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
@@ -46,21 +45,27 @@ export const Header: React.FC<IHeaderProps> = ({ username, logo, links, rightMen
               onClose={handleCloseHamburgerMenu}
             >
               {links?.map((link) => (
-                <MenuItem key={link.href} onClick={handleCloseHamburgerMenu}>
-                  {link.text}
+                <MenuItem
+                  key={link.url}
+                  onClick={(e) => {
+                    link?.onClick?.(e);
+                    handleCloseHamburgerMenu();
+                  }}
+                >
+                  <Link text={link.text} url={link.url} linkType={link.linkType} color="textPrimary" />
                 </MenuItem>
               ))}
             </Menu>
           </IconButton>
         </Hidden>
 
-        <img className={classes.logo} src={logo} />
+        <img className={classes.logo} onClick={onLogoClick} src={logo} />
 
         <Hidden smDown>
           <Box display="flex" alignItems="center">
             {links?.map((link) => (
               <Box key={link.text} marginLeft={4}>
-                <Button color="primary" rounded text={link.text} variant="text" />
+                <Link text={link.text} url={link.url} linkType={link.linkType} color="textPrimary" />
               </Box>
             ))}
           </Box>
@@ -82,8 +87,14 @@ export const Header: React.FC<IHeaderProps> = ({ username, logo, links, rightMen
           <Menu id="simple-menu" anchorEl={anchorEl2} open={Boolean(anchorEl2)} onClose={handleCloseRightMenu}>
             <Box bgcolor="primary.main">
               {rightMenuLinks.map((link) => (
-                <MenuItem key={link.href} onClick={handleCloseRightMenu}>
-                  {link.text}
+                <MenuItem
+                  key={link.url}
+                  onClick={(e) => {
+                    link?.onClick?.(e);
+                    handleCloseRightMenu();
+                  }}
+                >
+                  <Link text={link.text} url={link.url} linkType={link.linkType} color="textPrimary" />
                 </MenuItem>
               ))}
             </Box>

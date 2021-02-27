@@ -12,6 +12,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from '@ui/theme/primary';
 import HomePageContainer from './components/pages/home-page/container';
+import LoginPageContainer from './components/pages/login-page/container';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -25,6 +26,9 @@ const Index = () => {
             <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
               <HomePageContainer />
             </ErrorBoundary>
+          </Route>
+          <Route exact path="/login">
+            <LoginPageContainer />
           </Route>
         </Router>
       </ThemeProvider>

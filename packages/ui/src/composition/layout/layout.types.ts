@@ -6,5 +6,6 @@ export interface ILayout {
   headerRightMenuLinks: IHeaderProps['rightMenuLinks'];
   headerLogo: IHeaderProps['logo'];
   headerUsername?: IHeaderProps['username'];
+  onLogoClick?: IHeaderProps['onLogoClick'];
   footerLogo: IFooterProps['logo'];
 }

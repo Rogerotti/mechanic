@@ -1,6 +1,6 @@
-import { SEARCH_TRAINERS, SearchTrainers, SearchTrainerssAction } from '../types';
+import { SEARCH_TRAINERS, SearchTrainersReducerState, SearchTrainerssAction } from '../types';
 
-export function searchTrainers(searchTrainers: SearchTrainers): SearchTrainerssAction {
+export function searchTrainers(searchTrainers: SearchTrainersReducerState): SearchTrainerssAction {
   return {
     type: SEARCH_TRAINERS,
     payload: searchTrainers,

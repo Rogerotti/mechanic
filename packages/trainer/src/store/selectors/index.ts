@@ -1,8 +1,22 @@
 import { createSelector } from 'reselect';
-import { SearchTrainers } from '../search/types';
+import { SearchTrainersReducerState } from '../search/types';
+import { AuthenticationReducerState } from '../authentication/types';
 import { IStoreTypes } from '../types';
 
-export const getCurrentCategories = createSelector<IStoreTypes, SearchTrainers, SearchTrainers['categories']>(
+export const getCurrentCategories = createSelector<
+  IStoreTypes,
+  SearchTrainersReducerState,
+  SearchTrainersReducerState['categories']
+>(
   (state) => state.searchReducer,
   (searchReducer) => searchReducer.categories,
+);
+
+export const getAuthorization = createSelector<
+  IStoreTypes,
+  AuthenticationReducerState,
+  AuthenticationReducerState['isAuthenticated']
+>(
+  (state) => state.authenticationReducer,
+  (authenticationReducer) => authenticationReducer?.isAuthenticated,
 );
