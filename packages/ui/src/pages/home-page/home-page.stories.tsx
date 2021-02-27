@@ -3,11 +3,7 @@ import React, { ComponentProps, useState } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 
-import PermIdentityIcon from '@material-ui/icons/PermIdentity';
-import LocalAtmIcon from '@material-ui/icons/LocalAtm';
-
 import background from '@assets/searchBackground.jpg';
-import logoImage from '@assets/logo.svg';
 import register from '@assets/how-it-works/register.svg';
 
 import search from '@assets/how-it-works/protege/search.svg';
@@ -22,7 +18,9 @@ import calendarTrainer from '@assets/how-it-works/trainer/calendar.svg';
 import personal from '@assets/how-it-works/trainer/trainer.svg';
 
 import { HomePage } from '.';
-import Layout from '../../composition/layout';
+import { LayoutForStories } from '../../storybook/layout';
+import { cities, categories } from '../../storybook/data/searching';
+import { tabs } from '../../storybook/data/tabs';
 
 export default {
   title: 'Pages/Home Page',
@@ -100,37 +98,8 @@ const Template: Story<ComponentProps<typeof HomePage>> = ({ tabs, ...args }) => 
     setSelectedTabId(value);
   };
 
-  const headerLinks = [
-    {
-      text: 'O nas',
-      href: 'about',
-    },
-    {
-      text: 'Cennik',
-      href: 'price',
-    },
-  ];
-
-  const headerRightMenuLinks = [
-    {
-      text: 'Zaloguj',
-      href: 'about',
-    },
-    {
-      text: 'Zarejestruj',
-      href: 'price',
-    },
-  ];
-  const headerUsername = 'Roger';
-
   return (
-    <Layout
-      headerLinks={headerLinks}
-      headerRightMenuLinks={headerRightMenuLinks}
-      headerUsername={headerUsername}
-      headerLogo={logoImage}
-      footerLogo={logoImage}
-    >
+    <LayoutForStories>
       <HomePage
         {...args}
         tabs={tabs}
@@ -139,7 +108,7 @@ const Template: Story<ComponentProps<typeof HomePage>> = ({ tabs, ...args }) => 
         howItWorksSelectedTabId={selectedTabId}
         onHowItWorksTabChange={onHowItWorksTabChange}
       />
-    </Layout>
+    </LayoutForStories>
   );
 };
 
@@ -152,31 +121,7 @@ Basic.args = {
   loginText: 'zaloguj',
   registerText: 'zarejestruj',
 
-  tabs: [
-    {
-      id: '1',
-      value: 'Podopieczny',
-      icon: <PermIdentityIcon />,
-    },
-    {
-      id: '2',
-      value: 'Trener',
-      icon: <LocalAtmIcon />,
-    },
-  ],
-  cities: [
-    {
-      id: 'krk',
-      value: 'Kraków',
-    },
-    { id: 'wwa', value: 'Warszawa' },
-  ],
-  categories: [
-    {
-      id: 'swim',
-      value: 'Pływanie',
-    },
-    { id: 'mma', value: 'MMA' },
-    { id: 'bjj', value: 'Brazylijskie jiu jitsu' },
-  ],
+  tabs: tabs,
+  cities: cities,
+  categories: categories,
 };

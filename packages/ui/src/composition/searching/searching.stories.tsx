@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import background from '@assets/searchBackground.jpg';
 
 import { Searching } from '.';
+import { cities, categories } from '../../storybook/data/searching';
 
 export default {
   title: 'Composition/Searching',
@@ -21,19 +22,6 @@ Basic.args = {
   header: 'Chcesz lepszych efektów? ',
   subHeader: 'Znajdź lepszego trenera!',
   backgroudImage: background,
-  cities: [
-    {
-      id: 'krk',
-      value: 'Kraków',
-    },
-    { id: 'wwa', value: 'Warszawa' },
-  ],
-  categories: [
-    {
-      id: 'swim',
-      value: 'Pływanie',
-    },
-    { id: 'mma', value: 'MMA' },
-    { id: 'bjj', value: 'Brazylijskie jiu jitsu' },
-  ],
+  cities: cities,
+  categories: categories,
 };

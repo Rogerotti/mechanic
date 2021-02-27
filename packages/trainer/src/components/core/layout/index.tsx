@@ -11,7 +11,7 @@ export const Layout: React.FC<unknown> = ({ children }) => {
   const isAuthenticated = useSelector(getAuthorization);
   const history = useHistory();
 
-  const onLogoClick = () => {
+  const navigateToHomePage = () => {
     history.push('/');
   };
 
@@ -22,7 +22,7 @@ export const Layout: React.FC<unknown> = ({ children }) => {
         headerRightMenuLinks={getHeaderRightMenuLinks(isAuthenticated)}
         headerLogo={headerLogo}
         footerLogo={headerLogo}
-        onLogoClick={onLogoClick}
+        onLogoClick={navigateToHomePage}
       >
         {children}
       </UILayout>

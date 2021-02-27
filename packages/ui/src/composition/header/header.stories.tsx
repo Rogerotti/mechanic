@@ -1,8 +1,10 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
+import { BrowserRouter as Router } from 'react-router-dom';
 import logoImage from '@assets/logo.svg';
 import { Header } from '.';
+import { links, rightHeaderLinks } from '../../storybook/data/header';
 
 export default {
   title: 'Composition/Header',
@@ -11,31 +13,17 @@ export default {
 };
 
 const Template: Story<ComponentProps<typeof Header>> = ({ ...args }) => {
-  return <Header {...args} />;
+  return (
+    <Router>
+      <Header {...args} />
+    </Router>
+  );
 };
 
 export const Basic = Template.bind({});
 
 Basic.args = {
   logo: logoImage,
-  links: [
-    {
-      text: 'O nas',
-      href: 'about',
-    },
-    {
-      text: 'Cennik',
-      href: 'price',
-    },
-  ],
-  rightMenuLinks: [
-    {
-      text: 'Zaloguj',
-      href: 'about',
-    },
-    {
-      text: 'Zarejestruj',
-      href: 'price',
-    },
-  ],
+  links: links,
+  rightMenuLinks: rightHeaderLinks,
 };
