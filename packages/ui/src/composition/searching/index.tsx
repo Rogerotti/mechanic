@@ -17,6 +17,8 @@ export const Searching: React.FC<ISearchingProps> = ({
   subHeader,
   cities,
   categories,
+  selectedCategories,
+  selectedCity,
   backgroudImage,
   onSearchClick,
   onCategoriesChange,
@@ -24,7 +26,6 @@ export const Searching: React.FC<ISearchingProps> = ({
 }) => {
   const classes = useStyles();
   const isNotMobile = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
-
   // eslint-disable-next-line @typescript-eslint/ban-types
   const onCityChangeCallback = (event: React.ChangeEvent<{}>, value: IListItem) => {
     onCityChange?.(value);
@@ -65,7 +66,13 @@ export const Searching: React.FC<ISearchingProps> = ({
           pb={{ xs: 0, md: 10 }}
         >
           <Box width="100%" maxWidth={{ xs: '100%', sm: 350, lg: 400 }} color="#191919">
-            <MultiSelect label="Kategorie" placeholder="Wyszukaj" items={categories} onChange={onCategoriesChange} />
+            <MultiSelect
+              label="Kategorie"
+              placeholder="Wyszukaj"
+              items={categories}
+              selectedValues={selectedCategories}
+              onChange={onCategoriesChange}
+            />
           </Box>
           <Box
             width="100%"
@@ -74,7 +81,7 @@ export const Searching: React.FC<ISearchingProps> = ({
             color="#191919"
             marginLeft={{ sm: 2 }}
           >
-            <Dropdown label="Miasto" items={cities} onChange={onCityChangeCallback} />
+            <Dropdown label="Miasto" items={cities} onChange={onCityChangeCallback} selectedValue={selectedCity} />
           </Box>
           <Box width={{ xs: '100%', sm: 'initial' }} mt={{ xs: 2, sm: 0 }} marginLeft={{ sm: 1 }}>
             <Button

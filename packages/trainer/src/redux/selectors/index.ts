@@ -4,6 +4,15 @@ import { AuthenticationReducerState } from '@redux/types/authentication';
 import { NavigationReducerState } from '@redux/types/navigation';
 import { IStoreTypes } from '@redux/types/store';
 
+export const getCurrentCity = createSelector<
+  IStoreTypes,
+  SearchTrainersReducerState,
+  SearchTrainersReducerState['city']
+>(
+  (state) => state.searchReducer,
+  (searchReducer) => searchReducer.city,
+);
+
 export const getCurrentCategories = createSelector<
   IStoreTypes,
   SearchTrainersReducerState,
@@ -22,25 +31,21 @@ export const getAuthorization = createSelector<
   (authenticationReducer) => authenticationReducer?.isAuthenticated,
 );
 
-export const getRedirect = createSelector<
-  IStoreTypes,
-  SearchTrainersReducerState,
-  SearchTrainersReducerState['redirect']
->(
-  (state) => state.searchReducer,
-  (searchReducer) => searchReducer?.redirect,
+// export const getRedirect = createSelector<
+//   IStoreTypes,
+//   SearchTrainersReducerState,
+//   SearchTrainersReducerState['redirect']
+// >(
+//   (state) => state.searchReducer,
+//   (searchReducer) => searchReducer?.redirect,
+// );
+
+export const getRedirectionInfo = createSelector<IStoreTypes, NavigationReducerState, NavigationReducerState>(
+  (state) => state.navigationReducer,
+  (navigationReducer) => navigationReducer,
 );
 
-export const getShouldRedirect = createSelector<
-  IStoreTypes,
-  NavigationReducerState,
-  NavigationReducerState['shouldRedirect']
->(
-  (state) => state.navigationReducer,
-  (navigationReducer) => navigationReducer?.shouldRedirect,
-);
-
-export const getRedirectUrl = createSelector<IStoreTypes, NavigationReducerState, NavigationReducerState['url']>(
-  (state) => state.navigationReducer,
-  (navigationReducer) => navigationReducer?.url,
-);
+// export const getRedirectUrl = createSelector<IStoreTypes, NavigationReducerState, NavigationReducerState['url']>(
+//   (state) => state.navigationReducer,
+//   (navigationReducer) => navigationReducer?.url,
+// );

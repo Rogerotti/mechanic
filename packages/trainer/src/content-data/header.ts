@@ -31,7 +31,6 @@ export const getHeaderRightMenuLinks = (isAuthenticated: boolean): ILink[] => {
         url: 'logout',
         linkType: LinkEnum.Button,
         onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-          console.log('logoutClick');
           dispatch(logout());
           event.preventDefault();
         },

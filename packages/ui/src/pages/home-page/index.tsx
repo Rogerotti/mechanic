@@ -19,6 +19,8 @@ export const HomePage: React.FC<IHomePageProps> = ({
   steps,
   cities,
   categories,
+  selectedCategories,
+  selectedCity,
   howItWorksSelectedTabId,
   onHowItWorksTabChange,
 }) => {
@@ -29,6 +31,8 @@ export const HomePage: React.FC<IHomePageProps> = ({
         subHeader={searchSubheader}
         cities={cities}
         categories={categories}
+        selectedCategories={selectedCategories}
+        selectedCity={selectedCity}
         backgroudImage={searchBackgroundImage}
         onSearchClick={onSearchClick}
         onCategoriesChange={onCategoriesChange}

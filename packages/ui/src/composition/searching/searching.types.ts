@@ -5,6 +5,8 @@ export interface ISearchingProps {
   subHeader: string;
   cities: IListItem[];
   categories: IListItem[];
+  selectedCategories?: IListItem[];
+  selectedCity?: IListItem;
   backgroudImage?: string;
   onSearchClick?: () => void;
   onCategoriesChange?: (values: IListItem[]) => void;

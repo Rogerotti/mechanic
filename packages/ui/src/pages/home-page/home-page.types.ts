@@ -15,6 +15,8 @@ export interface IHomePageProps {
 
   cities: IListItem[];
   categories: IListItem[];
+  selectedCity?: IListItem;
+  selectedCategories?: IListItem[];
   howItWorksHeader: string;
   steps: IHowItWorksProps['steps'];
   howItWorksSelectedTabId?: string;

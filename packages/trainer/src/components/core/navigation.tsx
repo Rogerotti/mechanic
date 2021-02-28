@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { getRedirectUrl, getShouldRedirect } from '../../redux/selectors';
+import { getRedirectionInfo } from '../../redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigationSuccess } from '@redux/actions/navigation';
 
 export const SagaNavigation: React.FC<unknown> = () => {
-  const shouldRedirect = useSelector(getShouldRedirect);
-  const url = useSelector(getRedirectUrl);
+  const redirectionInfo = useSelector(getRedirectionInfo);
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
-    if (shouldRedirect) {
+    if (redirectionInfo.shouldRedirect && redirectionInfo.url) {
       dispatch(navigationSuccess());
-      history.push(url);
+      history.push(redirectionInfo.url);
     }
-  }, [shouldRedirect]);
+  }, [redirectionInfo]);
 
   return null;
 };

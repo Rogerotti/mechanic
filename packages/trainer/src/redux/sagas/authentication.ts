@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { loginSuccess } from '@redux/actions/authentication';
+import { loginSuccess, loginFailure } from '@redux/actions/authentication';
 import { LoginActionRequest, LOGIN_ACTION_REQUEST } from '@redux/types/authentication';
 
 import { loginRequest } from '../../api/authentication';
@@ -9,7 +9,7 @@ function* loginUser(action: LoginActionRequest) {
     const _user = yield call(loginRequest, action.payload.username, action.payload.password);
     yield put(loginSuccess(action.payload.username));
   } catch (e) {
-    yield put(loginSuccess(action.payload.username));
+    yield put(loginFailure());
   }
 }
 

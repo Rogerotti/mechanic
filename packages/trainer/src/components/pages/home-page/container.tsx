@@ -12,12 +12,10 @@ import { useFetchCategories, useFetchCities, useMappedData } from '../../../api/
 
 import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
-import { getRedirect } from '@redux/selectors';
-import { useHistory } from 'react-router-dom';
+import { getCurrentCategories, getCurrentCity } from '@redux/selectors';
 
 export const HomePageContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { getText } = useTranslation();
   const allCategories = useMappedData(useFetchCategories(), (categories): IListItem[] =>
     categories.map((city) => ({ id: city.id, value: city.name })),
@@ -27,19 +25,12 @@ export const HomePageContainer: React.FC = () => {
     cities.map((city) => ({ id: city.id, value: city.name })),
   );
 
-  const [city, setCity] = useState<IListItem | undefined>(undefined);
-  const [categories, setCategories] = useState<IListItem[]>([]);
+  const [city, setCity] = useState<IListItem | undefined>(useSelector(getCurrentCity));
+  const [categories, setCategories] = useState<IListItem[]>(useSelector(getCurrentCategories));
 
   const howItWorksTabs = getHowItWorksTabs();
   const [selectedTabId, setSelectedTabId] = useState(howItWorksTabs[0].id);
   const howItWorksSteps = getHowItWorksSteps(selectedTabId);
-
-  // const shouldRedirect = useSelector(getRedirect);
-
-  // if (shouldRedirect) {
-  //   // zrobic w layout akcje
-  //   history.push('/trainers');
-  // }
 
   const onCityChange = (value: IListItem) => {
     setCity(value);
@@ -66,6 +57,8 @@ export const HomePageContainer: React.FC = () => {
         howItWorksHeader={getText('howItWorksHeader')}
         cities={allCities}
         categories={allCategories}
+        selectedCategories={categories}
+        selectedCity={city}
         tabs={howItWorksTabs}
         onHowItWorksTabChange={onHowItWorksTabChange}
         howItWorksSelectedTabId={selectedTabId}
