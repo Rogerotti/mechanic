@@ -16,6 +16,8 @@ import rootSaga from '@redux/sagas';
 import Error from './components/core/error';
 import HomePageContainer from './components/pages/home-page/container';
 import LoginPageContainer from './components/pages/login-page/container';
+import SagaNavigation from './components/core/navigation';
+import TrainersPageContainer from './components/pages/trainers-page/container';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -29,11 +31,18 @@ const Index = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Router>
+          <SagaNavigation />
           <Route exact path="/">
             <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
               <HomePageContainer />
             </ErrorBoundary>
           </Route>
+          <Route exact path="/trainers">
+            <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
+              <TrainersPageContainer />
+            </ErrorBoundary>
+          </Route>
+
           <Route exact path="/login">
             <LoginPageContainer />
           </Route>

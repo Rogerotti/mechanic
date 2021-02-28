@@ -34,12 +34,12 @@ export const HomePageContainer: React.FC = () => {
   const [selectedTabId, setSelectedTabId] = useState(howItWorksTabs[0].id);
   const howItWorksSteps = getHowItWorksSteps(selectedTabId);
 
-  const shouldRedirect = useSelector(getRedirect);
+  // const shouldRedirect = useSelector(getRedirect);
 
-  if (shouldRedirect) {
-    // zrobic w layout akcje
-    history.push('/trainers');
-  }
+  // if (shouldRedirect) {
+  //   // zrobic w layout akcje
+  //   history.push('/trainers');
+  // }
 
   const onCityChange = (value: IListItem) => {
     setCity(value);

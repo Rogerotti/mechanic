@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { SearchTrainersReducerState } from '@redux/types/search';
 import { AuthenticationReducerState } from '@redux/types/authentication';
+import { NavigationReducerState } from '@redux/types/navigation';
 import { IStoreTypes } from '@redux/types/store';
 
 export const getCurrentCategories = createSelector<
@@ -28,4 +29,18 @@ export const getRedirect = createSelector<
 >(
   (state) => state.searchReducer,
   (searchReducer) => searchReducer?.redirect,
+);
+
+export const getShouldRedirect = createSelector<
+  IStoreTypes,
+  NavigationReducerState,
+  NavigationReducerState['shouldRedirect']
+>(
+  (state) => state.navigationReducer,
+  (navigationReducer) => navigationReducer?.shouldRedirect,
+);
+
+export const getRedirectUrl = createSelector<IStoreTypes, NavigationReducerState, NavigationReducerState['url']>(
+  (state) => state.navigationReducer,
+  (navigationReducer) => navigationReducer?.url,
 );
