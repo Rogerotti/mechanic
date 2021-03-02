@@ -13,8 +13,8 @@ const Template: Story<ComponentProps<typeof ChipList>> = (args) => <ChipList {..
 
 export const Basic = Template.bind({});
 Basic.args = {
-  general: [{ name: 'test', id: '1' }],
-  additional: [{ name: 'test2', id: '2' }],
+  general: [{ value: 'test', id: '1' }],
+  additional: [{ value: 'test2', id: '2' }],
   label: 'Title',
   getMoreText: 'more',
   showLessText: 'less',

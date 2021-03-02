@@ -1,13 +1,15 @@
-export interface IChipListItem {
-  id: string;
-  name: string;
-}
+import { IListItem } from '../../types/core';
+
+// export interface IChipListItem {
+//   id: string;
+//   name: string;
+// }
 
 export interface IChipListProps {
-  general: IChipListItem[];
-  additional: IChipListItem[];
+  general: IListItem[];
+  additional?: IListItem[];
   label: string;
-  className: string;
+  className?: string;
   getMoreText: string;
   showLessText: string;
 }

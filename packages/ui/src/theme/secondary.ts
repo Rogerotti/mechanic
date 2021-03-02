@@ -8,8 +8,12 @@ import deepOrange from '@material-ui/core/colors/deepOrange';
 
 export default createMuiTheme({
   palette: {
-    primary: indigo,
-    secondary: purple,
+    primary: {
+      main: '#FFFFFF',
+    },
+    secondary: {
+      main: '#3B5998',
+    },
     error: deepOrange,
     action: {
       disabledBackground: amber[400],
