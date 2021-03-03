@@ -19,17 +19,15 @@ export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({ cities, categor
     <Box width="100%" bgcolor="primary.main">
       <Box
         boxShadow={15}
-        minHeight={300}
+        minHeight={100}
         borderColor="primary.light"
         bgcolor="primary.main"
-        // justifyContent="center"
-        // alignItems="center"
         borderTop={1}
         borderLeft={1}
       >
         <Box
           display={{ xs: 'block', sm: 'flex' }}
-          // justifyContent="center"
+          justifyContent="center"
           alignItems="center"
           pt={{ xs: 2, md: 2 }}
           pb={{ xs: 0, md: 2 }}
@@ -57,6 +55,21 @@ export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({ cities, categor
             />
           </Box>
         </Box>
+        {/* 
+        <Box ml={2}>
+          <Typography variant="h5">Filtry</Typography>
+          <Box mt={2}>
+            <Box
+              width="100%"
+              mt={{ xs: 2, sm: 0 }}
+              maxWidth={{ xs: '100%', sm: 200, lg: 275 }}
+              color="#191919"
+              marginLeft={{ sm: 2 }}
+            >
+              <Dropdown label="rodzaj zajec" items={cities} />
+            </Box>
+          </Box>
+        </Box> */}
       </Box>
     </Box>
   );

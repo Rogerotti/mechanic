@@ -26,7 +26,7 @@ export const TrainerCardDesktop: React.FC<ITrainerCardProps> = ({
 
   return (
     <Box display="flex" width="100%" bgcolor="primary.main" borderRadius={10} px={3}>
-      <Box pt={3}>
+      <Box pt={3} width={140}>
         <img className={classes.image} src={image} />
 
         <Box display="flex" alignItems="center">
@@ -48,7 +48,7 @@ export const TrainerCardDesktop: React.FC<ITrainerCardProps> = ({
         </Typography>
       </Box>
 
-      <Box ml={{ xs: 1, sm: 2 }} mt={{ xs: 1, sm: 2 }}>
+      <Box ml={{ xs: 1, sm: 2 }} mt={{ xs: 1, sm: 2 }} width="100%">
         <Box>
           <Box display="flex">
             <Box>
