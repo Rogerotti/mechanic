@@ -1,5 +1,5 @@
-import { ITrainerCardProps } from '../../composition/trainer-card/trainer-card.types';
+import { IPresentationCardProps } from '../../composition/presentation-card/presentation-card.types';
 
 export interface ITrainersPageProps {
-  trainers: ITrainerCardProps[];
+  trainers: IPresentationCardProps[];
 }

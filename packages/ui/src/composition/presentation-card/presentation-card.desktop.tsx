@@ -6,26 +6,27 @@ import Rating from '@material-ui/lab/Rating';
 import { Button } from '@core-components/button';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-import { useStyles } from './trainer-card.styles';
-import { ITrainerCardProps } from './trainer-card.types';
+import { useStyles } from './presentation-card.styles';
+import { IPresentationCardProps } from './presentation-card.types';
 
-export const TrainerCardDesktop: React.FC<ITrainerCardProps> = ({
-  firstName,
-  lastName,
+export const PresentationCardDesktop: React.FC<IPresentationCardProps> = ({
+  id,
+  header,
   image,
   description,
+  descriptionShowMoreText,
+  descriptionActionClick,
   rating,
-  numberOfRaitings,
+  specializationChipListProps,
+  numberOfRatings,
   location,
-  generalCategories,
-  additionalCategories,
+  actionText,
+  onActionClick,
 }) => {
   const classes = useStyles();
 
-  const showMoreText = 'Dowiedz się więcej...';
-
   return (
-    <Box display="flex" width="100%" bgcolor="primary.main" borderRadius={10} px={3}>
+    <Box id={id} display="flex" width="100%" bgcolor="primary.main" borderRadius={10} px={3}>
       <Box pt={3} width={140}>
         <img className={classes.image} src={image} />
 
@@ -40,7 +41,7 @@ export const TrainerCardDesktop: React.FC<ITrainerCardProps> = ({
             precision={0.5}
             size="small"
           />
-          <Typography>({numberOfRaitings})</Typography>
+          <Typography>({numberOfRatings})</Typography>
         </Box>
 
         <Typography className={classes.location}>
@@ -52,9 +53,7 @@ export const TrainerCardDesktop: React.FC<ITrainerCardProps> = ({
         <Box>
           <Box display="flex">
             <Box>
-              <Typography className={classes.header}>
-                {firstName} {lastName}
-              </Typography>
+              <Typography className={classes.header}>{header}</Typography>
             </Box>
 
             <Box ml="auto"></Box>
@@ -64,24 +63,22 @@ export const TrainerCardDesktop: React.FC<ITrainerCardProps> = ({
             <Typography className={classes.description}>
               {description}
 
-              <Typography className={classes.description2}>{showMoreText}</Typography>
+              <Typography onClick={descriptionActionClick} className={classes.description2}>
+                {descriptionShowMoreText}
+              </Typography>
             </Typography>
           </Box>
 
-          <Box mt={2}>
-            <ChipList
-              label="Specjalizacja"
-              general={generalCategories}
-              additional={additionalCategories}
-              getMoreText="Więcej"
-              showLessText="mniej"
-            />
-          </Box>
+          {specializationChipListProps && (
+            <Box mt={2}>
+              <ChipList {...specializationChipListProps} />
+            </Box>
+          )}
         </Box>
 
         <Box display="flex" py={2}>
           <Box ml="auto">
-            <Button text="Zarezerwuj" variant="contained" color="secondary" rounded={true} />
+            <Button onClick={onActionClick} text={actionText} variant="contained" color="secondary" rounded={true} />
           </Box>
         </Box>
       </Box>

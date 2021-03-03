@@ -6,33 +6,30 @@ import Rating from '@material-ui/lab/Rating';
 import { Button } from '@core-components/button';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-import { useStyles } from './trainer-card.styles';
-import { ITrainerCardProps } from './trainer-card.types';
+import { useStyles } from './presentation-card.styles';
+import { IPresentationCardProps } from './presentation-card.types';
 
-export const TrainerCardMobile: React.FC<ITrainerCardProps> = ({
-  firstName,
-  lastName,
+export const PresentationCardMobile: React.FC<IPresentationCardProps> = ({
+  id,
+  header,
   image,
   description,
+  descriptionShowMoreText,
+  descriptionActionClick,
   rating,
-  numberOfRaitings,
+  numberOfRatings,
   location,
-  generalCategories,
-  additionalCategories,
+  specializationChipListProps,
 }) => {
   const classes = useStyles();
 
-  const showMoreText = 'Dowiedz się więcej...';
-
   return (
-    <Box width="100%" bgcolor="primary.main" borderRadius={10} px={1}>
+    <Box id={id} width="100%" bgcolor="primary.main" borderRadius={10} px={1}>
       <Box display="flex" pt={1}>
         <img className={classes.image} src={image} />
 
         <Box ml={1}>
-          <Typography className={classes.header}>
-            {firstName} {lastName}
-          </Typography>
+          <Typography className={classes.header}>{header}</Typography>
 
           <Box display="flex" alignItems="center">
             <Rating
@@ -45,7 +42,7 @@ export const TrainerCardMobile: React.FC<ITrainerCardProps> = ({
               precision={0.5}
               size="small"
             />
-            <Typography>({numberOfRaitings})</Typography>
+            <Typography>({numberOfRatings})</Typography>
           </Box>
           <Typography className={classes.location}>
             <LocationOnIcon /> {location}
@@ -58,19 +55,17 @@ export const TrainerCardMobile: React.FC<ITrainerCardProps> = ({
           <Typography className={classes.description}>
             {description}
 
-            <Typography className={classes.description2}>{showMoreText}</Typography>
+            <Typography onClick={descriptionActionClick} className={classes.description2}>
+              {descriptionShowMoreText}
+            </Typography>
           </Typography>
         </Box>
 
-        <Box mt={2}>
-          <ChipList
-            label="Specjalizacja"
-            general={generalCategories}
-            additional={additionalCategories}
-            getMoreText="Więcej"
-            showLessText="mniej"
-          />
-        </Box>
+        {specializationChipListProps && (
+          <Box mt={2}>
+            <ChipList {...specializationChipListProps} />
+          </Box>
+        )}
       </Box>
       <Box display="flex" py={1} justifyContent="flex-end">
         <Box>
