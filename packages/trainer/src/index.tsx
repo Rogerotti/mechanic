@@ -12,6 +12,7 @@ import theme from '@ui/theme/primary';
 import Error from './components/core/error';
 import HomePageContainer from './components/pages/home-page/container';
 import LoginPageContainer from './components/pages/login-page/container';
+import RegisterPageContainer from './components/pages/register-page/container';
 import SagaNavigation from './components/core/navigation';
 import TrainersPageContainer from './components/pages/trainers-page/container';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -38,6 +39,10 @@ const Index = () => {
 
             <Route exact path="/login">
               <LoginPageContainer />
+            </Route>
+
+            <Route exact path="/register">
+              <RegisterPageContainer />
             </Route>
           </Router>
         </ThemeProvider>

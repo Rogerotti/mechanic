@@ -2,11 +2,21 @@ export const LOGIN_ACTION_REQUEST = 'LOGIN_ACTION_REQUEST';
 export const LOGIN_ACTION_SUCCESS = 'LOGIN_ACTION_SUCCESS';
 export const LOGIN_ACTION_FAILURE = 'LOGIN_ACTION_FAILURE';
 
+export const REGISTER_ACTION_REQUEST = 'REGISTER_ACTION_REQUEST';
+
 export const LOGOUT_ACTION = 'LOGOUT_ACTION';
 
 export interface AuthenticationReducerState {
   isAuthenticated: boolean;
   username?: string;
+}
+
+export interface RegisterActionRequest {
+  type: typeof REGISTER_ACTION_REQUEST;
+  payload: {
+    email: string;
+    password: string;
+  };
 }
 
 export interface LoginActionRequest {
@@ -32,4 +42,9 @@ export interface LogoutAction {
   type: typeof LOGOUT_ACTION;
 }
 
-export type AuthenticationActionTypes = LoginActionSuccess | LoginActionFailure | LoginActionRequest | LogoutAction;
+export type AuthenticationActionTypes =
+  | LoginActionSuccess
+  | LoginActionFailure
+  | LoginActionRequest
+  | LogoutAction
+  | RegisterActionRequest;

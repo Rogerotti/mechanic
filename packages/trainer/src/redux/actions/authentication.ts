@@ -7,6 +7,8 @@ import {
   LOGOUT_ACTION,
   LoginActionFailure,
   LOGIN_ACTION_FAILURE,
+  REGISTER_ACTION_REQUEST,
+  RegisterActionRequest,
 } from '@redux/types/authentication';
 
 export function loginRequest(username: string, password: string): LoginActionRequest {
@@ -37,5 +39,15 @@ export function loginFailure(): LoginActionFailure {
 export function logout(): LogoutAction {
   return {
     type: LOGOUT_ACTION,
+  };
+}
+
+export function registerRequest(email: string, password: string): RegisterActionRequest {
+  return {
+    type: REGISTER_ACTION_REQUEST,
+    payload: {
+      email,
+      password,
+    },
   };
 }

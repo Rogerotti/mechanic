@@ -5,6 +5,7 @@ import {
   LOGIN_ACTION_FAILURE,
   LOGOUT_ACTION,
   LOGIN_ACTION_REQUEST,
+  REGISTER_ACTION_REQUEST,
 } from '@redux/types/authentication';
 
 const initialState: AuthenticationReducerState = {
@@ -31,6 +32,10 @@ export function authenticationReducer(
         isAuthenticated: false,
       };
     case LOGOUT_ACTION:
+      return {
+        isAuthenticated: false,
+      };
+    case REGISTER_ACTION_REQUEST:
       return {
         isAuthenticated: false,
       };
