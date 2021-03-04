@@ -2,4 +2,5 @@ import { IPresentationCardProps } from '../presentation-card/presentation-card.t
 
 export interface IPresentationListProps {
   items: IPresentationCardProps[];
+  numberOfPages: number;
 }

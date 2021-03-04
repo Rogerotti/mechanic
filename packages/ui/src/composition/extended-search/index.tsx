@@ -1,8 +1,6 @@
 import React from 'react';
 
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Box from '@material-ui/core/Box';
-import { Theme, Typography } from '@material-ui/core';
 
 import { Button } from '@core-components/button';
 import { Dropdown } from '@core-components/dropdown';
@@ -10,9 +8,16 @@ import { MultiSelect } from '@core-components/multi-select/multi-select.componen
 
 import { useStyles } from './extended-search.styles';
 import { IExtendedSearchProps } from './extended-search.types';
-import { IListItem } from '../../types/core';
 
-export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({ cities, categories, onSearchClick }) => {
+export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({
+  selectedCity,
+  selectedCategories,
+  cities,
+  categories,
+  onSearchClick,
+  onCityChange,
+  onCategoriesChange,
+}) => {
   const classes = useStyles();
 
   return (
@@ -33,7 +38,13 @@ export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({ cities, categor
           pb={{ xs: 0, md: 2 }}
         >
           <Box width="100%" maxWidth={{ xs: '100%', sm: 350, lg: 400 }} color="#191919">
-            <MultiSelect label="Kategorie" placeholder="Wyszukaj" items={categories} />
+            <MultiSelect
+              label="Kategorie"
+              placeholder="Wyszukaj"
+              items={categories}
+              selectedValues={selectedCategories}
+              onChange={onCategoriesChange}
+            />
           </Box>
           <Box
             width="100%"
@@ -42,34 +53,12 @@ export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({ cities, categor
             color="#191919"
             marginLeft={{ sm: 2 }}
           >
-            <Dropdown label="Miasto" items={cities} />
+            <Dropdown label="Miasto" items={cities} selectedValue={selectedCity} onChange={onCityChange} />
           </Box>
           <Box width={{ xs: '100%', sm: 'initial' }} mt={{ xs: 2, sm: 0 }} marginLeft={{ sm: 1 }}>
-            <Button
-              // className={classes.button}
-              onClick={onSearchClick}
-              text="Szukaj"
-              rounded={true}
-              variant="contained"
-              color="secondary"
-            />
+            <Button onClick={onSearchClick} text="Szukaj" rounded={true} variant="contained" color="secondary" />
           </Box>
         </Box>
-        {/* 
-        <Box ml={2}>
-          <Typography variant="h5">Filtry</Typography>
-          <Box mt={2}>
-            <Box
-              width="100%"
-              mt={{ xs: 2, sm: 0 }}
-              maxWidth={{ xs: '100%', sm: 200, lg: 275 }}
-              color="#191919"
-              marginLeft={{ sm: 2 }}
-            >
-              <Dropdown label="rodzaj zajec" items={cities} />
-            </Box>
-          </Box>
-        </Box> */}
       </Box>
     </Box>
   );

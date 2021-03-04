@@ -4,6 +4,15 @@ import { AuthenticationReducerState } from '@redux/types/authentication';
 import { NavigationReducerState } from '@redux/types/navigation';
 import { IStoreTypes } from '@redux/types/store';
 
+export const getTrainers = createSelector<
+  IStoreTypes,
+  SearchTrainersReducerState,
+  SearchTrainersReducerState['trainers']
+>(
+  (state) => state.searchReducer,
+  (searchReducer) => searchReducer.trainers,
+);
+
 export const getCurrentCity = createSelector<
   IStoreTypes,
   SearchTrainersReducerState,
@@ -31,21 +40,7 @@ export const getAuthorization = createSelector<
   (authenticationReducer) => authenticationReducer?.isAuthenticated,
 );
 
-// export const getRedirect = createSelector<
-//   IStoreTypes,
-//   SearchTrainersReducerState,
-//   SearchTrainersReducerState['redirect']
-// >(
-//   (state) => state.searchReducer,
-//   (searchReducer) => searchReducer?.redirect,
-// );
-
 export const getRedirectionInfo = createSelector<IStoreTypes, NavigationReducerState, NavigationReducerState>(
   (state) => state.navigationReducer,
   (navigationReducer) => navigationReducer,
 );
-
-// export const getRedirectUrl = createSelector<IStoreTypes, NavigationReducerState, NavigationReducerState['url']>(
-//   (state) => state.navigationReducer,
-//   (navigationReducer) => navigationReducer?.url,
-// );

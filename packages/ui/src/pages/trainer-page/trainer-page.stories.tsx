@@ -5,7 +5,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 
 import { TrainersPage } from '.';
 import { LayoutForStories } from '../../storybook/layout';
-
+import { categories, cities } from '../../storybook/data/searching';
 import { trainer1, trainer2 } from '../../storybook/data/trainers';
 
 export default {
@@ -26,4 +26,6 @@ export const Basic = Template.bind({});
 
 Basic.args = {
   trainers: [trainer1, trainer2],
+  categories: categories,
+  cities: cities,
 };

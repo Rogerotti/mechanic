@@ -1,10 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(({ palette }) => ({
-  test: {
+  ul: {
     justifyContent: 'center',
-    color: 'red',
     backgroundColor: palette.primary.main,
-    // backgroundColor: 'red',
   },
 }));

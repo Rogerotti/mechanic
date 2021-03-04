@@ -23,4 +23,5 @@ export const Basic = Template.bind({});
 
 Basic.args = {
   items: [trainer1, trainer2],
+  numberOfPages: 10,
 };

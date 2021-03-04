@@ -5,7 +5,7 @@ import { PresentationCard } from '../presentation-card';
 import { useStyles } from './presentation-list.styles';
 import { IPresentationListProps } from './presentation-list.types';
 
-export const PresentationList: React.FC<IPresentationListProps> = ({ items }) => {
+export const PresentationList: React.FC<IPresentationListProps> = ({ items, numberOfPages }) => {
   const classes = useStyles();
 
   return (
@@ -17,9 +17,9 @@ export const PresentationList: React.FC<IPresentationListProps> = ({ items }) =>
       ))}
       <Pagination
         classes={{
-          ul: classes.test,
+          ul: classes.ul,
         }}
-        count={30}
+        count={numberOfPages}
         size="large"
         color="secondary"
         variant="text"
