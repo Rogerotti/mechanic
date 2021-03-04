@@ -5,6 +5,10 @@ import {
   SEARCH_TRAINERS_SUCCESS,
   SEARCH_TRAINERS_FAILURE,
   SEARCH_TRAINERS_REQUEST,
+  SetCityAction,
+  SET_CITY,
+  SetCategoriesAction,
+  SET_CATEGORIES,
 } from '@redux/types/search';
 import { IListItem } from '@ui/types/core';
 import { ITrainerBasicDTO } from 'src/interfaces';
@@ -31,5 +35,23 @@ export function searchTrainersSuccess(trainers: ITrainerBasicDTO[]): SearchTrain
 export function searchTrainersFailure(): SearchTrainersFailureAction {
   return {
     type: SEARCH_TRAINERS_FAILURE,
+  };
+}
+
+export function setCity(city: IListItem): SetCityAction {
+  return {
+    type: SET_CITY,
+    payload: {
+      city,
+    },
+  };
+}
+
+export function setCategories(categories: IListItem[]): SetCategoriesAction {
+  return {
+    type: SET_CATEGORIES,
+    payload: {
+      categories,
+    },
   };
 }

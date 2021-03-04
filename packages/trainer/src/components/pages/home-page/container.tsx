@@ -5,7 +5,7 @@ import { HomePage } from '@ui/pages/home-page';
 import { IListItem } from '@ui/types/core';
 
 import searchBackground from '@assets/searchBackground.jpg';
-import { searchTrainers } from '@redux/actions/search';
+import { searchTrainers, setCategories as setReduxCategories, setCity as setReduxCity } from '@redux/actions/search';
 
 import useTranslation from '../../../translations/hooks';
 import { useFetchCategories, useFetchCities, useMappedData } from '../../../api/hooks';
@@ -34,10 +34,12 @@ export const HomePageContainer: React.FC = () => {
 
   const onCityChange = (value: IListItem) => {
     setCity(value);
+    dispatch(setReduxCity(value));
   };
 
   const onCategoriesChange = (values: IListItem[]) => {
     setCategories(values);
+    dispatch(setReduxCategories(values));
   };
 
   const onSearch = () => {

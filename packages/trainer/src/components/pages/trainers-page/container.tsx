@@ -4,10 +4,12 @@ import { TrainersPage } from '@ui/pages/trainer-page';
 import { IListItem } from '@ui/types/core';
 import { useFetchCategories, useFetchCities, useMappedData } from '@api/hooks';
 import { getCurrentCategories, getCurrentCity, getTrainers } from '@redux/selectors';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IPresentationCardProps } from '@ui/composition/presentation-card/presentation-card.types';
+import { setCategories, setCity } from '@redux/actions/search';
 
 export const TrainersPageContainer: React.FC = () => {
+  const dispatch = useDispatch();
   const [selectedCategories, setSelectedCategories] = useState<IListItem[]>(useSelector(getCurrentCategories));
   const [selectedCity, setSelectedCity] = useState<IListItem | undefined>(useSelector(getCurrentCity));
   const trainers = useMappedData(useSelector(getTrainers), (trainers): IPresentationCardProps[] =>
@@ -35,6 +37,12 @@ export const TrainersPageContainer: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/ban-types
   const onCityChangeCallback = (_event: React.ChangeEvent<{}>, city: IListItem) => {
     setSelectedCity(city);
+    dispatch(setCity(city));
+  };
+
+  const onCategoriesChangeCallback = (categories: IListItem[]) => {
+    setSelectedCategories(categories);
+    dispatch(setCategories(categories));
   };
 
   return (
@@ -45,7 +53,7 @@ export const TrainersPageContainer: React.FC = () => {
         cities={allCities}
         categories={allCategories}
         onCityChange={onCityChangeCallback}
-        onCategoriesChange={(categories) => setSelectedCategories(categories)}
+        onCategoriesChange={onCategoriesChangeCallback}
         selectedCategories={selectedCategories}
         selectedCity={selectedCity}
       />

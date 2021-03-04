@@ -4,6 +4,8 @@ import {
   SEARCH_TRAINERS_FAILURE,
   SearchTrainersReducerState,
   SEARCH_TRAINERS_SUCCESS,
+  SET_CITY,
+  SET_CATEGORIES,
 } from '@redux/types/search';
 
 const initialState: SearchTrainersReducerState = {
@@ -31,6 +33,17 @@ export function searchReducer(state = initialState, action: SearchActionTypes): 
       return {
         ...initialState,
       };
+    case SET_CITY:
+      return {
+        ...state,
+        city: action.payload.city,
+      };
+    case SET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload.categories,
+      };
+
     default:
       return state;
   }

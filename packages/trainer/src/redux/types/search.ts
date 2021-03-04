@@ -12,6 +12,9 @@ export const SEARCH_TRAINERS_REQUEST = 'SEARCH_TRAINERS_REQUEST';
 export const SEARCH_TRAINERS_SUCCESS = 'SEARCH_TRAINERS_SUCCESS';
 export const SEARCH_TRAINERS_FAILURE = 'SEARCH_TRAINERS_FAILURE';
 
+export const SET_CITY = 'SET_CITY';
+export const SET_CATEGORIES = 'SET_CATEGORIES';
+
 export interface SearchTrainersRequestAction {
   type: typeof SEARCH_TRAINERS_REQUEST;
   payload: {
@@ -31,4 +34,23 @@ export interface SearchTrainersFailureAction {
   type: typeof SEARCH_TRAINERS_FAILURE;
 }
 
-export type SearchActionTypes = SearchTrainersRequestAction | SearchTrainersSuccessAction | SearchTrainersFailureAction;
+export interface SetCityAction {
+  type: typeof SET_CITY;
+  payload: {
+    city: IListItem;
+  };
+}
+
+export interface SetCategoriesAction {
+  type: typeof SET_CATEGORIES;
+  payload: {
+    categories: IListItem[];
+  };
+}
+
+export type SearchActionTypes =
+  | SearchTrainersRequestAction
+  | SearchTrainersSuccessAction
+  | SearchTrainersFailureAction
+  | SetCityAction
+  | SetCategoriesAction;
