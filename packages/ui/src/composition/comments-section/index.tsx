@@ -9,7 +9,7 @@ export const CommentsSection: React.FC<ICommentsSectionProps> = ({ comments }) =
   const classes = useStyles();
 
   return (
-    <Box display="flex" alignItems="center">
+    <Box>
       {comments.map((comment) => {
         return <RatingCard key={comment.id} {...comment} />;
       })}

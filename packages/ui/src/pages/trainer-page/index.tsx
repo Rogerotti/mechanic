@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Box from '@material-ui/core/Box';
 import { Button } from '@core-components/button';
@@ -9,27 +9,34 @@ import { useStyles } from './trainer-page.styles';
 import { Typography } from '@material-ui/core';
 import { Rating } from '@core-components/rating';
 import { Table } from '@core-components/table';
+import { CommentsSection } from '../../composition/comments-section';
+import { HeroImage } from '../../composition/hero-image';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import EmailIcon from '@material-ui/icons/Email';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description }) => {
+export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description, comments }) => {
   const classes = useStyles();
-  const [calendarValue, onCalendarValueChange] = useState(new Date());
+  // const [calendarValue, onCalendarValueChange] = useState(new Date());
 
   return (
     <Box bgcolor="primary.main" width="100%" height="100%">
+      <Box height={150}>
+        <HeroImage title="Iwan Stonoga" />
+      </Box>
       <Box display="table" width="100%" height="100%">
         <div className={classes.column1}>
           <Box display="flex" justifyContent="center">
-            <Box>
+            <Box display="grid">
               <img className={classes.image} src={image} />
-              <Typography variant="h4">{title}</Typography>
+              <Typography className={classes.title} variant="h4">
+                {title}
+              </Typography>
             </Box>
           </Box>
-          <Box pt={2} height>
-            <Typography>{description}</Typography>
+          <Box p={1.5} height>
+            <Typography className={classes.description}>{description}</Typography>
           </Box>
         </div>
         <div className={classes.column2}>
@@ -37,11 +44,12 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
             <Table headers={[]} data={[]} />
           </Box>
           <Box mt={2} display="flex" justifyContent="center" height="300px" width="100%">
-            <Calendar className={classes.test} locale="pl-PL" value={calendarValue} onChange={onCalendarValueChange} />
+            TODO lista zajec
+            {/* <Calendar className={classes.test} locale="pl-PL" value={calendarValue} onChange={onCalendarValueChange} /> */}
           </Box>
 
-          <Box mt={2} height="500px" bgcolor="red">
-            Oceny
+          <Box className={classes.comments} mt={2}>
+            <CommentsSection comments={comments} />
           </Box>
         </div>
         <div className={classes.column1}>

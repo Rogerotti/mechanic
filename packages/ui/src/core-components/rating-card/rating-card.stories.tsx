@@ -5,6 +5,7 @@ import { Box } from '@material-ui/core';
 import userLogo from '@assets/trener1.png';
 import { RatingCard } from '.';
 import { IRatingCardProps } from './rating-card.types';
+import { comments } from '../../storybook/data/comments';
 
 export default {
   title: 'Core Components/Rating Card',
@@ -23,11 +24,5 @@ const Template: Story<ComponentProps<typeof RatingCard>> = ({ ...args }) => {
 export const Basic: { args: IRatingCardProps } = Template.bind({});
 
 Basic.args = {
-  id: 'test',
-  header: 'Roger Skrzypczyk',
-  image: userLogo,
-  description:
-    'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.',
-  date: new Date(),
-  rating: 3.5,
+  ...comments[0],
 };

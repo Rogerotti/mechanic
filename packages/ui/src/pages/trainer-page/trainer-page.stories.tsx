@@ -6,6 +6,7 @@ import logoImage from '@assets/trener1.png';
 import { TrainerPage } from '.';
 import { LayoutForStories } from '../../storybook/layout';
 import { ITrainerPageProps } from './trainer-page.types';
+import { comments } from '../../storybook/data/comments';
 
 export default {
   title: 'Pages/Trainer Page',
@@ -60,4 +61,5 @@ Mój numer telefonu (+48) 507-324-603 na pewno coś zaradzimy wspólnie i pomoż
    `,
 
   image: logoImage,
+  comments: comments,
 };
