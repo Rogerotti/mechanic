@@ -18,7 +18,7 @@ export const Rating: React.FC<IRatingProps> = ({ numberOfRatings, textColor, ...
         }}
         {...rest}
       />
-      <Typography color={textColor}>({numberOfRatings})</Typography>
+      {numberOfRatings >= 0 && <Typography color={textColor}>({numberOfRatings})</Typography>}
     </Box>
   );
 };

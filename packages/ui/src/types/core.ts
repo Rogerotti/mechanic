@@ -4,6 +4,10 @@ export enum LinkEnum {
   Button,
 }
 
+export interface IIterable {
+  id: string;
+}
+
 export interface ILink {
   text: string;
   url: string;
@@ -11,7 +15,6 @@ export interface ILink {
   onClick?: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLElement, MouseEvent>) => void;
 }
 
-export interface IListItem {
-  id: string;
+export interface IListItem extends IIterable {
   value: string;
 }
