@@ -2,8 +2,8 @@ import React from 'react';
 import ChipList from '@core-components/chip-list';
 import Box from '@material-ui/core/Box';
 import { Typography } from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
 import { Button } from '@core-components/button';
+import { Rating } from '@core-components/rating';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
 import { useStyles } from './presentation-card.styles';
@@ -30,19 +30,7 @@ export const PresentationCardDesktop: React.FC<IPresentationCardProps> = ({
       <Box pt={3} width={140}>
         <img className={classes.image} src={image} />
 
-        <Box display="flex" alignItems="center">
-          <Rating
-            classes={{
-              iconEmpty: classes.rating,
-              icon: classes.test,
-            }}
-            value={rating}
-            readOnly
-            precision={0.5}
-            size="small"
-          />
-          <Typography>({numberOfRatings})</Typography>
-        </Box>
+        <Rating value={rating} readOnly precision={0.5} size="small" numberOfRatings={numberOfRatings} />
 
         <Typography className={classes.location}>
           <LocationOnIcon /> {location}

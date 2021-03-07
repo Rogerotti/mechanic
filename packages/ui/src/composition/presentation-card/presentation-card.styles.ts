@@ -10,16 +10,6 @@ export const useStyles = makeStyles(({ palette, breakpoints }) => ({
       height: 140,
     },
   },
-  test: {
-    fontSize: '0.9rem',
-    [breakpoints.up('sm')]: {
-      fontSize: '1.2rem',
-    },
-    // color: 'grey',
-  },
-  rating: {
-    color: 'grey',
-  },
   description: {
     fontSize: '12px',
   },

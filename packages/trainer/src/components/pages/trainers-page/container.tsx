@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../../core/layout';
-import { TrainersPage } from '@ui/pages/trainer-page';
+import { TrainersPage } from '@ui/pages/trainers-page';
 import { IListItem } from '@ui/types/core';
 import { useFetchCategories, useFetchCities, useMappedData } from '@api/hooks';
 import { getCurrentCategories, getCurrentCity, getTrainers } from '@redux/selectors';

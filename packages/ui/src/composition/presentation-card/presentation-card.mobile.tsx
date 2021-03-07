@@ -2,7 +2,7 @@ import React from 'react';
 import ChipList from '@core-components/chip-list';
 import Box from '@material-ui/core/Box';
 import { Typography } from '@material-ui/core';
-import Rating from '@material-ui/lab/Rating';
+import { Rating } from '@core-components/rating';
 import { Button } from '@core-components/button';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
@@ -31,19 +31,7 @@ export const PresentationCardMobile: React.FC<IPresentationCardProps> = ({
         <Box ml={1}>
           <Typography className={classes.header}>{header}</Typography>
 
-          <Box display="flex" alignItems="center">
-            <Rating
-              classes={{
-                iconEmpty: classes.rating,
-                icon: classes.test,
-              }}
-              value={rating}
-              readOnly
-              precision={0.5}
-              size="small"
-            />
-            <Typography>({numberOfRatings})</Typography>
-          </Box>
+          <Rating value={rating} readOnly precision={0.5} size="small" numberOfRatings={numberOfRatings} />
           <Typography className={classes.location}>
             <LocationOnIcon /> {location}
           </Typography>

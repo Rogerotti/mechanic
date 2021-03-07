@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/Rogerotti/mechanic#readme",
   "dependencies": {
+    "google-map-react": "^2.1.9",
     "react": "^17.0.1",
+    "react-calendar": "^3.3.1",
     "react-dom": "^17.0.1",
     "react-error-boundary": "^3.1.0",
     "read-more-react": "^1.0.10"
@@ -37,6 +39,7 @@
     "@storybook/react": "^6.1.15",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.1.2",
+    "@types/google-map-react": "^2.1.0",
     "@types/jest": "^26.0.15",
     "@types/node": "^14.14.31",
     "eslint-config-prettier": "^7.2.0",
