@@ -48,8 +48,10 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
             {/* <Calendar className={classes.test} locale="pl-PL" value={calendarValue} onChange={onCalendarValueChange} /> */}
           </Box>
 
-          <Box className={classes.comments} mt={2}>
-            <CommentsSection comments={comments} />
+          <Box className={classes.comments} mt={2} borderColor="primary.light" border="1px solid">
+            <Box bgcolor="primary.main">
+              <CommentsSection comments={comments} />
+            </Box>
           </Box>
         </div>
         <div className={classes.column1}>

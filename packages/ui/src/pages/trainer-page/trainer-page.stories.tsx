@@ -43,23 +43,25 @@ Aktualnie istnieje wiele chorób w których dieta może w zdecydowanym stopniu p
     Hashimoto i inne choroby autoimunologiczne,
     Problemy z gospodarką hormonalną (PCOS)
 
-Dodatkowo indywidualnie dobrany jadłospis może pomóc Ci zyskać więcej energii w ciągu dnia, poprawić sen, oraz codzienne funkcjonowanie. Dzięki licznym szkoleniom, które odbyłem będę w stanie pomóc Ci z różnego rodzaju problemami.
 
-Oprócz dietetyki klinicznej i chorób z nią związanych, moim zainteresowaniem jest dietetyka sportowa. Pasja do dietetyki sportowej wzięła się z aktywnego trybu życia, który prowadzę już ponad 3 lat (piłka nożna, siłownia, bieganie). Szukając optymalnego modelu żywienia w swojej aktywności znalazłem kilkadziesiąt rozwiązań, które sprawdzają się w praktyce sportowej.
-
-Każdy z Nas jest na diecie – więc staraj się wybierać lepiej.
-
-Zdrowie składa się z wielu elementów, kluczowa jest optymalizacja zaniedbanych obszarów oraz wzmocnienie tych które funkcjonują prawidłowo aby osiągnąć całość w jak najlepszej formie. Musisz połączyć to wszystko, jeśli chcesz zmaksymalizować efekty.
-
-Aby rozpocząć optymalizację już teraz, musisz jedynie uświadomić sobie, że umysł i ciało są ze sobą powiązane.
-
-W połączeniu z dietetyką sportową, rozwinąłem w sobie pasję do wzmocnienia innego ogniwa jakim jest trening fizyczny. Kilka szkoleń z zakresu treningu siłowego, oraz pare lat pracy dało mi świetny obraz funkcjonowania człowieka na boisku, siłowni bądź w codziennym życiu. Obecnie oprócz dietetyki realizuję się jako trener personalny.
-
-Potrzebujesz pomocy w tematyce treningów personalnych i dietetyki 
-
-Mój numer telefonu (+48) 507-324-603 na pewno coś zaradzimy wspólnie i pomożemy 
    `,
 
   image: logoImage,
   comments: comments,
 };
+
+// Dodatkowo indywidualnie dobrany jadłospis może pomóc Ci zyskać więcej energii w ciągu dnia, poprawić sen, oraz codzienne funkcjonowanie. Dzięki licznym szkoleniom, które odbyłem będę w stanie pomóc Ci z różnego rodzaju problemami.
+
+// Oprócz dietetyki klinicznej i chorób z nią związanych, moim zainteresowaniem jest dietetyka sportowa. Pasja do dietetyki sportowej wzięła się z aktywnego trybu życia, który prowadzę już ponad 3 lat (piłka nożna, siłownia, bieganie). Szukając optymalnego modelu żywienia w swojej aktywności znalazłem kilkadziesiąt rozwiązań, które sprawdzają się w praktyce sportowej.
+
+// Każdy z Nas jest na diecie – więc staraj się wybierać lepiej.
+
+// Zdrowie składa się z wielu elementów, kluczowa jest optymalizacja zaniedbanych obszarów oraz wzmocnienie tych które funkcjonują prawidłowo aby osiągnąć całość w jak najlepszej formie. Musisz połączyć to wszystko, jeśli chcesz zmaksymalizować efekty.
+
+// Aby rozpocząć optymalizację już teraz, musisz jedynie uświadomić sobie, że umysł i ciało są ze sobą powiązane.
+
+// W połączeniu z dietetyką sportową, rozwinąłem w sobie pasję do wzmocnienia innego ogniwa jakim jest trening fizyczny. Kilka szkoleń z zakresu treningu siłowego, oraz pare lat pracy dało mi świetny obraz funkcjonowania człowieka na boisku, siłowni bądź w codziennym życiu. Obecnie oprócz dietetyki realizuję się jako trener personalny.
+
+// Potrzebujesz pomocy w tematyce treningów personalnych i dietetyki
+
+// Mój numer telefonu (+48) 507-324-603 na pewno coś zaradzimy wspólnie i pomożemy
