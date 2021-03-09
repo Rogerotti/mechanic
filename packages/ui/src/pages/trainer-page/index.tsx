@@ -11,6 +11,7 @@ import { Rating } from '@core-components/rating';
 import { Table } from '@core-components/table';
 import { CommentsSection } from '../../composition/comments-section';
 import { HeroImage } from '../../composition/hero-image';
+import { Scheduler } from '../../core-components/scheduler';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import EmailIcon from '@material-ui/icons/Email';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -40,11 +41,9 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
           </Box>
         </div>
         <div className={classes.column2}>
-          <Box>
-            <Table headers={[]} data={[]} />
-          </Box>
-          <Box mt={2} display="flex" justifyContent="center" height="300px" width="100%">
-            TODO lista zajec
+          <Box>{/* <Table headers={[]} data={[]} /> */}</Box>
+          <Box mt={2} justifyContent="center" maxHeight={500} overflow="auto" width="100%">
+            <Scheduler name="test" />
             {/* <Calendar className={classes.test} locale="pl-PL" value={calendarValue} onChange={onCalendarValueChange} /> */}
           </Box>
 
