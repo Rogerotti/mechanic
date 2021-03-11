@@ -1,3 +1,4 @@
+import { ISchedulerProps } from '@core-components/scheduler/scheduler.types';
 import { ICommentsSectionProps } from '../../composition/comments-section/comments-section.types';
 
 export interface ITrainerPageProps {
@@ -5,4 +6,5 @@ export interface ITrainerPageProps {
   description: string;
   image: string;
   comments: ICommentsSectionProps['comments'];
+  events: ISchedulerProps['events'];
 }

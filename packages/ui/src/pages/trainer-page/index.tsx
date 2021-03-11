@@ -17,7 +17,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 
-export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description, comments }) => {
+export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description, comments, events }) => {
   const classes = useStyles();
   // const [calendarValue, onCalendarValueChange] = useState(new Date());
 
@@ -43,7 +43,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
         <div className={classes.column2}>
           <Box>{/* <Table headers={[]} data={[]} /> */}</Box>
           <Box mt={2} justifyContent="center" maxHeight={500} overflow="auto" width="100%">
-            <Scheduler name="test" />
+            <Scheduler startHour={10} endHour={22} events={events} />
             {/* <Calendar className={classes.test} locale="pl-PL" value={calendarValue} onChange={onCalendarValueChange} /> */}
           </Box>
 

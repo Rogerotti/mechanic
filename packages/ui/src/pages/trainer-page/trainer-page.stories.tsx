@@ -7,6 +7,7 @@ import { TrainerPage } from '.';
 import { LayoutForStories } from '../../storybook/layout';
 import { ITrainerPageProps } from './trainer-page.types';
 import { comments } from '../../storybook/data/comments';
+import { events } from '../../storybook/data/scheduler';
 
 export default {
   title: 'Pages/Trainer Page',
@@ -48,6 +49,7 @@ Aktualnie istnieje wiele chorób w których dieta może w zdecydowanym stopniu p
 
   image: logoImage,
   comments: comments,
+  events: events,
 };
 
 // Dodatkowo indywidualnie dobrany jadłospis może pomóc Ci zyskać więcej energii w ciągu dnia, poprawić sen, oraz codzienne funkcjonowanie. Dzięki licznym szkoleniom, które odbyłem będę w stanie pomóc Ci z różnego rodzaju problemami.

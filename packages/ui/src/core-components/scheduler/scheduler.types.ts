@@ -1,3 +1,5 @@
+import { BoxProps } from '@material-ui/core';
+
 export interface IEvent {
   starDate: Date;
   endDate: Date;
@@ -13,4 +15,7 @@ export interface ISchedulerProps {
   /** Will support only daily events without going to the next day */
   /** Will support only 1 event in hour */
   events: IEvent[];
+
+  bgcolor?: BoxProps['bgcolor'];
+  onEventClick?: (event: IEvent) => void;
 }
