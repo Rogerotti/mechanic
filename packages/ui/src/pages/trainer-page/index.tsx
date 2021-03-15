@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 // import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -9,6 +9,7 @@ import { useStyles } from './trainer-page.styles';
 import { Typography } from '@material-ui/core';
 import { Rating } from '@core-components/rating';
 import { Table } from '@core-components/table';
+import { Modal } from '@core-components/modal';
 import { CommentsSection } from '../../composition/comments-section';
 import { HeroImage } from '../../composition/hero-image';
 import { Scheduler } from '../../core-components/scheduler';
@@ -16,10 +17,22 @@ import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import EmailIcon from '@material-ui/icons/Email';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import { IEvent } from '@core-components/scheduler/scheduler.types';
 
 export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description, comments, events }) => {
   const classes = useStyles();
   // const [calendarValue, onCalendarValueChange] = useState(new Date());
+  const [open, setOpen] = useState(false);
+  const [currentEvent, setCurrentEvent] = useState<IEvent>(null);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const onEventClick = (event: IEvent) => {
+    setOpen(true);
+    setCurrentEvent(event);
+  };
 
   return (
     <Box bgcolor="primary.main" width="100%" height="100%">
@@ -43,7 +56,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
         <div className={classes.column2}>
           <Box>{/* <Table headers={[]} data={[]} /> */}</Box>
           <Box mt={2} justifyContent="center" maxHeight={500} overflow="auto" width="100%">
-            <Scheduler startHour={10} endHour={22} events={events} />
+            <Scheduler startHour={10} endHour={22} events={events} onEventClick={onEventClick} />
             {/* <Calendar className={classes.test} locale="pl-PL" value={calendarValue} onChange={onCalendarValueChange} /> */}
           </Box>
 
@@ -93,7 +106,11 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
           </Box>
         </div>
       </Box>
-      ;
+      <Modal title={currentEvent?.description} open={open} onClose={handleClose}>
+        <Box height={300} width={400}>
+          {currentEvent?.description}
+        </Box>
+      </Modal>
     </Box>
   );
 };
