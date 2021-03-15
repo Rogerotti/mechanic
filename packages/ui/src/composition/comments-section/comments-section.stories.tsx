@@ -3,7 +3,7 @@ import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Box } from '@material-ui/core';
 import { CommentsSection } from '.';
-import { comments } from '../../storybook/data/comments';
+import { comments, rating } from '../../storybook/data/comments';
 
 export default {
   title: 'Composition/Comments section',
@@ -23,4 +23,7 @@ export const Basic: { args: ComponentProps<typeof CommentsSection> } = Template.
 
 Basic.args = {
   comments: comments,
+  diagram: {
+    ...rating,
+  },
 };

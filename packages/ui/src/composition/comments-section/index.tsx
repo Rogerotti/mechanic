@@ -1,19 +1,17 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-
-import { useStyles } from './comments-section.styles';
+import { StarDiagram } from '../../composition/star-diagram';
 import { ICommentsSectionProps } from './comments-section.types';
 import RatingCard from '@core-components/rating-card';
 
-export const CommentsSection: React.FC<ICommentsSectionProps> = ({ comments }) => {
-  const classes = useStyles();
-
+export const CommentsSection: React.FC<ICommentsSectionProps> = ({ comments, diagram }) => {
   return (
-    <Box>
+    <>
+      <StarDiagram {...diagram} />
       {comments.map((comment) => {
         return <RatingCard key={comment.id} {...comment} />;
       })}
-    </Box>
+    </>
   );
 };
 

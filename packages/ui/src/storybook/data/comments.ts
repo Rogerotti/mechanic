@@ -2,6 +2,7 @@ import user1Logo from '@assets/trener1.png';
 import user2Logo from '@assets/users/user-logo.png';
 import user3Logo from '@assets/users/roger.jpg';
 import { ICommentsSectionProps } from '../../composition/comments-section/comments-section.types';
+import { IStarDiagrams } from '../../composition/star-diagram/star-diagram.types';
 
 export const comments: ICommentsSectionProps['comments'] = [
   {
@@ -32,3 +33,12 @@ export const comments: ICommentsSectionProps['comments'] = [
     rating: 3.5,
   },
 ];
+
+export const rating: IStarDiagrams = {
+  rating: 4.1,
+  fiveStarPercentage: 60,
+  fourStarPercentage: 20,
+  threeStarPercentage: 10,
+  twoStarPercentage: 8,
+  oneStarPercentage: 2,
+};
