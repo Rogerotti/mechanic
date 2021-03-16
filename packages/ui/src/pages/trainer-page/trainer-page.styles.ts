@@ -3,13 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles(({ spacing, palette }) => ({
   column1: {
     float: 'left',
-    width: '25%',
+    width: '20%',
     padding: '10px',
     height: '100%',
   },
   column2: {
     float: 'left',
-    width: '50%',
+    width: '60%',
     padding: '10px',
     height: '100%',
   },

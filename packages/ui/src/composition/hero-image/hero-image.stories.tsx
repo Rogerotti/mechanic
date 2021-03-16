@@ -3,6 +3,8 @@ import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Box } from '@material-ui/core';
 import { HeroImage } from '.';
+import testImage from '@assets/test2.jpg';
+import { heroData } from '../../storybook/data/hero';
 
 export default {
   title: 'Composition/Hero image',
@@ -21,6 +23,5 @@ const Template: Story<ComponentProps<typeof HeroImage>> = ({ ...args }) => {
 export const Basic: { args: ComponentProps<typeof HeroImage> } = Template.bind({});
 
 Basic.args = {
-  title: 'Hej Witaj na mojej stronie',
-  subtitle: 'Zapoznaj się z',
+  ...heroData,
 };

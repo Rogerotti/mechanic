@@ -1,7 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { Story } from '@storybook/react/types-6-0';
 import { withKnobs } from '@storybook/addon-knobs';
-import background from '@assets/searchBackground.jpg';
 
 import { ExtendedSearch } from '.';
 import { cities, categories } from '../../storybook/data/searching';

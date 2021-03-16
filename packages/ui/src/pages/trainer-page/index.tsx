@@ -19,7 +19,14 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { IEvent } from '@core-components/scheduler/scheduler.types';
 
-export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description, commentsSection, events }) => {
+export const TrainerPage: React.FC<ITrainerPageProps> = ({
+  hero,
+  image,
+  title,
+  description,
+  commentsSection,
+  events,
+}) => {
   const classes = useStyles();
   // const [calendarValue, onCalendarValueChange] = useState(new Date());
   const [open, setOpen] = useState(false);
@@ -38,7 +45,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
   return (
     <Box bgcolor="primary.main" width="100%" height="100%">
       <Box height={150}>
-        <HeroImage title="Iwan Stonoga" />
+        <HeroImage {...hero} />
       </Box>
       <Box display="table" width="100%" height="100%">
         <div className={classes.column1}>
@@ -69,11 +76,21 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
         </div>
         <div className={classes.column1}>
           <Box>
-            <Rating value={3.5} precision={0.5} size="small" readOnly={true} numberOfRatings={110} />
-            <Button text="Zarezerwuj" variant="contained" color="secondary" />
+            {/* <Rating value={3.5} precision={0.5} size="small" readOnly={true} numberOfRatings={110} /> */}
+            <Button
+              style={{
+                width: '100%',
+                fontSize: 16,
+                borderRadius: 10,
+                height: 50,
+              }}
+              text="Zarezerwuj"
+              variant="contained"
+              color="secondary"
+            />
           </Box>
 
-          <Box mt={2} bgcolor="primary.dark" borderRadius={10} p={1} boxShadow={20}>
+          <Box mt={2} bgcolor="primary.light" borderRadius={10} p={1} boxShadow={20}>
             <Box display="flex">
               <PhoneIphoneIcon />
               <Box ml={2}>
@@ -94,7 +111,24 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
             </Box>
           </Box>
 
-          <Box mt={2} height="350px" bgcolor="purple">
+          <Box mt={2} height="350px" bgcolor="primary.light" borderRadius={15}>
+            <Box p={2}>
+              <Typography
+                style={{
+                  fontSize: 22,
+                }}
+              >
+                ul. Na Zakolu Wisły 12b/6
+              </Typography>
+              <Typography
+                style={{
+                  fontSize: 12,
+                }}
+              >
+                25 km od ciebie
+              </Typography>
+            </Box>
+
             <GoogleMapReact
               defaultCenter={{
                 lat: 50.06,

@@ -8,6 +8,7 @@ import { LayoutForStories } from '../../storybook/layout';
 import { ITrainerPageProps } from './trainer-page.types';
 import { events } from '../../storybook/data/scheduler';
 import { commentsSectionData } from '../../storybook/data/sections/commentsSection';
+import { heroData } from '../../storybook/data/hero';
 
 export default {
   title: 'Pages/Trainer Page',
@@ -27,6 +28,11 @@ export const Basic: { args: ITrainerPageProps } = Template.bind({});
 
 Basic.args = {
   commentsSection: commentsSectionData,
+  hero: {
+    ...heroData,
+    title: 'Iwan Stonoga',
+    subtitle: 'Trener personalny',
+  },
   title: 'Iwan Stonoga',
   description: `
   Cześć nazywam się Marcin Michalski, jestem dietetykiem i trenerem personalnym.
