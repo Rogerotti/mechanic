@@ -31,7 +31,7 @@ export const StarDiagram: React.FC<IStarDiagrams> = ({
 
   return (
     <Box>
-      <Box p={3} display="flex">
+      <Box p={1} display="flex">
         <Box display="flex" alignItems="center">
           {rating && <Typography className={classes.font}>{rating.toFixed(1)}</Typography>}
         </Box>

@@ -19,10 +19,11 @@ import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { IEvent } from '@core-components/scheduler/scheduler.types';
 
-export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description, comments, events }) => {
+export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, description, commentsSection, events }) => {
   const classes = useStyles();
   // const [calendarValue, onCalendarValueChange] = useState(new Date());
   const [open, setOpen] = useState(false);
+
   const [currentEvent, setCurrentEvent] = useState<IEvent>(null);
 
   const handleClose = () => {
@@ -62,7 +63,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({ image, title, descrip
 
           <Box className={classes.comments} mt={2} borderColor="primary.light" border="1px solid">
             <Box bgcolor="primary.main">
-              <CommentsSection comments={comments} />
+              <CommentsSection {...commentsSection} />
             </Box>
           </Box>
         </div>

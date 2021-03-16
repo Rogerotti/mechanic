@@ -6,8 +6,8 @@ import logoImage from '@assets/trener1.png';
 import { TrainerPage } from '.';
 import { LayoutForStories } from '../../storybook/layout';
 import { ITrainerPageProps } from './trainer-page.types';
-import { comments } from '../../storybook/data/comments';
 import { events } from '../../storybook/data/scheduler';
+import { commentsSectionData } from '../../storybook/data/sections/commentsSection';
 
 export default {
   title: 'Pages/Trainer Page',
@@ -26,6 +26,7 @@ const Template: Story<ComponentProps<typeof TrainerPage>> = ({ ...args }) => {
 export const Basic: { args: ITrainerPageProps } = Template.bind({});
 
 Basic.args = {
+  commentsSection: commentsSectionData,
   title: 'Iwan Stonoga',
   description: `
   Cześć nazywam się Marcin Michalski, jestem dietetykiem i trenerem personalnym.
@@ -48,7 +49,6 @@ Aktualnie istnieje wiele chorób w których dieta może w zdecydowanym stopniu p
    `,
 
   image: logoImage,
-  comments: comments,
   events: events,
 };
 

@@ -32,6 +32,38 @@ export const comments: ICommentsSectionProps['comments'] = [
     image: user3Logo,
     rating: 3.5,
   },
+  {
+    id: 'third',
+    header: 'Jacek Woźniak',
+    description: 'Lorem Ipsum is not simply random text. We re doomed from 45 BC, making it over 2000 years old.',
+    date: new Date(2021, 3, 22),
+    image: user3Logo,
+    rating: 3.5,
+  },
+  {
+    id: 'fourth',
+    header: 'EE BEE',
+    description: 'Lorem Ipsum is not simply random text. We re doomed from 45 BC, making it over 2000 years old.',
+    date: new Date(2021, 3, 22),
+    image: user3Logo,
+    rating: 3.1,
+  },
+  {
+    id: 'fifth',
+    header: 'AA CC',
+    description: 'Lorem Ipsum is not simply random text. We re doomed from 45 BC, making it over 2000 years old.',
+    date: new Date(2021, 3, 22),
+    image: user3Logo,
+    rating: 1.0,
+  },
+  {
+    id: 'six',
+    header: 'Ao Eo',
+    description: 'Lorem Ipsum is not simply random text. We re doomed from 45 BC, making it over 2000 years old.',
+    date: new Date(2021, 3, 22),
+    image: user3Logo,
+    rating: 1.0,
+  },
 ];
 
 export const rating: IStarDiagrams = {

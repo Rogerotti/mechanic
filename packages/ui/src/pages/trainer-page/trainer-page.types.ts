@@ -5,6 +5,6 @@ export interface ITrainerPageProps {
   title: string;
   description: string;
   image: string;
-  comments: ICommentsSectionProps['comments'];
+  commentsSection: ICommentsSectionProps;
   events: ISchedulerProps['events'];
 }

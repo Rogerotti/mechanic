@@ -23,7 +23,7 @@ export const RatingCard: React.FC<IRatingCardProps> = ({ image, header, descript
         </Box>
       </Box>
 
-      <Box pt={3}>
+      <Box pt={1}>
         <Typography className={classes.description}>{description}</Typography>
       </Box>
     </Box>
