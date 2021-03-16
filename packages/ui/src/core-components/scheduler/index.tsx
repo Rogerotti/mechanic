@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import clsx from 'clsx';
 import Box from '@material-ui/core/Box';
 import { Typography } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -140,7 +140,7 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
                       >
                         {currentHourEvent && (
                           <Box
-                            className={classes.cursor}
+                            className={clsx(classes.cursor, classes.event)}
                             display="flex"
                             alignItems="center"
                             justifyContent="center"

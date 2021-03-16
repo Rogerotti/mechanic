@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import GoogleMapReact from 'google-map-react';
-// import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Box from '@material-ui/core/Box';
 import { Button } from '@core-components/button';
 import { ITrainerPageProps } from './trainer-page.types';
 import { useStyles } from './trainer-page.styles';
 import { Typography } from '@material-ui/core';
-import { Rating } from '@core-components/rating';
+import { Map } from '@core-components/map';
 import { Table } from '@core-components/table';
 import { Modal } from '@core-components/modal';
 import { CommentsSection } from '../../composition/comments-section';
@@ -16,7 +14,6 @@ import { Scheduler } from '../../core-components/scheduler';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import EmailIcon from '@material-ui/icons/Email';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { IEvent } from '@core-components/scheduler/scheduler.types';
 
 export const TrainerPage: React.FC<ITrainerPageProps> = ({
@@ -28,7 +25,6 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
   events,
 }) => {
   const classes = useStyles();
-  // const [calendarValue, onCalendarValueChange] = useState(new Date());
   const [open, setOpen] = useState(false);
 
   const [currentEvent, setCurrentEvent] = useState<IEvent>(null);
@@ -44,7 +40,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
 
   return (
     <Box bgcolor="primary.main" width="100%" height="100%">
-      <Box height={150}>
+      <Box height={250}>
         <HeroImage {...hero} />
       </Box>
       <Box display="table" width="100%" height="100%">
@@ -62,13 +58,23 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
           </Box>
         </div>
         <div className={classes.column2}>
-          <Box>{/* <Table headers={[]} data={[]} /> */}</Box>
-          <Box mt={2} justifyContent="center" maxHeight={500} overflow="auto" width="100%">
+          {/* <Box borderRadius={10} border="1px solid" padding={1}>
+            <Table headers={[]} data={[]} />
+          </Box> */}
+          <Box
+            mt={2}
+            justifyContent="center"
+            maxHeight={500}
+            overflow="auto"
+            width="100%"
+            borderRadius={10}
+            border="1px solid"
+            padding={1}
+          >
             <Scheduler startHour={10} endHour={22} events={events} onEventClick={onEventClick} />
-            {/* <Calendar className={classes.test} locale="pl-PL" value={calendarValue} onChange={onCalendarValueChange} /> */}
           </Box>
 
-          <Box className={classes.comments} mt={2} borderColor="primary.light" border="1px solid">
+          <Box mt={2} border="1px solid" borderColor="white" borderRadius={10} overflow="hidden">
             <Box bgcolor="primary.main">
               <CommentsSection {...commentsSection} />
             </Box>
@@ -90,20 +96,20 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
             />
           </Box>
 
-          <Box mt={2} bgcolor="primary.light" borderRadius={10} p={1} boxShadow={20}>
-            <Box display="flex">
+          <Box mt={2} bgcolor="primary.main" borderRadius={10} p={1} border="1px solid" borderColor="white">
+            <Box display="flex" p={1}>
               <PhoneIphoneIcon />
               <Box ml={2}>
                 <Typography>+48 886 585 135</Typography>
               </Box>
             </Box>
-            <Box display="flex">
+            <Box display="flex" p={1}>
               <EmailIcon />
               <Box ml={2}>
                 <Typography>roger.skrzypczyk@gmail.com</Typography>
               </Box>
             </Box>
-            <Box display="flex">
+            <Box display="flex" p={1}>
               <CalendarTodayIcon />
               <Box ml={2}>
                 <Typography>Styczeń 2021</Typography>
@@ -111,7 +117,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
             </Box>
           </Box>
 
-          <Box mt={2} height="350px" bgcolor="primary.light" borderRadius={15}>
+          <Box mt={2} p={1} bgcolor="primary.main" borderRadius={10} border="1px solid" borderColor="white">
             <Box p={2}>
               <Typography
                 style={{
@@ -123,21 +129,23 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
               <Typography
                 style={{
                   fontSize: 12,
+                  textAlign: 'center',
                 }}
               >
                 25 km od ciebie
               </Typography>
             </Box>
 
-            <GoogleMapReact
-              defaultCenter={{
-                lat: 50.06,
-                lng: 19.93,
-              }}
-              defaultZoom={15}
-            >
-              <LocationOnIcon style={{ color: 'red' }} />
-            </GoogleMapReact>
+            <Box height="300px" borderRadius={10}>
+              <Map
+                className={classes.map}
+                position={{
+                  x: 50.05304455463954,
+                  y: 19.984250240851726,
+                }}
+                zoom={15}
+              />
+            </Box>
           </Box>
         </div>
       </Box>

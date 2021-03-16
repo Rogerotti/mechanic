@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles(({ palette }) => ({
   cursor: {
     cursor: 'pointer',
     fontSize: 30,
@@ -19,5 +19,10 @@ export const useStyles = makeStyles(() => ({
     minWidth: 15,
     alignItems: 'end',
     marginBottom: '-10px',
+  },
+  event: {
+    '&&:hover': {
+      border: `1px solid ${palette.secondary.main}`,
+    },
   },
 }));

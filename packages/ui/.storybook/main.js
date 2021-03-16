@@ -10,14 +10,15 @@ module.exports = {
         allowSyntheticDefaultImports: false,
         esModuleInterop: false,
       },
-    }
+    },
   },
   webpackFinal: async (config, { configType }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@assets": path.resolve(__dirname, "../public/"),
-      "@core-components": path.resolve(__dirname, "../src/core-components/"),
+      '@assets': path.resolve(__dirname, '../public/'),
+      '@core-components': path.resolve(__dirname, '../src/core-components/'),
     };
+
     return config;
   },
 };
