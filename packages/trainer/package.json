@@ -68,6 +68,7 @@
     "prettier": "^2.0.5",
     "regenerator-runtime": "^0.13.5",
     "source-map-loader": "^2.0.0",
+    "circular-dependency-plugin": "^5.2.2",
     "ts-loader": "^8.0.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3",
