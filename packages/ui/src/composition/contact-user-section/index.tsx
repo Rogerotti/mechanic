@@ -31,7 +31,13 @@ export const ContactUserSection: React.FC<IContactUserSectionProps> = ({
           )}
         </Box>
       </Box>
-      <Box display="flex" p={1}>
+      <Box
+        display="flex"
+        p={1}
+        style={{
+          wordBreak: 'break-word',
+        }}
+      >
         <EmailIcon />
         <Box ml={2}>
           {showEmail ? (
@@ -44,7 +50,7 @@ export const ContactUserSection: React.FC<IContactUserSectionProps> = ({
       <Box display="flex" p={1}>
         <CalendarTodayIcon />
         <Box ml={2}>
-          <Typography>{accountCreationDate.toLocaleString()}</Typography>
+          <Typography>{accountCreationDate.toLocaleString('pl', { year: 'numeric', month: 'long' })}</Typography>
         </Box>
       </Box>
     </>

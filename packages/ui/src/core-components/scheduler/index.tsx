@@ -53,7 +53,7 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
 
   return (
     <Box
-      minWidth={600}
+      // minWidth={600}
       bgcolor={bgcolor}
       style={{
         borderTopLeftRadius: 5,

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles(({ spacing, palette }) => ({
+export const useStyles = makeStyles(({ breakpoints }) => ({
   column1: {
     float: 'left',
     width: '20%',
@@ -17,15 +17,24 @@ export const useStyles = makeStyles(({ spacing, palette }) => ({
     height: '100%',
   },
   image: {
+    top: -25,
     height: 150,
     borderRadius: 90,
     position: 'relative',
-    top: -75,
+
     justifySelf: 'center',
+    [breakpoints.up('sm')]: {
+      top: -75,
+    },
   },
   title: {
     fontWeight: 'bold',
-    marginTop: -35,
+    marginTop: 10,
+    textAlign: 'center',
+
+    [breakpoints.up('sm')]: {
+      marginTop: -35,
+    },
   },
   description: {
     lineHeight: 2,

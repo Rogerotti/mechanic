@@ -1,17 +1,21 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStyles = makeStyles(({ palette }) => ({
+export const useStyles = makeStyles(({ palette, breakpoints }) => ({
   cursor: {
     cursor: 'pointer',
     fontSize: 30,
   },
   eventLabel: {
-    fontSize: 12,
+    wordBreak: 'break-all',
+    fontSize: 10,
     height: '100%',
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
+    [breakpoints.up('sm')]: {
+      fontSize: 12,
+    },
   },
   hourLabel: {
     fontSize: 12,

@@ -5,7 +5,6 @@ import { Button } from '@core-components/button';
 import { ITrainerPageProps } from './trainer-page.types';
 import { useStyles } from './trainer-page.styles';
 import { Theme, Typography } from '@material-ui/core';
-import { Map } from '@core-components/map';
 import { Table } from '@core-components/table';
 import { Modal } from '@core-components/modal';
 import { CommentsSection } from '../../composition/comments-section';
@@ -14,6 +13,7 @@ import { Scheduler } from '../../core-components/scheduler';
 
 import { IEvent } from '@core-components/scheduler/scheduler.types';
 import { ContactUserSection } from '../../composition/contact-user-section';
+import { MapSection } from '../../composition/map-section';
 
 export const TrainerPage: React.FC<ITrainerPageProps> = ({
   hero,
@@ -21,6 +21,8 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
   title,
   description,
   commentsSection,
+  userContactSection,
+  mapSection,
   events,
 }) => {
   const classes = useStyles();
@@ -38,7 +40,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
     setCurrentEvent(event);
   };
 
-  const Panel1 = () => (
+  const TrainerDescriptionPanel = () => (
     <>
       <Box display="flex" justifyContent="center">
         <Box display="grid">
@@ -54,7 +56,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
     </>
   );
 
-  const Panel2 = () => (
+  const ContentPanel = () => (
     <>
       {/* <Box borderRadius={10} border="1px solid" padding={1}>
             <Table headers={[]} data={[]} />
@@ -80,7 +82,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
     </>
   );
 
-  const Panel3 = () => (
+  const ContactPanel = () => (
     <>
       <Box>
         <Button
@@ -97,45 +99,10 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
       </Box>
 
       <Box mt={2} bgcolor="primary.main" borderRadius={10} p={1} border="1px solid" borderColor="white">
-        <ContactUserSection
-          phoneNumber="+48 886 585 135"
-          email="roger.skrzypczyk@gmail.com"
-          showEmailText="Wyświetl e-mail"
-          showPhoneNumberText="Wyświetl numer"
-          accountCreationDate={new Date()}
-        />
+        <ContactUserSection {...userContactSection} />
       </Box>
 
-      <Box mt={2} p={1} bgcolor="primary.main" borderRadius={10} border="1px solid" borderColor="white">
-        <Box p={2}>
-          <Typography
-            style={{
-              fontSize: 22,
-            }}
-          >
-            ul. Na Zakolu Wisły 12b/6
-          </Typography>
-          <Typography
-            style={{
-              fontSize: 12,
-              textAlign: 'center',
-            }}
-          >
-            25 km od ciebie
-          </Typography>
-        </Box>
-
-        <Box height="300px" borderRadius={10}>
-          <Map
-            className={classes.map}
-            position={{
-              x: 50.05304455463954,
-              y: 19.984250240851726,
-            }}
-            zoom={15}
-          />
-        </Box>
-      </Box>
+      <MapSection {...mapSection} />
     </>
   );
 
@@ -147,13 +114,14 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
       <Box display="table" width="100%" height="100%">
         {isDesktop ? (
           <>
-            <div className={classes.column1}>{Panel1()}</div>
-            <div className={classes.column2}>{Panel2()}</div>
-            <div className={classes.column1}>{Panel3()}</div>
+            <div className={classes.column1}>{TrainerDescriptionPanel()}</div>
+            <div className={classes.column2}>{ContentPanel()}</div>
+            <div className={classes.column1}>{ContactPanel()}</div>
           </>
         ) : (
           <Box padding={0.5}>
-            {Panel1()} {Panel3()} {Panel2()}
+            <Box>{TrainerDescriptionPanel()}</Box>
+            {ContactPanel()} {ContentPanel()}
           </Box>
         )}
       </Box>
