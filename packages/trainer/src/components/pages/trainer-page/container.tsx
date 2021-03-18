@@ -16,33 +16,17 @@ export const TrainerPageContainer: React.FC = () => {
     dispatch(searchTrainer(id));
   }, [id]);
 
-  // const trainer = useSelector(getTrainer);
-  //joinDate
-  // email: trainer.email,
-  // phoneNumber: trainer.phoneNumber,
-  //      title={trainer.header}
-  //       title: trainer.header,
+  const trainer = useSelector(getTrainer);
+
+  if (!trainer) {
+    return null;
+  }
+
   const onBookClick = () => {
     console.log('clicked');
   };
 
   const events: ITrainerPageProps['events'] = [];
-
-  const trainer = {
-    header: 'Roger Skrzypczyk',
-    description: 'EEEEEEEEEeebebebe',
-    image: '',
-    phoneNumber: '+48 886585135',
-    email: 'roger.skrzypczyk@gmail.com',
-    joinDate: new Date(),
-    location: {
-      position: {
-        x: 50.05304455463954,
-        y: 19.984250240851726,
-      },
-      street: 'Na Zakolu Wisły',
-    },
-  };
 
   const currentUserPosition = {
     x: 50.05304485463954,
@@ -52,9 +36,9 @@ export const TrainerPageContainer: React.FC = () => {
   const distance = '25km od ciebie'; // todo `${getDistance(trainer.location.position, currentUserPosition)}km Od`;
 
   const userContactSection = {
-    accountCreationDate: trainer.joinDate,
-    email: trainer.email,
-    phoneNumber: trainer.phoneNumber,
+    accountCreationDate: trainer?.creationDate,
+    email: trainer?.contactDetails?.email,
+    phoneNumber: trainer?.contactDetails?.phoneNumber,
     showEmailText: 'Pokaż email',
     showPhoneNumberText: 'Pokaż numer telefonu',
   };
@@ -151,7 +135,7 @@ export const TrainerPageContainer: React.FC = () => {
         image={trainer.image}
         onBookClick={onBookClick}
         description={trainer.description}
-        title={trainer.header}
+        title={trainer.banner?.header}
         userContactSection={userContactSection}
         mapSection={{
           distance: distance,
@@ -160,8 +144,8 @@ export const TrainerPageContainer: React.FC = () => {
           zoom: 15,
         }}
         hero={{
-          title: trainer.header,
-          image: null,
+          title: trainer.banner?.header,
+          image: trainer.banner?.image,
         }}
       />
     </Layout>

@@ -36,4 +36,14 @@ export interface ITrainerExtendedDTO {
   description: string;
   image?: string;
   location: ILocation;
+  creationDate: Date;
+  contactDetails: {
+    phoneNumber?: string;
+    email?: string;
+  };
+  banner?: {
+    header?: string;
+    image?: string;
+    subHeader?: string;
+  };
 }
