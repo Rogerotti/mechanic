@@ -11,6 +11,7 @@ import theme from '@ui/theme/primary';
 
 import Error from './components/core/error';
 import HomePageContainer from './components/pages/home-page/container';
+import TrainerPageContainer from './components/pages/trainer-page/container';
 import LoginPageContainer from './components/pages/login-page/container';
 import RegisterPageContainer from './components/pages/register-page/container';
 import SagaNavigation from './components/core/navigation';
@@ -35,6 +36,9 @@ const Index = () => {
               <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
                 <TrainersPageContainer />
               </ErrorBoundary>
+            </Route>
+            <Route exact path="/roger">
+              <TrainerPageContainer />
             </Route>
 
             <Route exact path="/login">

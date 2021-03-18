@@ -2,11 +2,12 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import Roboto from '@assets/fonts/Roboto-Regular.ttf';
 import grey from '@material-ui/core/colors/grey';
 import red from '@material-ui/core/colors/red';
+import { BaseCSSProperties } from '@material-ui/styles';
 
 const orangeMain = '#ff8c00';
 const white = '#ffffff';
 
-const roboto = {
+const roboto: BaseCSSProperties['@font-face'] = {
   fontFamily: 'Roboto',
   fontStyle: 'normal',
   fontDisplay: 'swap',

@@ -6,17 +6,30 @@ import {
   SEARCH_TRAINERS_SUCCESS,
   SET_CITY,
   SET_CATEGORIES,
+  SEARCH_TRAINER_REQUEST,
+  SEARCH_TRAINER_SUCCESS,
 } from '@redux/types/search';
 
 const initialState: SearchTrainersReducerState = {
   city: null,
   categories: [],
   trainers: [],
+  trainer: null,
   redirect: false,
 };
 
 export function searchReducer(state = initialState, action: SearchActionTypes): SearchTrainersReducerState {
   switch (action.type) {
+    case SEARCH_TRAINER_REQUEST:
+      return {
+        ...state,
+        trainer: null,
+      };
+    case SEARCH_TRAINER_SUCCESS:
+      return {
+        ...state,
+        trainer: action.payload.trainer,
+      };
     case SEARCH_TRAINERS_REQUEST:
       return {
         ...state,

@@ -4,6 +4,15 @@ import { AuthenticationReducerState } from '@redux/types/authentication';
 import { NavigationReducerState } from '@redux/types/navigation';
 import { IStoreTypes } from '@redux/types/store';
 
+export const getTrainer = createSelector<
+  IStoreTypes,
+  SearchTrainersReducerState,
+  SearchTrainersReducerState['trainer']
+>(
+  (state) => state.searchReducer,
+  (searchReducer) => searchReducer.trainer,
+);
+
 export const getTrainers = createSelector<
   IStoreTypes,
   SearchTrainersReducerState,
