@@ -37,6 +37,7 @@ Basic.args = {
     title: 'Iwan Stonoga',
     subtitle: 'Trener personalny',
   },
+  bookText: 'Zarezerwuj',
   title: 'Iwan Stonoga',
   description: `
   Cześć nazywam się Marcin Michalski, jestem dietetykiem i trenerem personalnym.

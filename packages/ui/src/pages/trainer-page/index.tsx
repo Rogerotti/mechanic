@@ -22,6 +22,8 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
   description,
   commentsSection,
   userContactSection,
+  bookText,
+  onBookClick,
   mapSection,
   events,
 }) => {
@@ -58,9 +60,6 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
 
   const ContentPanel = () => (
     <>
-      {/* <Box borderRadius={10} border="1px solid" padding={1}>
-            <Table headers={[]} data={[]} />
-          </Box> */}
       <Box
         mt={2}
         justifyContent="center"
@@ -72,6 +71,10 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
         padding={1}
       >
         <Scheduler startHour={10} endHour={22} events={events} onEventClick={onEventClick} />
+      </Box>
+
+      <Box mt={2} borderRadius={10} border="1px solid" padding={1}>
+        <Table headers={[]} data={[]} />
       </Box>
 
       <Box mt={2} border="1px solid" borderColor="white" borderRadius={10} overflow="hidden">
@@ -92,7 +95,8 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
             borderRadius: 10,
             height: 50,
           }}
-          text="Zarezerwuj"
+          text={bookText}
+          onClick={onBookClick}
           variant="contained"
           color="secondary"
         />

@@ -30,13 +30,13 @@ const StyledTableRow = withStyles((theme: Theme) =>
       backgroundColor: theme.palette.primary.light,
 
       '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor: theme.palette.primary.main,
       },
     },
   }),
 )(TableRow);
 
-function createData(name: string, calories: number, fat: number) {
+function createData(name: string, calories: string | number, fat: number) {
   return { name, calories, fat };
 }
 
@@ -49,7 +49,7 @@ const rows = [
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 700,
+    // minWidth: 700,
   },
 });
 

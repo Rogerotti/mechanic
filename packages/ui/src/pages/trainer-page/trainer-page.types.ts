@@ -8,6 +8,8 @@ export interface ITrainerPageProps {
   title: string;
   description: string;
   image: string;
+  bookText: string;
+  onBookClick?: () => void;
   commentsSection: ICommentsSectionProps;
   mapSection: IMapSectionsProps;
   userContactSection: IContactUserSectionProps;
