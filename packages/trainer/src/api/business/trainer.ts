@@ -2,6 +2,7 @@ import axios from 'axios';
 import image1 from '@assets/trainers/roger.jpg';
 import { IEventDTO, ITrainerExtendedDTO } from '../../interfaces';
 import { ICommentDTO } from '@redux/types/search';
+import userBannerHeader from '@assets/trainerBackground.jpg';
 
 export const fetchTrainer = async (id: string): Promise<ITrainerExtendedDTO> => {
   const url = `www.test.com/${id}`; // TODO
@@ -37,7 +38,7 @@ export const fetchTrainer = async (id: string): Promise<ITrainerExtendedDTO> => 
         banner: {
           header: 'Roger Skrzypczyk',
           subHeader: 'informatyk xD',
-          image: null,
+          image: userBannerHeader,
         },
         rating: {
           value: 3.2,
