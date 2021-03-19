@@ -4,6 +4,23 @@ import { AuthenticationReducerState } from '@redux/types/authentication';
 import { NavigationReducerState } from '@redux/types/navigation';
 import { IStoreTypes } from '@redux/types/store';
 
+export const getTrainerEvents = createSelector<
+  IStoreTypes,
+  SearchTrainersReducerState,
+  SearchTrainersReducerState['searchEvents']['events']
+>(
+  (state) => state.searchReducer,
+  (searchReducer) => {
+    return searchReducer?.trainer?.id === searchReducer.searchEvents?.trainerId
+      ? searchReducer.searchEvents?.events.map((x) => ({
+          starDate: new Date(x.starDate),
+          endDate: new Date(x.endDate),
+          description: x.description,
+        }))
+      : [];
+  },
+);
+
 export const getTrainer = createSelector<
   IStoreTypes,
   SearchTrainersReducerState,

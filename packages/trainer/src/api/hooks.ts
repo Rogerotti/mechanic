@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchAllCities } from './region';
 import { ICategory, ICity } from '../interfaces';
-import { fetchAllCategories } from './buisness';
+import { fetchAllCategories } from './business';
 
 function fetchArrayModel<T>(fetchFunction: () => Promise<T[]>): T[] {
   const [data, setData] = useState<T[]>([]);

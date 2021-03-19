@@ -24,6 +24,7 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
   userContactSection,
   bookText,
   onBookClick,
+  onEventSchedulerDateChange,
   mapSection,
   events,
 }) => {
@@ -70,7 +71,13 @@ export const TrainerPage: React.FC<ITrainerPageProps> = ({
         border="1px solid"
         padding={1}
       >
-        <Scheduler startHour={10} endHour={22} events={events} onEventClick={onEventClick} />
+        <Scheduler
+          startHour={10}
+          endHour={22}
+          events={events}
+          onEventClick={onEventClick}
+          onCurrentDateChange={onEventSchedulerDateChange}
+        />
       </Box>
 
       <Box mt={2} borderRadius={10} border="1px solid" padding={1}>

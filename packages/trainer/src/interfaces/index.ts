@@ -29,6 +29,12 @@ export interface ITrainerBasicDTO {
   rating: number;
 }
 
+export interface IEventDTO {
+  starDate: Date;
+  endDate: Date;
+  description: string;
+}
+
 export interface ITrainerExtendedDTO {
   id: string;
   name: string;

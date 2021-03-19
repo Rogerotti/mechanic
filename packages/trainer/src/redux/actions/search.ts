@@ -15,9 +15,42 @@ import {
   SEARCH_TRAINER_SUCCESS,
   SEARCH_TRAINER_FAILURE,
   SearchTrainerFailureAction,
+  SearchTrainerEventsRequestAction,
+  SEARCH_TRAINER_EVENTS_REQUEST,
+  ISearchEvents,
+  SEARCH_TRAINER_EVENTS_SUCCESS,
+  SearchTrainerEventsSuccessAction,
+  SearchTrainerEventsFailureAction,
+  SEARCH_TRAINER_EVENTS_FAILURE,
 } from '@redux/types/search';
 import { IListItem } from '@ui/types/core';
 import { ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces';
+
+export function searchTrainerEvents(id: string, startDate: Date, endDate: Date): SearchTrainerEventsRequestAction {
+  return {
+    type: SEARCH_TRAINER_EVENTS_REQUEST,
+    payload: {
+      id,
+      startDate,
+      endDate,
+    },
+  };
+}
+
+export function searchTrainerEventsSuccess(searchEvents: ISearchEvents): SearchTrainerEventsSuccessAction {
+  return {
+    type: SEARCH_TRAINER_EVENTS_SUCCESS,
+    payload: {
+      searchEvents,
+    },
+  };
+}
+
+export function searchTrainerEventsFailure(): SearchTrainerEventsFailureAction {
+  return {
+    type: SEARCH_TRAINER_EVENTS_FAILURE,
+  };
+}
 
 export function searchTrainer(id: string): SearchTrainerRequestAction {
   return {

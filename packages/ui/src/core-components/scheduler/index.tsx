@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Box from '@material-ui/core/Box';
 import { Typography } from '@material-ui/core';
@@ -25,6 +25,7 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
   events,
   bgcolor = 'primary.main',
   onEventClick,
+  onCurrentDateChange,
 }) => {
   if (startHour < 1 || endHour < 2) return null;
   if (startHour >= endHour) return null;
@@ -42,6 +43,10 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
     setCurrentMondayDate(addDays(currentMondayDate, +7));
   };
 
+  useEffect(() => {
+    onCurrentDateChange?.(currentMondayDate);
+  }, [currentMondayDate]);
+
   const numberOfHours = endHour - startHour + 1;
   const hours = Array.from({ length: numberOfHours }, (_, i) => i + startHour);
 
@@ -53,7 +58,6 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
 
   return (
     <Box
-      // minWidth={600}
       bgcolor={bgcolor}
       style={{
         borderTopLeftRadius: 5,

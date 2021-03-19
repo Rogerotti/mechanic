@@ -1,6 +1,6 @@
 import axios from 'axios';
 import image1 from '@assets/trainers/roger.jpg';
-import { ITrainerExtendedDTO } from '../../interfaces';
+import { IEventDTO, ITrainerExtendedDTO } from '../../interfaces';
 
 export const fetchTrainer = async (id: string): Promise<ITrainerExtendedDTO> => {
   const url = `www.test.com/${id}`; // TODO
@@ -39,6 +39,30 @@ export const fetchTrainer = async (id: string): Promise<ITrainerExtendedDTO> => 
           image: null,
         },
       };
+
+      return data;
+    });
+};
+
+export const fetchTrainerEvents = async (id: string, startDate: Date, endDate: Date): Promise<IEventDTO[]> => {
+  const url = `www.test.com/${id}/${startDate}/${endDate}`; // TODO
+
+  return await axios
+    .get<IEventDTO[]>(url)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((exception) => {
+      console.error('fetchTrainerEvents', exception);
+
+      const currentDate = new Date();
+      const data: IEventDTO[] = [
+        {
+          starDate: new Date(2021, currentDate.getMonth(), currentDate.getDate(), 12, 0),
+          endDate: new Date(2021, currentDate.getMonth(), currentDate.getDate(), 13, 45),
+          description: 'first event',
+        },
+      ];
 
       return data;
     });

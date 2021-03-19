@@ -8,6 +8,9 @@ import {
   SET_CATEGORIES,
   SEARCH_TRAINER_REQUEST,
   SEARCH_TRAINER_SUCCESS,
+  SEARCH_TRAINER_EVENTS_REQUEST,
+  SEARCH_TRAINER_EVENTS_SUCCESS,
+  SEARCH_TRAINER_EVENTS_FAILURE,
 } from '@redux/types/search';
 
 const initialState: SearchTrainersReducerState = {
@@ -16,10 +19,26 @@ const initialState: SearchTrainersReducerState = {
   trainers: [],
   trainer: null,
   redirect: false,
+  searchEvents: null,
 };
 
 export function searchReducer(state = initialState, action: SearchActionTypes): SearchTrainersReducerState {
   switch (action.type) {
+    case SEARCH_TRAINER_EVENTS_REQUEST:
+      return {
+        ...state,
+        searchEvents: null,
+      };
+    case SEARCH_TRAINER_EVENTS_SUCCESS:
+      return {
+        ...state,
+        searchEvents: action.payload.searchEvents,
+      };
+    case SEARCH_TRAINER_EVENTS_FAILURE:
+      return {
+        ...state,
+        searchEvents: null,
+      };
     case SEARCH_TRAINER_REQUEST:
       return {
         ...state,

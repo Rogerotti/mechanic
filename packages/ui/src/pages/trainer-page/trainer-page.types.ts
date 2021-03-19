@@ -10,6 +10,7 @@ export interface ITrainerPageProps {
   image: string;
   bookText: string;
   onBookClick?: () => void;
+  onEventSchedulerDateChange?: (date: Date) => void;
   commentsSection: ICommentsSectionProps;
   mapSection: IMapSectionsProps;
   userContactSection: IContactUserSectionProps;

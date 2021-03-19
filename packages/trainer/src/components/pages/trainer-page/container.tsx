@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Layout from '../../core/layout';
 import { TrainerPage } from '@ui/pages/trainer-page';
 import { useDispatch, useSelector } from 'react-redux';
 import { ICommentsSectionProps } from '@ui/composition/comments-section/comments-section.types';
-import { getDistance } from '../../../utils/geographic';
-import { ITrainerPageProps } from '@ui/pages/trainer-page/trainer-page.types';
-import { searchTrainer } from '@redux/actions/search';
-import { useMappedData } from '@api/hooks';
-import { getTrainer } from '@redux/selectors';
+// import { getDistance } from '../../../utils/geographic';
+import { searchTrainer, searchTrainerEvents } from '@redux/actions/search';
+// import { useMappedData } from '@api/hooks';
+import { getTrainer, getTrainerEvents } from '@redux/selectors';
 
 export const TrainerPageContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const id = 'test-id';
+  const id = '1';
+
   useEffect(() => {
     dispatch(searchTrainer(id));
   }, [id]);
 
   const trainer = useSelector(getTrainer);
+  const events = useSelector(getTrainerEvents);
 
   if (!trainer) {
     return null;
@@ -26,12 +27,18 @@ export const TrainerPageContainer: React.FC = () => {
     console.log('clicked');
   };
 
-  const events: ITrainerPageProps['events'] = [];
+  const onEventChange = (date: Date) => {
+    const startDate = date;
 
-  const currentUserPosition = {
-    x: 50.05304485463954,
-    y: 19.984250240851726,
+    const endDate = new Date(new Date(startDate).setDate(date.getDate() + 7));
+
+    dispatch(searchTrainerEvents(id, startDate, endDate));
   };
+
+  // const currentUserPosition = {
+  //   x: 50.05304485463954,
+  //   y: 19.984250240851726,
+  // };
 
   const distance = '25km od ciebie'; // todo `${getDistance(trainer.location.position, currentUserPosition)}km Od`;
 
@@ -134,6 +141,7 @@ export const TrainerPageContainer: React.FC = () => {
         events={events}
         image={trainer.image}
         onBookClick={onBookClick}
+        onEventSchedulerDateChange={onEventChange}
         description={trainer.description}
         title={trainer.banner?.header}
         userContactSection={userContactSection}

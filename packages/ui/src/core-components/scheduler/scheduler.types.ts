@@ -18,4 +18,5 @@ export interface ISchedulerProps {
 
   bgcolor?: BoxProps['bgcolor'];
   onEventClick?: (event: IEvent) => void;
+  onCurrentDateChange?: (date: Date) => void;
 }
