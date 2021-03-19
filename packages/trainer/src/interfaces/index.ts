@@ -52,4 +52,13 @@ export interface ITrainerExtendedDTO {
     image?: string;
     subHeader?: string;
   };
+  rating: {
+    value: number;
+    totalComments: number;
+    fiveStarPercentage: number;
+    fourStarPercentage: number;
+    threeStarPercentage: number;
+    twoStarPercentage: number;
+    oneStarPercentage: number;
+  };
 }

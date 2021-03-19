@@ -4,6 +4,15 @@ import { AuthenticationReducerState } from '@redux/types/authentication';
 import { NavigationReducerState } from '@redux/types/navigation';
 import { IStoreTypes } from '@redux/types/store';
 
+export const getTrainerComments = createSelector<
+  IStoreTypes,
+  SearchTrainersReducerState,
+  SearchTrainersReducerState['comments']
+>(
+  (state) => state.searchReducer,
+  (searchReducer) => searchReducer.comments,
+);
+
 export const getTrainerEvents = createSelector<
   IStoreTypes,
   SearchTrainersReducerState,

@@ -7,8 +7,13 @@ import {
   SEARCH_TRAINER_EVENTS_REQUEST,
   SEARCH_TRAINERS_REQUEST,
   SEARCH_TRAINER_REQUEST,
+  SEARCH_TRAINER_COMMENTS_REQUEST,
+  SearchTrainerCommentsRequestAction,
+  ICommentDTO,
 } from '@redux/types/search';
 import {
+  searchTrainerCommentsFailure,
+  searchTrainerCommentsSuccess,
   searchTrainerEventsFailure,
   searchTrainerEventsSuccess,
   searchTrainerFailure,
@@ -17,7 +22,7 @@ import {
   searchTrainerSuccess,
 } from '@redux/actions/search';
 import { navigationRequest } from '@redux/actions/navigation';
-import { fetchTrainer, fetchTrainerEvents } from '@api/business/trainer';
+import { fetchTrainer, fetchTrainerComments, fetchTrainerEvents } from '@api/business/trainer';
 import { IEventDTO, ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces';
 
 function* searchTrainer(action: SearchTrainerRequestAction) {
@@ -62,6 +67,20 @@ function* searchTrainerEvents(action: SearchTrainerEventsRequestAction) {
   } catch (e) {
     yield put(searchTrainerEventsFailure());
   }
+}
+
+function* searchTrainerComments(action: SearchTrainerCommentsRequestAction) {
+  try {
+    const comments: ICommentDTO[] = yield call(fetchTrainerComments, action.payload.id, action.payload.length);
+    yield put(searchTrainerCommentsSuccess(comments));
+  } catch (e) {
+    yield put(searchTrainerCommentsFailure());
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export function* watchSearchTrainerComments() {
+  yield takeLatest(SEARCH_TRAINER_COMMENTS_REQUEST, searchTrainerComments);
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

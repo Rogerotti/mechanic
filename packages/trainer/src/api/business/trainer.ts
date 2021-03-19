@@ -1,6 +1,7 @@
 import axios from 'axios';
 import image1 from '@assets/trainers/roger.jpg';
 import { IEventDTO, ITrainerExtendedDTO } from '../../interfaces';
+import { ICommentDTO } from '@redux/types/search';
 
 export const fetchTrainer = async (id: string): Promise<ITrainerExtendedDTO> => {
   const url = `www.test.com/${id}`; // TODO
@@ -38,6 +39,15 @@ export const fetchTrainer = async (id: string): Promise<ITrainerExtendedDTO> => 
           subHeader: 'informatyk xD',
           image: null,
         },
+        rating: {
+          value: 3.2,
+          totalComments: 6,
+          fiveStarPercentage: 60,
+          fourStarPercentage: 20,
+          threeStarPercentage: 0,
+          twoStarPercentage: 5,
+          oneStarPercentage: 15,
+        },
       };
 
       return data;
@@ -65,5 +75,65 @@ export const fetchTrainerEvents = async (id: string, startDate: Date, endDate: D
       ];
 
       return data;
+    });
+};
+
+export const fetchTrainerComments = async (id: string, length: number): Promise<ICommentDTO[]> => {
+  const url = `www.test.com/${id}/${length}`; // TODO
+
+  return await axios
+    .get<ICommentDTO[]>(url)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((exception) => {
+      console.error('fetchTrainerEvents', exception);
+
+      const data: ICommentDTO[] = [
+        {
+          date: new Date(),
+          description: 'eeee',
+          header: 'eeee',
+          rating: 3.5,
+          userImage: null,
+        },
+        {
+          date: new Date(),
+          description: 'eeee',
+          header: 'eeee',
+          rating: 3.5,
+          userImage: null,
+        },
+        {
+          date: new Date(),
+          description: 'eeee',
+          header: 'eeee',
+          rating: 3.5,
+          userImage: null,
+        },
+        {
+          date: new Date(),
+          description: 'eeee',
+          header: 'eeee',
+          rating: 3.5,
+          userImage: null,
+        },
+        {
+          date: new Date(),
+          description: 'eeee',
+          header: 'eeee',
+          rating: 3.5,
+          userImage: null,
+        },
+        {
+          date: new Date(),
+          description: 'eeee',
+          header: 'eeee',
+          rating: 3.5,
+          userImage: null,
+        },
+      ];
+
+      return length ? data.slice(0, length) : data;
     });
 };

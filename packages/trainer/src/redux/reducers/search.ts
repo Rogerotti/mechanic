@@ -11,6 +11,9 @@ import {
   SEARCH_TRAINER_EVENTS_REQUEST,
   SEARCH_TRAINER_EVENTS_SUCCESS,
   SEARCH_TRAINER_EVENTS_FAILURE,
+  SEARCH_TRAINER_COMMENTS_REQUEST,
+  SEARCH_TRAINER_COMMENTS_SUCCESS,
+  SEARCH_TRAINER_COMMENTS_FAILURE,
 } from '@redux/types/search';
 
 const initialState: SearchTrainersReducerState = {
@@ -20,10 +23,26 @@ const initialState: SearchTrainersReducerState = {
   trainer: null,
   redirect: false,
   searchEvents: null,
+  comments: null,
 };
 
 export function searchReducer(state = initialState, action: SearchActionTypes): SearchTrainersReducerState {
   switch (action.type) {
+    case SEARCH_TRAINER_COMMENTS_REQUEST:
+      return {
+        ...state,
+        comments: null,
+      };
+    case SEARCH_TRAINER_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        comments: action.payload.comments,
+      };
+    case SEARCH_TRAINER_COMMENTS_FAILURE:
+      return {
+        ...state,
+        comments: null,
+      };
     case SEARCH_TRAINER_EVENTS_REQUEST:
       return {
         ...state,

@@ -22,9 +22,41 @@ import {
   SearchTrainerEventsSuccessAction,
   SearchTrainerEventsFailureAction,
   SEARCH_TRAINER_EVENTS_FAILURE,
+  SearchTrainerCommentsRequestAction,
+  SEARCH_TRAINER_COMMENTS_REQUEST,
+  ICommentDTO,
+  SearchTrainerCommentsSuccessAction,
+  SEARCH_TRAINER_COMMENTS_SUCCESS,
+  SearchTrainerCommentsFailureAction,
+  SEARCH_TRAINER_COMMENTS_FAILURE,
 } from '@redux/types/search';
 import { IListItem } from '@ui/types/core';
 import { ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces';
+
+export function searchTrainerComments(id: string, length?: number): SearchTrainerCommentsRequestAction {
+  return {
+    type: SEARCH_TRAINER_COMMENTS_REQUEST,
+    payload: {
+      id,
+      length,
+    },
+  };
+}
+
+export function searchTrainerCommentsSuccess(comments: ICommentDTO[]): SearchTrainerCommentsSuccessAction {
+  return {
+    type: SEARCH_TRAINER_COMMENTS_SUCCESS,
+    payload: {
+      comments,
+    },
+  };
+}
+
+export function searchTrainerCommentsFailure(): SearchTrainerCommentsFailureAction {
+  return {
+    type: SEARCH_TRAINER_COMMENTS_FAILURE,
+  };
+}
 
 export function searchTrainerEvents(id: string, startDate: Date, endDate: Date): SearchTrainerEventsRequestAction {
   return {

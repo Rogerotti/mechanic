@@ -1,6 +1,14 @@
 import { IListItem } from '@ui/types/core';
 import { IEventDTO, ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces';
 
+export interface ICommentDTO {
+  userImage: string;
+  header: string;
+  description: string;
+  date: Date;
+  rating: number;
+}
+
 export interface ISearchEvents {
   trainerId: string;
   starDate: Date;
@@ -15,7 +23,12 @@ export interface SearchTrainersReducerState {
   redirect: boolean;
   trainer: ITrainerExtendedDTO | null;
   searchEvents?: ISearchEvents;
+  comments?: ICommentDTO[];
 }
+
+export const SEARCH_TRAINER_COMMENTS_REQUEST = 'SEARCH_TRAINER_COMMENTS_REQUEST';
+export const SEARCH_TRAINER_COMMENTS_SUCCESS = 'SEARCH_TRAINER_COMMENTS_SUCCESS';
+export const SEARCH_TRAINER_COMMENTS_FAILURE = 'SEARCH_TRAINER_COMMENTS_FAILURE';
 
 export const SEARCH_TRAINER_EVENTS_REQUEST = 'SEARCH_TRAINER_EVENTS_REQUEST';
 export const SEARCH_TRAINER_EVENTS_SUCCESS = 'SEARCH_TRAINER_EVENTS_SUCCESS';
@@ -31,6 +44,25 @@ export const SEARCH_TRAINERS_FAILURE = 'SEARCH_TRAINERS_FAILURE';
 
 export const SET_CITY = 'SET_CITY';
 export const SET_CATEGORIES = 'SET_CATEGORIES';
+
+export interface SearchTrainerCommentsRequestAction {
+  type: typeof SEARCH_TRAINER_COMMENTS_REQUEST;
+  payload: {
+    id: string;
+    length?: number;
+  };
+}
+
+export interface SearchTrainerCommentsSuccessAction {
+  type: typeof SEARCH_TRAINER_COMMENTS_SUCCESS;
+  payload: {
+    comments: ICommentDTO[];
+  };
+}
+
+export interface SearchTrainerCommentsFailureAction {
+  type: typeof SEARCH_TRAINER_COMMENTS_FAILURE;
+}
 
 export interface SearchTrainerEventsRequestAction {
   type: typeof SEARCH_TRAINER_EVENTS_REQUEST;
@@ -104,6 +136,9 @@ export interface SetCategoriesAction {
 }
 
 export type SearchActionTypes =
+  | SearchTrainerCommentsRequestAction
+  | SearchTrainerCommentsSuccessAction
+  | SearchTrainerCommentsFailureAction
   | SearchTrainerEventsRequestAction
   | SearchTrainerEventsSuccessAction
   | SearchTrainerEventsFailureAction
