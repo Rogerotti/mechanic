@@ -22,6 +22,7 @@ export const getTrainerEvents = createSelector<
   (searchReducer) => {
     return searchReducer?.trainer?.id === searchReducer.searchEvents?.trainerId
       ? searchReducer.searchEvents?.events.map((x) => ({
+          id: x.id,
           starDate: new Date(x.starDate),
           endDate: new Date(x.endDate),
           description: x.description,

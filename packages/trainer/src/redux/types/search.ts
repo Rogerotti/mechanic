@@ -2,6 +2,7 @@ import { IListItem } from '@ui/types/core';
 import { IEventDTO, ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces';
 
 export interface ICommentDTO {
+  id: string;
   userImage: string;
   header: string;
   description: string;

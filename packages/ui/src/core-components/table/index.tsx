@@ -36,15 +36,15 @@ const StyledTableRow = withStyles((theme: Theme) =>
   }),
 )(TableRow);
 
-function createData(name: string, calories: string | number, fat: number) {
-  return { name, calories, fat };
+function createData(id: string, name: string, calories: string | number, fat: number) {
+  return { id, name, calories, fat };
 }
 
 const rows = [
-  createData('Trening personalny', 60, 100),
-  createData('Trening personalny', 90, 120),
-  createData('Trening personalny x 10', 60, 800),
-  createData('Rozpiska diety', '-', 150),
+  createData('1', 'Trening personalny', 60, 100),
+  createData('2', 'Trening personalny', 90, 120),
+  createData('3', 'Trening personalny x 10', 60, 800),
+  createData('4', 'Rozpiska diety', '-', 150),
 ];
 
 const useStyles = makeStyles({
@@ -68,7 +68,7 @@ export const Table: React.FC<ITableProps> = ({}) => {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <StyledTableRow key={row.name}>
+            <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
                 {row.name}
               </StyledTableCell>

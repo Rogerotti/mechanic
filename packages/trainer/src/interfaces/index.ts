@@ -30,6 +30,7 @@ export interface ITrainerBasicDTO {
 }
 
 export interface IEventDTO {
+  id: string;
   starDate: Date;
   endDate: Date;
   description: string;

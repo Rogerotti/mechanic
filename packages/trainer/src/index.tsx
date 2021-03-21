@@ -5,6 +5,8 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import { Provider } from 'react-redux';
 
+import { ApolloProvider } from '@apollo/client';
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '@ui/theme/primary';
@@ -18,38 +20,41 @@ import SagaNavigation from './components/core/navigation';
 import TrainersPageContainer from './components/pages/trainers-page/container';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
+import { apolloClient } from './apollo';
 
 const Index = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Router>
-            <SagaNavigation />
-            <Route exact path="/">
-              <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
-                <HomePageContainer />
-              </ErrorBoundary>
-            </Route>
-            <Route exact path="/trainers">
-              <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
-                <TrainersPageContainer />
-              </ErrorBoundary>
-            </Route>
-            <Route exact path="/roger">
-              <TrainerPageContainer />
-            </Route>
+        <ApolloProvider client={apolloClient}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Router>
+              <SagaNavigation />
+              <Route exact path="/">
+                <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
+                  <HomePageContainer />
+                </ErrorBoundary>
+              </Route>
+              <Route exact path="/trainers">
+                <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
+                  <TrainersPageContainer />
+                </ErrorBoundary>
+              </Route>
+              <Route exact path="/roger">
+                <TrainerPageContainer />
+              </Route>
 
-            <Route exact path="/login">
-              <LoginPageContainer />
-            </Route>
+              <Route exact path="/login">
+                <LoginPageContainer />
+              </Route>
 
-            <Route exact path="/register">
-              <RegisterPageContainer />
-            </Route>
-          </Router>
-        </ThemeProvider>
+              <Route exact path="/register">
+                <RegisterPageContainer />
+              </Route>
+            </Router>
+          </ThemeProvider>
+        </ApolloProvider>
       </PersistGate>
     </Provider>
   );

@@ -8,10 +8,15 @@ import { searchTrainer, searchTrainerComments, searchTrainerEvents } from '@redu
 import { useMappedData } from '@api/hooks';
 import { getTrainer, getTrainerComments, getTrainerEvents } from '@redux/selectors';
 import { getPayUPayoutMethods } from '@api/transfers';
+import { useQuery } from '@apollo/client';
+import { PAYU_QUERY } from '../../../apollo/queries';
 
 export const TrainerPageContainer: React.FC = () => {
   const dispatch = useDispatch();
   const id = '1';
+  const { data, loading, error } = useQuery(PAYU_QUERY);
+
+  console.log('mamy to', data, loading, error);
 
   useEffect(() => {
     dispatch(searchTrainer(id));
@@ -25,7 +30,7 @@ export const TrainerPageContainer: React.FC = () => {
     (comments): ICommentsSectionProps['comments'] =>
       comments
         ? comments.map((comment) => ({
-            id: 'test',
+            id: comment.id,
             image: comment.userImage,
             header: comment.header,
             description: comment.description,
@@ -79,8 +84,6 @@ export const TrainerPageContainer: React.FC = () => {
   const onBookClick = async () => {
     console.log('clicked');
     const res = await getPayUPayoutMethods();
-
-    console.log('mamy to', res);
   };
 
   const onEventChange = (date: Date) => {

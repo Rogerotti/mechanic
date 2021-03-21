@@ -102,8 +102,9 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
         {hours.map((hour) => {
           const displayHour = hour;
           const currentHour = displayHour - 1;
+          // const id = `${dayTitle}-${hour}`; todo
           return (
-            <Box key={currentHour} display="flex">
+            <Box key={hour} display="flex">
               <Typography className={classes.hourLabel} color="textPrimary">
                 {displayHour}
               </Typography>
@@ -132,7 +133,7 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
 
                     return (
                       <Box
-                        key={dayTitle}
+                        key={currentHourEvent.id}
                         minWidth="14.2%"
                         maxWidth="14.2%"
                         justifyContent="center"
