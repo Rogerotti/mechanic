@@ -1,0 +1,17 @@
+type PayU {
+  token: String!
+  payoutMethods: [PayoutMethod!]
+}
+
+type Query {
+  payU: PayU!
+}
+
+type PayoutMethod {
+  value: String
+  brandImageUrl: String
+  name: String
+  status: String
+  minAmount: Float
+  maxAmount: Float
+}

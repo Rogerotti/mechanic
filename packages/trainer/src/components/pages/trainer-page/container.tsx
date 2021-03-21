@@ -7,6 +7,7 @@ import { ICommentsSectionProps } from '@ui/composition/comments-section/comments
 import { searchTrainer, searchTrainerComments, searchTrainerEvents } from '@redux/actions/search';
 import { useMappedData } from '@api/hooks';
 import { getTrainer, getTrainerComments, getTrainerEvents } from '@redux/selectors';
+import { getPayUPayoutMethods } from '@api/transfers';
 
 export const TrainerPageContainer: React.FC = () => {
   const dispatch = useDispatch();
@@ -19,16 +20,19 @@ export const TrainerPageContainer: React.FC = () => {
 
   const trainer = useSelector(getTrainer);
   const events = useSelector(getTrainerEvents);
-  const comments = useMappedData(useSelector(getTrainerComments), (comments): ICommentsSectionProps['comments'] =>
-    comments
-      ? comments.map((comment) => ({
-          image: comment.userImage,
-          header: comment.header,
-          description: comment.description,
-          date: comment.date,
-          rating: comment.rating,
-        }))
-      : [],
+  const comments: ICommentsSectionProps['comments'] = useMappedData(
+    useSelector(getTrainerComments),
+    (comments): ICommentsSectionProps['comments'] =>
+      comments
+        ? comments.map((comment) => ({
+            id: 'test',
+            image: comment.userImage,
+            header: comment.header,
+            description: comment.description,
+            date: comment.date,
+            rating: comment.rating,
+          }))
+        : [],
   );
 
   if (!trainer) {
@@ -72,8 +76,11 @@ export const TrainerPageContainer: React.FC = () => {
     },
   };
 
-  const onBookClick = () => {
+  const onBookClick = async () => {
     console.log('clicked');
+    const res = await getPayUPayoutMethods();
+
+    console.log('mamy to', res);
   };
 
   const onEventChange = (date: Date) => {
@@ -119,3 +126,20 @@ export const TrainerPageContainer: React.FC = () => {
 };
 
 export default TrainerPageContainer;
+
+// curl 'https://secure.snd.payu.com/pl/standard/user/oauth/authorize' \
+//   // -H 'Referer: http://localhost:8080/' \
+//   // -H 'sec-ch-ua-mobile: ?0' \
+//   // -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36' \
+//   // -H 'sec-ch-ua: "Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"' \
+//   -d 'grant_type=client_credentials&client_id=404240&client_secret=99980aa6ab89b2f5417c268a2ca97f5e'
+
+//   curl 'https://secure.snd.payu.com/pl/standard/user/oauth/authorize' \
+//   -H 'Referer: http://localhost:8080/' \
+//   -H 'Access-Control-Allow-Origin: *' \
+//   -H 'Accept: application/json, text/plain, */*' \
+//   -H 'Referer: http://localhost:8080/' \
+//   -H 'sec-ch-ua-mobile: ?0' \
+//   -H 'sec-ch-ua: "Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"' \
+//   -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36' \
+//   -d 'grant_type=client_credentials&client_id=404240&client_secret=99980aa6ab89b2f5417c268a2ca97f5e'
