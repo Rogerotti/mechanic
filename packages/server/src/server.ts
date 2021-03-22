@@ -5,9 +5,13 @@ import { createServer } from 'http';
 import compression from 'compression';
 import cors from 'cors';
 import { PayUAPI } from '@dataSource/payU';
+import { PostgresDB } from '@dataSource/postgres';
+import { createPostgresClient } from '@dataSource/postgres/utils';
 import schema from './schema';
 
 const app = express();
+
+const postgresClient = createPostgresClient();
 
 const server = new ApolloServer({
   schema,
@@ -15,6 +19,7 @@ const server = new ApolloServer({
   dataSources: () => {
     return {
       payUAPI: new PayUAPI(),
+      postgres: new PostgresDB(postgresClient),
     };
   },
 });

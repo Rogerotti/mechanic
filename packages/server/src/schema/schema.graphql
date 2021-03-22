@@ -3,8 +3,13 @@ type PayU {
   payoutMethods: [PayoutMethod!]
 }
 
+type Postgres {
+  cities: [City]
+}
+
 type Query {
   payU: PayU!
+  postgres: Postgres!
 }
 
 type PayoutMethod {
@@ -14,4 +19,9 @@ type PayoutMethod {
   status: String
   minAmount: Float
   maxAmount: Float
+}
+
+type City {
+  id: String
+  name: String
 }

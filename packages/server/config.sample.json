@@ -4,5 +4,12 @@
     "clientId": "",
     "grantType": "",
     "clientSecret": ""
+  },
+  "postgres": {
+    "user": "",
+    "host": "",
+    "database": "",
+    "password": "",
+    "port": ""
   }
 }

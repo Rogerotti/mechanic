@@ -13,6 +13,8 @@ import { useFetchCategories, useFetchCities, useMappedData } from '../../../api/
 import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
 import { getCurrentCategories, getCurrentCity } from '@redux/selectors';
+import { useQuery } from '@apollo/client';
+import { GET_ALL_CITIES } from '../../../apollo/queries';
 
 export const HomePageContainer: React.FC = () => {
   const dispatch = useDispatch();
@@ -20,6 +22,9 @@ export const HomePageContainer: React.FC = () => {
   const allCategories = useMappedData(useFetchCategories(), (categories): IListItem[] =>
     categories.map((city) => ({ id: city.id, value: city.name })),
   );
+
+  const { data, loading, error } = useQuery(GET_ALL_CITIES);
+  console.log('pobieram panstwa', data, loading, error);
 
   const allCities = useMappedData(useFetchCities(), (cities): IListItem[] =>
     cities.map((city) => ({ id: city.id, value: city.name })),

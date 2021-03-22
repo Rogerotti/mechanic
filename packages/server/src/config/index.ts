@@ -5,6 +5,13 @@ export interface IConfig {
     clientId: string;
     clientSecret: string;
   };
+  postgres: {
+    user: string;
+    host: string;
+    database: string;
+    password: string;
+    port: number;
+  };
 }
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

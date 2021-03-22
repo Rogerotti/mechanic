@@ -10,3 +10,14 @@ export const PAYU_QUERY = gql`
     }
   }
 `;
+
+export const GET_ALL_CITIES = gql`
+  query GetCities {
+    postgres {
+      cities {
+        id
+        name
+      }
+    }
+  }
+`;
