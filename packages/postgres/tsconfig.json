@@ -10,8 +10,6 @@
     "outDir": "dist",
     "baseUrl": "./src",
     "paths": {
-      "@postgres": ["../../postgres/src"],
-      "@postgres/*": ["../../postgres/src/*"],
       "@config": ["config"],
       "@config/*": ["config/*"],
       "@dataSource": ["data-sources"],

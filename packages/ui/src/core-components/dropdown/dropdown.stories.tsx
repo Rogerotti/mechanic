@@ -19,6 +19,7 @@ export const Basic = Template.bind({});
 Basic.args = {
   label: 'City',
   icon: <LocationOnIcon />,
+  isLoading: false,
   items: [
     {
       id: 'KRK',

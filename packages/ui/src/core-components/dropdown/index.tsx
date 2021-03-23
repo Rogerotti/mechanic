@@ -1,26 +1,39 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { IDropdownProps } from './dropdown.type';
+
 import { InputAdornment, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+
+import { IDropdownProps } from './dropdown.type';
 import { useStyles } from './dropdown.styles';
 import { IListItem } from '../../types/core';
+import Loader from '@core-components/loader';
 
 export const Dropdown: React.FC<IDropdownProps> = ({
   label,
   selectedValue,
+  isLoading,
   items,
   className,
   icon: IconComponent,
   onChange,
 }) => {
   const classes = useStyles();
-  const [selectedCity, setSelectedCity] = useState<IListItem | undefined>(selectedValue);
+  const selectedCountryInListOfCountries = items.find((item) => item.id === selectedValue?.id);
+  const [selectedCity, setSelectedCity] = useState<IListItem | undefined>(selectedCountryInListOfCountries);
+
   useEffect(() => {
     if (selectedValue !== selectedCity && items.some((item) => item === selectedValue)) {
       setSelectedCity(selectedCity);
     }
   }, [selectedValue]);
+
+  useEffect(() => {
+    if (items.some((item) => item.id === selectedValue?.id)) {
+      setSelectedCity(selectedValue);
+    }
+  }, [items]);
+
   // eslint-disable-next-line @typescript-eslint/ban-types
   const onChangeCallback = (event: React.ChangeEvent<{}>, value: IListItem): void => {
     setSelectedCity(value);
@@ -32,13 +45,14 @@ export const Dropdown: React.FC<IDropdownProps> = ({
       className={clsx(className)}
       classes={{
         listbox: classes.autocompleteListbox,
-        endAdornment: classes.endAndornment,
+        endAdornment: classes.endAdornment,
       }}
-      value={selectedCity}
+      disabled={isLoading}
+      value={isLoading ? null : selectedCity}
       options={items}
       color="secondary"
       onChange={onChangeCallback}
-      getOptionSelected={(option, value) => option.id === value.id}
+      getOptionSelected={(option, value) => option?.id === value?.id}
       getOptionLabel={(option) => option.value}
       renderInput={(params) => (
         <TextField
@@ -46,13 +60,16 @@ export const Dropdown: React.FC<IDropdownProps> = ({
           label={label}
           variant="outlined"
           color="secondary"
+          disabled={isLoading}
           InputProps={{
             ...params.InputProps,
-            startAdornment: IconComponent ? (
-              <InputAdornment className={classes.startAndornment} position="end">
-                {IconComponent}
-              </InputAdornment>
-            ) : null,
+            startAdornment:
+              IconComponent || isLoading ? (
+                <InputAdornment className={classes.startAdornment} position="end">
+                  {IconComponent && IconComponent}
+                  {isLoading && <Loader />}
+                </InputAdornment>
+              ) : null,
           }}
         />
       )}

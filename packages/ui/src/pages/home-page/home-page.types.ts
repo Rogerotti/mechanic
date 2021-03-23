@@ -14,6 +14,7 @@ export interface IHomePageProps {
   onCityChange?: ISearchingProps['onCityChange'];
 
   cities: IListItem[];
+  citiesLoading?: boolean;
   categories: IListItem[];
   selectedCity?: IListItem;
   selectedCategories?: IListItem[];

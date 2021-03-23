@@ -4,10 +4,10 @@ export const useStyles = makeStyles((theme) => ({
   autocompleteListbox: {
     backgroundColor: theme.palette.primary.main,
   },
-  startAndornment: {
+  startAdornment: {
     color: theme.palette.secondary.main,
   },
-  endAndornment: {
+  endAdornment: {
     '& button': {
       color: theme.palette.secondary.main,
     },

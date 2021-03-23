@@ -11,26 +11,27 @@ import schema from './schema';
 
 const app = express();
 
-const postgresClient = createPostgresClient();
+createPostgresClient().then(() => {
+  const server = new ApolloServer({
+    schema,
+    validationRules: [depthLimit(7)],
+    dataSources: () => {
+      return {
+        payUAPI: new PayUAPI(),
+        postgres: new PostgresDB(),
+      };
+    },
+  });
 
-const server = new ApolloServer({
-  schema,
-  validationRules: [depthLimit(7)],
-  dataSources: () => {
-    return {
-      payUAPI: new PayUAPI(),
-      postgres: new PostgresDB(postgresClient),
-    };
-  },
+  app.use('*', cors({}));
+  app.use(compression());
+
+  server.applyMiddleware({ app, path: '/graphql' });
+
+  const httpServer = createServer(app);
+
+  httpServer.listen({ port: 3000 }, (): void =>
+    console.log(`\n🚀      GraphQL is now running on http://localhost:3000/graphql`),
+  );
 });
-
-app.use('*', cors({}));
-app.use(compression());
-
-server.applyMiddleware({ app, path: '/graphql' });
-
-const httpServer = createServer(app);
-
-httpServer.listen({ port: 3000 }, (): void =>
-  console.log(`\n🚀      GraphQL is now running on http://localhost:3000/graphql`),
-);
+// const postgresClient = createPostgresClient();

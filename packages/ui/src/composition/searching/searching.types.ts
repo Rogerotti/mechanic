@@ -4,6 +4,7 @@ export interface ISearchingProps {
   header: string;
   subHeader: string;
   cities: IListItem[];
+  citiesLoading?: boolean;
   categories: IListItem[];
   selectedCategories?: IListItem[];
   selectedCity?: IListItem;

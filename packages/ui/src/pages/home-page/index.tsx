@@ -18,6 +18,7 @@ export const HomePage: React.FC<IHomePageProps> = ({
   tabs,
   steps,
   cities,
+  citiesLoading,
   categories,
   selectedCategories,
   selectedCity,
@@ -30,6 +31,7 @@ export const HomePage: React.FC<IHomePageProps> = ({
         header={searchHeader}
         subHeader={searchSubheader}
         cities={cities}
+        citiesLoading={citiesLoading}
         categories={categories}
         selectedCategories={selectedCategories}
         selectedCity={selectedCity}

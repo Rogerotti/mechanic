@@ -16,6 +16,7 @@ export const Searching: React.FC<ISearchingProps> = ({
   header,
   subHeader,
   cities,
+  citiesLoading,
   categories,
   selectedCategories,
   selectedCity,
@@ -81,7 +82,13 @@ export const Searching: React.FC<ISearchingProps> = ({
             color="#191919"
             marginLeft={{ sm: 2 }}
           >
-            <Dropdown label="Miasto" items={cities} onChange={onCityChangeCallback} selectedValue={selectedCity} />
+            <Dropdown
+              label="Miasto"
+              isLoading={citiesLoading}
+              items={cities}
+              onChange={onCityChangeCallback}
+              selectedValue={selectedCity}
+            />
           </Box>
           <Box width={{ xs: '100%', sm: 'initial' }} mt={{ xs: 2, sm: 0 }} marginLeft={{ sm: 1 }}>
             <Button

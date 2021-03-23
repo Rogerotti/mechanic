@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/Rogerotti/mechanic#readme",
   "dependencies": {
+    "@project/postgres": "1.0.0",
     "apollo-datasource-rest": "^0.10.0",
     "apollo-server-express": "^2.21.2",
     "compression": "^1.7.4",
