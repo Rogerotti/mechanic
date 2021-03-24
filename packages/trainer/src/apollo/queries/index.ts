@@ -21,3 +21,20 @@ export const GET_ALL_CITIES = gql`
     }
   }
 `;
+
+export const GET_ALL_CATEGORIES = gql`
+  query GetCategories {
+    postgres {
+      categories {
+        id
+        name
+        description
+        subcategories {
+          id
+          name
+          description
+        }
+      }
+    }
+  }
+`;

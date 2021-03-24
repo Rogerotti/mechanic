@@ -10,15 +10,6 @@ export const fetchAllCategories = async (): Promise<ICategory[]> => {
     })
     .catch((exception) => {
       console.error('fetchAllCategories', exception);
-      return [
-        { id: 'mma', name: 'MMA' },
-        { id: 'swim', name: 'Pływanie' },
-        { id: 'chess', name: 'Szachy' },
-        { id: 'box', name: 'Boks' },
-        { id: 'k1', name: 'Kick boxing' },
-        { id: 'bjj', name: 'Brazylijskie jiu jitsu' },
-        { id: 'lol', name: 'League of Legends' },
-        { id: 'csgo', name: 'Cs go' },
-      ];
+      return [{ id: 'mma', name: 'MMA', subcategories: [], description: 'tt' }];
     });
 };

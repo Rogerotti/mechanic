@@ -8,20 +8,22 @@ import searchBackground from '@assets/searchBackground.jpg';
 import { searchTrainers, setCategories as setReduxCategories, setCity as setReduxCity } from '@redux/actions/search';
 
 import useTranslation from '../../../translations/hooks';
-import { useFetchCategories, useMappedData } from '../../../api/hooks';
+import { useMappedData } from '../../../api/hooks';
 
 import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
 import { getCurrentCategories, getCurrentCity } from '@redux/selectors';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_CITIES } from '../../../apollo/queries';
-import { IGetAllCitiesQuery } from 'src/apollo/queries/types';
+import { GET_ALL_CATEGORIES, GET_ALL_CITIES } from '../../../apollo/queries';
+import { IGetAllCategoriesQuery, IGetAllCitiesQuery } from 'src/apollo/queries/types';
 
 export const HomePageContainer: React.FC = () => {
   const dispatch = useDispatch();
   const { getText } = useTranslation();
-  const allCategories = useMappedData(useFetchCategories(), (categories): IListItem[] =>
-    categories.map((city) => ({ id: city.id, value: city.name })),
+
+  const { data: categoryData, loading: categoryLoading } = useQuery<IGetAllCategoriesQuery>(GET_ALL_CATEGORIES);
+  const allCategories = useMappedData(categoryData?.postgres?.categories, (categories): IListItem[] =>
+    categories ? categories.map((category) => ({ id: category.id, value: category.name })) : [],
   );
 
   const { data, loading: cityLoading } = useQuery<IGetAllCitiesQuery>(GET_ALL_CITIES);

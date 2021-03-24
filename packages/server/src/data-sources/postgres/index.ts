@@ -1,7 +1,8 @@
 import { DataSource } from 'apollo-datasource';
 import { getRepository } from 'typeorm';
 import { City } from '@postgres/entity/city';
-import { ICity } from './types';
+import { Category } from '@postgres/entity/category';
+import { ICategory, ICity } from './types';
 
 export class PostgresDB extends DataSource {
   constructor() {
@@ -10,5 +11,9 @@ export class PostgresDB extends DataSource {
 
   async getCities(): Promise<ICity[]> {
     return await getRepository(City).find();
+  }
+
+  async getCategories(): Promise<ICategory[]> {
+    return await getRepository(Category).find({ relations: ['subcategories'] });
   }
 }

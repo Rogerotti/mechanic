@@ -6,6 +6,14 @@ export interface ICity {
 export interface ICategory {
   id: string;
   name: string;
+  description: string;
+  subcategories: ISubcategory[];
+}
+
+export interface ISubcategory {
+  id: string;
+  name: string;
+  description: string;
 }
 
 export interface ILocation {

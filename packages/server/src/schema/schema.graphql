@@ -5,6 +5,7 @@ type PayU {
 
 type Postgres {
   cities: [City]
+  categories: [Category]
 }
 
 type Query {
@@ -24,4 +25,16 @@ type PayoutMethod {
 type City {
   id: String
   name: String
+}
+type Category {
+  id: String
+  name: String
+  description: String
+  subcategories: [Subcategory!]
+}
+
+type Subcategory {
+  id: String
+  name: String
+  description: String
 }
