@@ -20,4 +20,5 @@ export const Basic = Template.bind({});
 Basic.args = {
   cities: cities,
   categories: categories,
+  generalCategories: [],
 };

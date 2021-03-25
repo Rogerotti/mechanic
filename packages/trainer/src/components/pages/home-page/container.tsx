@@ -2,37 +2,27 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { HomePage } from '@ui/pages/home-page';
-import { IListItem } from '@ui/types/core';
+import { IListItem, IListItemGrouped } from '@ui/types/core';
 
 import searchBackground from '@assets/searchBackground.jpg';
-import { searchTrainers, setCategories as setReduxCategories, setCity as setReduxCity } from '@redux/actions/search';
+import { searchTrainers, setCategory as setReduxCategory, setCity as setReduxCity } from '@redux/actions/search';
 
 import useTranslation from '../../../translations/hooks';
-import { useMappedData } from '../../../api/hooks';
 
 import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
-import { getCurrentCategories, getCurrentCity } from '@redux/selectors';
-import { useQuery } from '@apollo/client';
-import { GET_ALL_CATEGORIES, GET_ALL_CITIES } from '../../../apollo/queries';
-import { IGetAllCategoriesQuery, IGetAllCitiesQuery } from 'src/apollo/queries/types';
+import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
+import { useCategories, useCities } from '../../../apollo/queries';
 
 export const HomePageContainer: React.FC = () => {
   const dispatch = useDispatch();
   const { getText } = useTranslation();
 
-  const { data: categoryData, loading: categoryLoading } = useQuery<IGetAllCategoriesQuery>(GET_ALL_CATEGORIES);
-  const allCategories = useMappedData(categoryData?.postgres?.categories, (categories): IListItem[] =>
-    categories ? categories.map((category) => ({ id: category.id, value: category.name })) : [],
-  );
-
-  const { data, loading: cityLoading } = useQuery<IGetAllCitiesQuery>(GET_ALL_CITIES);
-  const allCities = useMappedData(data?.postgres?.cities, (cities): IListItem[] =>
-    cities ? cities.map((city) => ({ id: city.id, value: city.name })) : [],
-  );
+  const { loading: categoryLoading, categories: categoriesData } = useCategories();
+  const { loading: cityLoading, cities: citiesData } = useCities();
 
   const [city, setCity] = useState<IListItem | undefined>(useSelector(getCurrentCity));
-  const [categories, setCategories] = useState<IListItem[]>(useSelector(getCurrentCategories));
+  const [category, setCategory] = useState<IListItemGrouped>(useSelector(getCurrentCategory));
 
   const howItWorksTabs = getHowItWorksTabs();
   const [selectedTabId, setSelectedTabId] = useState(howItWorksTabs[0].id);
@@ -43,13 +33,13 @@ export const HomePageContainer: React.FC = () => {
     dispatch(setReduxCity(value));
   };
 
-  const onCategoriesChange = (values: IListItem[]) => {
-    setCategories(values);
-    dispatch(setReduxCategories(values));
+  const onCategoryChange = (value: IListItemGrouped) => {
+    setCategory(value);
+    dispatch(setReduxCategory(value));
   };
 
   const onSearch = () => {
-    dispatch(searchTrainers(city, categories));
+    dispatch(searchTrainers(city, category));
   };
 
   const onHowItWorksTabChange = (id: string): void => {
@@ -63,10 +53,11 @@ export const HomePageContainer: React.FC = () => {
         searchHeader={getText('mainSearchHeader')}
         searchSubheader={getText('mainSearchSubheader')}
         howItWorksHeader={getText('howItWorksHeader')}
-        cities={allCities}
+        cities={citiesData}
         citiesLoading={cityLoading}
-        categories={allCategories}
-        selectedCategories={categories}
+        categories={categoriesData}
+        categoriesLoading={categoryLoading}
+        selectedCategory={category}
         selectedCity={city}
         tabs={howItWorksTabs}
         onHowItWorksTabChange={onHowItWorksTabChange}
@@ -74,7 +65,7 @@ export const HomePageContainer: React.FC = () => {
         steps={howItWorksSteps}
         searchBackgroundImage={searchBackground}
         onCityChange={onCityChange}
-        onCategoriesChange={onCategoriesChange}
+        onCategoryChange={onCategoryChange}
         onSearchClick={onSearch}
       />
     </Layout>

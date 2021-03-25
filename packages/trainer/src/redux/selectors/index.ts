@@ -58,13 +58,13 @@ export const getCurrentCity = createSelector<
   (searchReducer) => searchReducer.city,
 );
 
-export const getCurrentCategories = createSelector<
+export const getCurrentCategory = createSelector<
   IStoreTypes,
   SearchTrainersReducerState,
-  SearchTrainersReducerState['categories']
+  SearchTrainersReducerState['category']
 >(
   (state) => state.searchReducer,
-  (searchReducer) => searchReducer.categories,
+  (searchReducer) => searchReducer.category,
 );
 
 export const getAuthorization = createSelector<

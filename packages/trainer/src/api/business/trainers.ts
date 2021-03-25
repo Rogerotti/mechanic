@@ -3,12 +3,12 @@ import image1 from '@assets/trainers/roger.jpg';
 import image2 from '@assets/trainers/trener1.png';
 import { ITrainerBasicDTO } from '../../interfaces';
 
-export const fetchTrainers = async (city: string, categories: string[]): Promise<ITrainerBasicDTO[]> => {
+export const fetchTrainers = async (city: string, category: string): Promise<ITrainerBasicDTO[]> => {
   const url = 'www.test.com'; // TODO
   return await axios
     .post<ITrainerBasicDTO[]>(url, {
       city,
-      categories,
+      category,
     })
     .then((res) => {
       return res.data;

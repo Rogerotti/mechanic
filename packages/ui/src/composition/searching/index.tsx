@@ -6,11 +6,10 @@ import { Theme, Typography } from '@material-ui/core';
 
 import { Button } from '@core-components/button';
 import { Dropdown } from '@core-components/dropdown';
-import { MultiSelect } from '@core-components/multi-select/multi-select.component';
 
 import { useStyles } from './searching.styles';
 import { ISearchingProps } from './searching.types';
-import { IListItem } from '../../types/core';
+import { IListItem, IListItemGrouped } from '../../types/core';
 
 export const Searching: React.FC<ISearchingProps> = ({
   header,
@@ -18,25 +17,31 @@ export const Searching: React.FC<ISearchingProps> = ({
   cities,
   citiesLoading,
   categories,
-  selectedCategories,
+  categoriesLoading,
+  selectedCategory,
   selectedCity,
-  backgroudImage,
+  backgroundImage,
   onSearchClick,
-  onCategoriesChange,
+  onCategoryChange,
   onCityChange,
 }) => {
   const classes = useStyles();
   const isNotMobile = useMediaQuery((theme: Theme) => theme.breakpoints.up('sm'));
   // eslint-disable-next-line @typescript-eslint/ban-types
-  const onCityChangeCallback = (event: React.ChangeEvent<{}>, value: IListItem) => {
+  const onCityChangeCallback = (_event: React.ChangeEvent<{}>, value: IListItem) => {
     onCityChange?.(value);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  const onCategoryChangeCallback = (_event: React.ChangeEvent<{}>, value: IListItemGrouped) => {
+    onCategoryChange?.(value);
   };
 
   return (
     <Box width="100%" bgcolor="primary.main">
       <Box
         style={{
-          backgroundImage: `url(${backgroudImage})`,
+          backgroundImage: `url(${backgroundImage})`,
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -67,12 +72,13 @@ export const Searching: React.FC<ISearchingProps> = ({
           pb={{ xs: 0, md: 10 }}
         >
           <Box width="100%" maxWidth={{ xs: '100%', sm: 350, lg: 400 }} color="#191919">
-            <MultiSelect
-              label="Kategorie"
-              placeholder="Wyszukaj"
+            <Dropdown
+              label="Kategoria"
+              isLoading={categoriesLoading}
               items={categories}
-              selectedValues={selectedCategories}
-              onChange={onCategoriesChange}
+              onChange={onCategoryChangeCallback}
+              selectedValue={selectedCategory}
+              groupByValue={true}
             />
           </Box>
           <Box

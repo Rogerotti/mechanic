@@ -6,8 +6,8 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { IDropdownProps } from './dropdown.type';
 import { useStyles } from './dropdown.styles';
-import { IListItem } from '../../types/core';
 import Loader from '@core-components/loader';
+import { IListItemGrouped } from '../../types/core';
 
 export const Dropdown: React.FC<IDropdownProps> = ({
   label,
@@ -15,29 +15,39 @@ export const Dropdown: React.FC<IDropdownProps> = ({
   isLoading,
   items,
   className,
+  groupByValue,
   icon: IconComponent,
   onChange,
 }) => {
   const classes = useStyles();
-  const selectedCountryInListOfCountries = items.find((item) => item.id === selectedValue?.id);
-  const [selectedCity, setSelectedCity] = useState<IListItem | undefined>(selectedCountryInListOfCountries);
+  const [currentSelectedValue, setCurrentSelectedValue] = useState<IListItemGrouped | undefined>(selectedValue);
 
   useEffect(() => {
-    if (selectedValue !== selectedCity && items.some((item) => item === selectedValue)) {
-      setSelectedCity(selectedCity);
+    if (!isLoading && selectedValue !== currentSelectedValue && items.some((item) => item === selectedValue)) {
+      setCurrentSelectedValue(currentSelectedValue);
+    } else if (!isLoading && selectedValue !== currentSelectedValue && selectedValue === null) {
+      setCurrentSelectedValue(null);
     }
   }, [selectedValue]);
 
   useEffect(() => {
-    if (items.some((item) => item.id === selectedValue?.id)) {
-      setSelectedCity(selectedValue);
+    if (!isLoading && items.some((item) => item === selectedValue)) {
+      setCurrentSelectedValue(currentSelectedValue);
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (!isLoading && items.some((item) => item.id === selectedValue?.id)) {
+      setCurrentSelectedValue(selectedValue);
     }
   }, [items]);
 
   // eslint-disable-next-line @typescript-eslint/ban-types
-  const onChangeCallback = (event: React.ChangeEvent<{}>, value: IListItem): void => {
-    setSelectedCity(value);
-    onChange?.(event, value);
+  const onChangeCallback = (event: React.ChangeEvent<{}>, value: IListItemGrouped): void => {
+    setCurrentSelectedValue(value);
+    if (!isLoading) {
+      onChange?.(event, value);
+    }
   };
 
   return (
@@ -46,12 +56,15 @@ export const Dropdown: React.FC<IDropdownProps> = ({
       classes={{
         listbox: classes.autocompleteListbox,
         endAdornment: classes.endAdornment,
+        groupLabel: classes.groupLabel,
       }}
       disabled={isLoading}
-      value={isLoading ? null : selectedCity}
+      value={currentSelectedValue}
       options={items}
       color="secondary"
       onChange={onChangeCallback}
+      filterSelectedOptions={true}
+      groupBy={groupByValue ? (option) => option.groupValue : undefined}
       getOptionSelected={(option, value) => option?.id === value?.id}
       getOptionLabel={(option) => option.value}
       renderInput={(params) => (

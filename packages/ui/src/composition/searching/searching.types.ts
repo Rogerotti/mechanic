@@ -1,15 +1,16 @@
-import { IListItem } from '../../types/core';
+import { IListItem, IListItemGrouped } from '../../types/core';
 
 export interface ISearchingProps {
   header: string;
   subHeader: string;
   cities: IListItem[];
   citiesLoading?: boolean;
-  categories: IListItem[];
-  selectedCategories?: IListItem[];
+  categories: IListItemGrouped[];
+  categoriesLoading?: boolean;
+  selectedCategory?: IListItemGrouped;
   selectedCity?: IListItem;
-  backgroudImage?: string;
+  backgroundImage?: string;
   onSearchClick?: () => void;
-  onCategoriesChange?: (values: IListItem[]) => void;
+  onCategoryChange?: (values: IListItemGrouped) => void;
   onCityChange?: (value: IListItem) => void;
 }

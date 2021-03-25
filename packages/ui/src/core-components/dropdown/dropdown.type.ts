@@ -1,13 +1,14 @@
 import { ReactNode } from 'react';
-import { IListItem } from '../../types/core';
+import { IListItemGrouped } from '../../types/core';
 
 export interface IDropdownProps {
   className?: string;
   label: string;
   icon?: ReactNode;
   isLoading?: boolean;
-  selectedValue?: IListItem;
-  items: IListItem[];
+  selectedValue?: IListItemGrouped;
+  items: IListItemGrouped[];
+  groupByValue?: boolean;
   // eslint-disable-next-line @typescript-eslint/ban-types
-  onChange?: (event: React.ChangeEvent<{}>, value: IListItem) => void;
+  onChange?: (event: React.ChangeEvent<{}>, value: IListItemGrouped) => void;
 }

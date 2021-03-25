@@ -12,7 +12,7 @@ export const HomePage: React.FC<IHomePageProps> = ({
   searchBackgroundImage,
   howItWorksHeader,
   onSearchClick,
-  onCategoriesChange,
+  onCategoryChange,
   onCityChange,
 
   tabs,
@@ -20,7 +20,8 @@ export const HomePage: React.FC<IHomePageProps> = ({
   cities,
   citiesLoading,
   categories,
-  selectedCategories,
+  categoriesLoading,
+  selectedCategory,
   selectedCity,
   howItWorksSelectedTabId,
   onHowItWorksTabChange,
@@ -33,11 +34,12 @@ export const HomePage: React.FC<IHomePageProps> = ({
         cities={cities}
         citiesLoading={citiesLoading}
         categories={categories}
-        selectedCategories={selectedCategories}
+        categoriesLoading={categoriesLoading}
+        selectedCategory={selectedCategory}
         selectedCity={selectedCity}
-        backgroudImage={searchBackgroundImage}
+        backgroundImage={searchBackgroundImage}
         onSearchClick={onSearchClick}
-        onCategoriesChange={onCategoriesChange}
+        onCategoryChange={onCategoryChange}
         onCityChange={onCityChange}
       />
       <HowItWorks

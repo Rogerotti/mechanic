@@ -1,4 +1,4 @@
-import { IListItem } from '@ui/types/core';
+import { IListItem, IListItemGrouped } from '@ui/types/core';
 import { IEventDTO, ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces';
 
 export interface ICommentDTO {
@@ -18,7 +18,7 @@ export interface ISearchEvents {
 }
 
 export interface SearchTrainersReducerState {
-  categories: IListItem[];
+  category: IListItem;
   city: IListItem;
   trainers: ITrainerBasicDTO[];
   redirect: boolean;
@@ -44,7 +44,7 @@ export const SEARCH_TRAINERS_SUCCESS = 'SEARCH_TRAINERS_SUCCESS';
 export const SEARCH_TRAINERS_FAILURE = 'SEARCH_TRAINERS_FAILURE';
 
 export const SET_CITY = 'SET_CITY';
-export const SET_CATEGORIES = 'SET_CATEGORIES';
+export const SET_CATEGORY = 'SET_CATEGORY';
 
 export interface SearchTrainerCommentsRequestAction {
   type: typeof SEARCH_TRAINER_COMMENTS_REQUEST;
@@ -106,7 +106,7 @@ export interface SearchTrainerFailureAction {
 export interface SearchTrainersRequestAction {
   type: typeof SEARCH_TRAINERS_REQUEST;
   payload: {
-    categories: IListItem[];
+    category: IListItem;
     city: IListItem;
   };
 }
@@ -130,9 +130,9 @@ export interface SetCityAction {
 }
 
 export interface SetCategoriesAction {
-  type: typeof SET_CATEGORIES;
+  type: typeof SET_CATEGORY;
   payload: {
-    categories: IListItem[];
+    category: IListItemGrouped;
   };
 }
 

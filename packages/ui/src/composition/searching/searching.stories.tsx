@@ -21,7 +21,9 @@ export const Basic = Template.bind({});
 Basic.args = {
   header: 'Chcesz lepszych efektów? ',
   subHeader: 'Znajdź lepszego trenera!',
-  backgroudImage: background,
+  backgroundImage: background,
   cities: cities,
   categories: categories,
+  categoriesLoading: false,
+  citiesLoading: false,
 };

@@ -11,7 +11,7 @@ import {
   SetCityAction,
   SET_CITY,
   SetCategoriesAction,
-  SET_CATEGORIES,
+  SET_CATEGORY,
   SEARCH_TRAINER_SUCCESS,
   SEARCH_TRAINER_FAILURE,
   SearchTrainerFailureAction,
@@ -30,7 +30,7 @@ import {
   SearchTrainerCommentsFailureAction,
   SEARCH_TRAINER_COMMENTS_FAILURE,
 } from '@redux/types/search';
-import { IListItem } from '@ui/types/core';
+import { IListItem, IListItemGrouped } from '@ui/types/core';
 import { ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces';
 
 export function searchTrainerComments(id: string, length?: number): SearchTrainerCommentsRequestAction {
@@ -108,12 +108,12 @@ export function searchTrainerFailure(): SearchTrainerFailureAction {
   };
 }
 
-export function searchTrainers(city: IListItem, categories: IListItem[]): SearchTrainersRequestAction {
+export function searchTrainers(city: IListItem, category: IListItemGrouped): SearchTrainersRequestAction {
   return {
     type: SEARCH_TRAINERS_REQUEST,
     payload: {
       city,
-      categories,
+      category,
     },
   };
 }
@@ -142,11 +142,11 @@ export function setCity(city: IListItem): SetCityAction {
   };
 }
 
-export function setCategories(categories: IListItem[]): SetCategoriesAction {
+export function setCategory(category: IListItemGrouped): SetCategoriesAction {
   return {
-    type: SET_CATEGORIES,
+    type: SET_CATEGORY,
     payload: {
-      categories,
+      category,
     },
   };
 }

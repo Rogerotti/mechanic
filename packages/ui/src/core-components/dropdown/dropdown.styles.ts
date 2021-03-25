@@ -12,4 +12,10 @@ export const useStyles = makeStyles((theme) => ({
       color: theme.palette.secondary.main,
     },
   },
+  groupLabel: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.text.primary,
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 }));

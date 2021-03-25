@@ -5,7 +5,7 @@ import {
   SearchTrainersReducerState,
   SEARCH_TRAINERS_SUCCESS,
   SET_CITY,
-  SET_CATEGORIES,
+  SET_CATEGORY,
   SEARCH_TRAINER_REQUEST,
   SEARCH_TRAINER_SUCCESS,
   SEARCH_TRAINER_EVENTS_REQUEST,
@@ -18,7 +18,7 @@ import {
 
 const initialState: SearchTrainersReducerState = {
   city: null,
-  categories: [],
+  category: null,
   trainers: [],
   trainer: null,
   redirect: false,
@@ -71,7 +71,7 @@ export function searchReducer(state = initialState, action: SearchActionTypes): 
     case SEARCH_TRAINERS_REQUEST:
       return {
         ...state,
-        categories: action.payload.categories,
+        category: action.payload.category,
         city: action.payload.city,
       };
     case SEARCH_TRAINERS_SUCCESS:
@@ -89,10 +89,10 @@ export function searchReducer(state = initialState, action: SearchActionTypes): 
         ...state,
         city: action.payload.city,
       };
-    case SET_CATEGORIES:
+    case SET_CATEGORY:
       return {
         ...state,
-        categories: action.payload.categories,
+        category: action.payload.category,
       };
 
     default:

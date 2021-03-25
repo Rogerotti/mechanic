@@ -31,3 +31,34 @@ Basic.args = {
     },
   ],
 };
+
+export const Extend = Template.bind({});
+
+Extend.args = {
+  label: 'Kategoria',
+  groupByValue: true,
+  // icon: <LocationOnIcon />,
+  isLoading: false,
+  items: [
+    {
+      id: 'mm',
+      value: 'MMA',
+      groupValue: 'Sporty walki',
+    },
+    {
+      id: 'box',
+      value: 'Boks',
+      groupValue: 'Sporty walki',
+    },
+    {
+      id: 's',
+      value: 'Skoki',
+      groupValue: 'Sporty zimowe',
+    },
+    {
+      id: 'h',
+      value: 'Hokej',
+      groupValue: 'Sporty zimowe',
+    },
+  ],
+};

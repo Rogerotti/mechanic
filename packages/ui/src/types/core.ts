@@ -18,3 +18,8 @@ export interface ILink {
 export interface IListItem extends IIterable {
   value: string;
 }
+
+export interface IListItemGrouped extends IListItem {
+  groupId?: string;
+  groupValue?: string;
+}

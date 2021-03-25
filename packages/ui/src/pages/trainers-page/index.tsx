@@ -10,21 +10,31 @@ export const TrainersPage: React.FC<ITrainersPageProps> = ({
   trainers,
   numberOfPages,
   categories,
+  generalCategories,
+  categoriesLoading,
   cities,
+  citiesLoading,
   selectedCity,
-  selectedCategories,
-  onCategoriesChange,
+  selectedCategory,
+  selectedGeneralCategory,
+  onCategoryChange,
+  onGeneralCategoryChange,
   onCityChange,
 }) => {
   return (
     <Box bgcolor="primary.main">
       <ExtendedSearch
         cities={cities}
+        citiesLoading={citiesLoading}
+        generalCategories={generalCategories}
         categories={categories}
-        onCategoriesChange={onCategoriesChange}
+        categoriesLoading={categoriesLoading}
+        onCategoryChange={onCategoryChange}
         onCityChange={onCityChange}
+        onGeneralCategoryChange={onGeneralCategoryChange}
         selectedCity={selectedCity}
-        selectedCategories={selectedCategories}
+        selectedCategory={selectedCategory}
+        selectedGeneralCategory={selectedGeneralCategory}
       />
       <Box display="flex" justifyContent="center" pt={2}>
         <Box width="80%">

@@ -1,6 +1,6 @@
 import { ITabsProps } from '@core-components/tabs/tabs.types';
 
-import { IListItem } from '../../types/core';
+import { IListItem, IListItemGrouped } from '../../types/core';
 import { IHowItWorksProps } from '../../composition/how-it-works/how-it-works.types';
 import { ISearchingProps } from '../../composition/searching/searching.types';
 export interface IHomePageProps {
@@ -10,14 +10,15 @@ export interface IHomePageProps {
   searchBackgroundImage?: string;
   tabs: ITabsProps['items'];
   onSearchClick?: ISearchingProps['onSearchClick'];
-  onCategoriesChange?: ISearchingProps['onCategoriesChange'];
+  onCategoryChange?: ISearchingProps['onCategoryChange'];
   onCityChange?: ISearchingProps['onCityChange'];
 
   cities: IListItem[];
   citiesLoading?: boolean;
-  categories: IListItem[];
+  categories: IListItemGrouped[];
+  categoriesLoading?: boolean;
   selectedCity?: IListItem;
-  selectedCategories?: IListItem[];
+  selectedCategory?: IListItemGrouped;
   howItWorksHeader: string;
   steps: IHowItWorksProps['steps'];
   howItWorksSelectedTabId?: string;
