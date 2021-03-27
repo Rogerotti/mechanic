@@ -13,15 +13,13 @@ export const StepCard: React.FC<IStepCardProps> = ({ number, icon, header, subHe
 
   return (
     <Box
-      // borderTop={1}
-      // padding={2}
       border="1px solid"
       borderColor="primary.light"
       position="relative"
       bgcolor="primary.main"
       minHeight={350}
       borderRadius={10}
-      boxShadow={22}
+      boxShadow={5}
     >
       <Box position="absolute" top={-25} left="45%">
         <CircleWithNumber number={number} />

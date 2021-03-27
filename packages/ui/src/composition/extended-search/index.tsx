@@ -37,7 +37,7 @@ export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({
   return (
     <Box width="100%" bgcolor="primary.main">
       <Box
-        boxShadow={15}
+        boxShadow={5}
         minHeight={100}
         borderColor="primary.light"
         bgcolor="primary.main"

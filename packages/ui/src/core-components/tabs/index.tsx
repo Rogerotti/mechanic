@@ -21,12 +21,11 @@ export const Tabs: React.FC<ITabsProps> = ({ items, selectedTabId, onChange }) =
   };
 
   return (
-    <Box bgcolor="primary.main" borderColor="primary.light">
+    <Box bgcolor="primary.main" borderColor="primary.light" border="1px solid">
       <TabsMUI
         value={selectedTab}
         onChange={onChangeCallback}
         variant="fullWidth"
-        color="red"
         textColor="secondary"
         indicatorColor="secondary"
       >

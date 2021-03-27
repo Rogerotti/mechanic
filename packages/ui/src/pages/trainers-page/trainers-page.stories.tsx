@@ -28,4 +28,6 @@ Basic.args = {
   trainers: [trainer1, trainer2],
   categories: categories,
   cities: cities,
+
+  generalCategories: [],
 };

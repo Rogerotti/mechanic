@@ -11,7 +11,7 @@ export const PresentationList: React.FC<IPresentationListProps> = ({ items, numb
   return (
     <Box width="100%">
       {items.map((item) => (
-        <Box key={item.id} mb={2} boxShadow={10}>
+        <Box key={item.id} mb={2} border="1px solid white" borderRadius={10}>
           <PresentationCard {...item} />
         </Box>
       ))}
