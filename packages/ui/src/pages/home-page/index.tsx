@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import { Searching } from '../../composition/searching';
 import { HowItWorks } from '../../composition/how-it-works';
 import { IHomePageProps } from './home-page.types';
+import { PresentationImageList } from '../../composition/presentation-image-list';
 
 export const HomePage: React.FC<IHomePageProps> = ({
   searchHeader,
@@ -14,6 +15,9 @@ export const HomePage: React.FC<IHomePageProps> = ({
   onSearchClick,
   onCategoryChange,
   onCityChange,
+
+  mainCategoriesTitle,
+  mainCategories,
 
   tabs,
   steps,
@@ -42,6 +46,7 @@ export const HomePage: React.FC<IHomePageProps> = ({
         onCategoryChange={onCategoryChange}
         onCityChange={onCityChange}
       />
+      <PresentationImageList title={mainCategoriesTitle} items={mainCategories} />
       <HowItWorks
         header={howItWorksHeader}
         steps={steps}

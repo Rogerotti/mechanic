@@ -46,7 +46,6 @@ export const Searching: React.FC<ISearchingProps> = ({
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
         }}
-        boxShadow={15}
         minHeight={300}
         borderColor="primary.light"
         bgcolor="primary.main"

@@ -21,6 +21,7 @@ import { HomePage } from '.';
 import { LayoutForStories } from '../../storybook/layout';
 import { cities, categories } from '../../storybook/data/searching';
 import { tabs } from '../../storybook/data/tabs';
+import { mainCategoriesList } from '../../storybook/data/sections/mainCategories';
 
 export default {
   title: 'Pages/Home Page',
@@ -120,6 +121,9 @@ Basic.args = {
   howItWorksHeader: 'Jak to dziala?',
   loginText: 'zaloguj',
   registerText: 'zarejestruj',
+
+  mainCategoriesTitle: 'Kategorie główne',
+  mainCategories: mainCategoriesList,
 
   tabs: tabs,
   cities: cities,

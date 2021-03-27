@@ -3,6 +3,7 @@ import { ITabsProps } from '@core-components/tabs/tabs.types';
 import { IListItem, IListItemGrouped } from '../../types/core';
 import { IHowItWorksProps } from '../../composition/how-it-works/how-it-works.types';
 import { ISearchingProps } from '../../composition/searching/searching.types';
+import { IPresentationImageListProps } from '../../composition/presentation-image-list/presentation-image-list.types';
 export interface IHomePageProps {
   name: string;
   searchHeader: string;
@@ -12,6 +13,9 @@ export interface IHomePageProps {
   onSearchClick?: ISearchingProps['onSearchClick'];
   onCategoryChange?: ISearchingProps['onCategoryChange'];
   onCityChange?: ISearchingProps['onCityChange'];
+
+  mainCategoriesTitle: string;
+  mainCategories: IPresentationImageListProps['items'];
 
   cities: IListItem[];
   citiesLoading?: boolean;
