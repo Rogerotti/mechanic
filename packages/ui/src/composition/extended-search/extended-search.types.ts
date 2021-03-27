@@ -5,7 +5,7 @@ export interface IExtendedSearchProps {
   cities: IListItem[];
   citiesLoading?: boolean;
   selectedCity?: IListItem;
-  categories: IListItem[];
+  categories: IListItemGrouped[];
 
   generalCategories: IListItem[];
 

@@ -18,7 +18,12 @@ export interface ISearchEvents {
 }
 
 export interface SearchTrainersReducerState {
-  category: IListItem;
+  category: {
+    categoryId: string;
+    categoryName: string;
+    subcategoryId: string;
+    subcategoryName: string;
+  };
   city: IListItem;
   trainers: ITrainerBasicDTO[];
   redirect: boolean;
@@ -106,7 +111,7 @@ export interface SearchTrainerFailureAction {
 export interface SearchTrainersRequestAction {
   type: typeof SEARCH_TRAINERS_REQUEST;
   payload: {
-    category: IListItem;
+    category: IListItemGrouped;
     city: IListItem;
   };
 }

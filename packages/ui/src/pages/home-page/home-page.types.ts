@@ -16,6 +16,7 @@ export interface IHomePageProps {
 
   mainCategoriesTitle: string;
   mainCategories: IPresentationImageListProps['items'];
+  onMainCategoryClick?: IPresentationImageListProps['onClick'];
 
   cities: IListItem[];
   citiesLoading?: boolean;

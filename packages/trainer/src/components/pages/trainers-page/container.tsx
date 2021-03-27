@@ -13,14 +13,32 @@ export const TrainersPageContainer: React.FC = () => {
   const dispatch = useDispatch();
 
   const { loading: categoryLoading, categories: categoriesData, generalCategories } = useCategories();
-  // const { loading: generalCategoryLoading, generalcategories: categoriesData } = useCategories();
+
   const { loading: categoriesLoading, cities: citiesData } = useCities();
 
-  const [selectedGeneralCategory, setSelectedGeneralCategory] = useState<IListItem | undefined>(null);
-  const [selectedCategory, setSelectedCategory] = useState<IListItemGrouped>(useSelector(getCurrentCategory));
+  const currentCategorySelected = useSelector(getCurrentCategory);
+  currentCategorySelected;
+
+  const [selectedGeneralCategory, setSelectedGeneralCategory] = useState<IListItem | undefined>(
+    currentCategorySelected
+      ? {
+          id: currentCategorySelected.categoryId,
+          value: currentCategorySelected.categoryName,
+        }
+      : null,
+  );
+  const [selectedCategory, setSelectedCategory] = useState<IListItemGrouped>(
+    currentCategorySelected
+      ? {
+          groupId: currentCategorySelected.categoryId,
+          groupValue: currentCategorySelected.categoryName,
+          value: currentCategorySelected.subcategoryName,
+          id: currentCategorySelected.subcategoryId,
+        }
+      : null,
+  );
   const [selectedCity, setSelectedCity] = useState<IListItem | undefined>(useSelector(getCurrentCity));
 
-  console.log(selectedGeneralCategory);
   const filteredCategories = categoriesData?.filter((x) =>
     selectedGeneralCategory ? x.groupId === selectedGeneralCategory.id : true,
   );
@@ -45,8 +63,14 @@ export const TrainersPageContainer: React.FC = () => {
       selectedCategory &&
       selectedCategory.groupId !== selectedGeneralCategory.id
     ) {
-      console.log('zmiana');
-      onCategoryChangeCallback(null);
+      const newCategory: IListItemGrouped = {
+        id: null,
+        value: null,
+        groupId: selectedGeneralCategory.id,
+        groupValue: selectedGeneralCategory.value,
+      };
+      setSelectedCategory(null);
+      dispatch(setCategory(newCategory));
     }
   }, [selectedGeneralCategory]);
 
@@ -78,7 +102,6 @@ export const TrainersPageContainer: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/ban-types
   const onGeneralCategoryChangeCallback = (_event: React.ChangeEvent<{}>, category: IListItem) => {
     setSelectedGeneralCategory(category);
-    // dispatch(setCategory(category));
   };
 
   return (

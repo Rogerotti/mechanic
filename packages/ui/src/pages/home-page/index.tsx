@@ -18,6 +18,7 @@ export const HomePage: React.FC<IHomePageProps> = ({
 
   mainCategoriesTitle,
   mainCategories,
+  onMainCategoryClick,
 
   tabs,
   steps,
@@ -46,7 +47,7 @@ export const HomePage: React.FC<IHomePageProps> = ({
         onCategoryChange={onCategoryChange}
         onCityChange={onCityChange}
       />
-      <PresentationImageList title={mainCategoriesTitle} items={mainCategories} />
+      <PresentationImageList title={mainCategoriesTitle} items={mainCategories} onClick={onMainCategoryClick} />
       <HowItWorks
         header={howItWorksHeader}
         steps={steps}

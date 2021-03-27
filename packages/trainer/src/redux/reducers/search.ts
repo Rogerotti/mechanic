@@ -71,7 +71,12 @@ export function searchReducer(state = initialState, action: SearchActionTypes): 
     case SEARCH_TRAINERS_REQUEST:
       return {
         ...state,
-        category: action.payload.category,
+        category: {
+          categoryId: action.payload.category.groupId,
+          categoryName: action.payload.category.groupValue,
+          subcategoryId: action.payload.category.id,
+          subcategoryName: action.payload.category.value,
+        },
         city: action.payload.city,
       };
     case SEARCH_TRAINERS_SUCCESS:
@@ -92,7 +97,12 @@ export function searchReducer(state = initialState, action: SearchActionTypes): 
     case SET_CATEGORY:
       return {
         ...state,
-        category: action.payload.category,
+        category: {
+          categoryId: action.payload.category.groupId,
+          categoryName: action.payload.category.groupValue,
+          subcategoryId: action.payload.category.id,
+          subcategoryName: action.payload.category.value,
+        },
       };
 
     default:

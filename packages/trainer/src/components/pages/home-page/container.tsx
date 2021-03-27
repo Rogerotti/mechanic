@@ -13,16 +13,30 @@ import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
 import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
 import { useCategories, useCities } from '../../../apollo/queries';
+import { mainCategoriesList } from './utils';
+import { useHistory } from 'react-router-dom';
 
 export const HomePageContainer: React.FC = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { getText } = useTranslation();
 
-  const { loading: categoryLoading, categories: categoriesData } = useCategories();
+  const { loading: categoryLoading, categories: categoriesData, generalCategories } = useCategories();
   const { loading: cityLoading, cities: citiesData } = useCities();
 
+  const currentCategorySelected = useSelector(getCurrentCategory);
+
   const [city, setCity] = useState<IListItem | undefined>(useSelector(getCurrentCity));
-  const [category, setCategory] = useState<IListItemGrouped>(useSelector(getCurrentCategory));
+  const [category, setCategory] = useState<IListItemGrouped>(
+    currentCategorySelected
+      ? {
+          groupId: currentCategorySelected.categoryId,
+          groupValue: currentCategorySelected.categoryName,
+          value: currentCategorySelected.subcategoryName,
+          id: currentCategorySelected.subcategoryId,
+        }
+      : null,
+  );
 
   const howItWorksTabs = getHowItWorksTabs();
   const [selectedTabId, setSelectedTabId] = useState(howItWorksTabs[0].id);
@@ -46,6 +60,19 @@ export const HomePageContainer: React.FC = () => {
     setSelectedTabId(id);
   };
 
+  const onMainCategoryClick = (id: string): void => {
+    const cat = generalCategories.find((x) => x.id === id);
+    dispatch(
+      setReduxCategory({
+        id: null,
+        value: null,
+        groupId: cat.id,
+        groupValue: cat.value,
+      }),
+    );
+    history.push('/trainers');
+  };
+
   return (
     <Layout>
       <HomePage
@@ -67,6 +94,9 @@ export const HomePageContainer: React.FC = () => {
         onCityChange={onCityChange}
         onCategoryChange={onCategoryChange}
         onSearchClick={onSearch}
+        mainCategories={mainCategoriesList}
+        mainCategoriesTitle="Kategorie ogólne"
+        onMainCategoryClick={onMainCategoryClick}
       />
     </Layout>
   );

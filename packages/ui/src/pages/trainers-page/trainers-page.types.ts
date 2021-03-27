@@ -5,7 +5,7 @@ import { IListItem, IListItemGrouped } from '../../types/core';
 export interface ITrainersPageProps {
   cities: IListItem[];
   citiesLoading?: boolean;
-  categories: IListItem[];
+  categories: IListItemGrouped[];
   generalCategories: IListItem[];
   categoriesLoading?: boolean;
   selectedCity?: IListItem;
