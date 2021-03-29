@@ -7,14 +7,14 @@ import { getCurrentCategory, getCurrentCity, getTrainers } from '@redux/selector
 import { useDispatch, useSelector } from 'react-redux';
 import { IPresentationCardProps } from '@ui/composition/presentation-card/presentation-card.types';
 import { setCategory, setCity } from '@redux/actions/search';
-import { useCategories, useCities } from '../../../apollo/queries';
+import { useCategories, useCities, useTrainers } from '../../../apollo/queries';
 
 export const TrainersPageContainer: React.FC = () => {
   const dispatch = useDispatch();
 
   const { loading: categoryLoading, categories: categoriesData, generalCategories } = useCategories();
-
   const { loading: categoriesLoading, cities: citiesData } = useCities();
+  const { loading: trainersLoading, trainers: trainersData } = useTrainers();
 
   const currentCategorySelected = useSelector(getCurrentCategory);
   currentCategorySelected;
@@ -27,6 +27,7 @@ export const TrainersPageContainer: React.FC = () => {
         }
       : null,
   );
+
   const [selectedCategory, setSelectedCategory] = useState<IListItemGrouped>(
     currentCategorySelected
       ? {
@@ -48,7 +49,7 @@ export const TrainersPageContainer: React.FC = () => {
       const category = filteredCategories.find(
         (x) => x.id === selectedCategory?.id && x.groupId === selectedCategory.groupId,
       );
-      console.log('category', category, filteredCategories, selectedCategory);
+
       const generalCategory = generalCategories.find((y) => y.id === category?.groupId);
       if (generalCategory) {
         setSelectedGeneralCategory(generalCategory);
@@ -74,19 +75,37 @@ export const TrainersPageContainer: React.FC = () => {
     }
   }, [selectedGeneralCategory]);
 
-  const trainers = useMappedData(useSelector(getTrainers), (trainers): IPresentationCardProps[] =>
-    trainers.map(({ id, description, image, name, lastName, rating, numberOfRatings, location }) => ({
-      id,
-      description,
-      image,
-      rating,
-      numberOfRatings,
-      location,
-      descriptionShowMoreText: 'Dowiedz się więcej',
-      actionText: 'Akcja',
-      header: `${name} ${lastName}`,
-    })),
+  console.log(trainersData);
+
+  const trainers = trainersData.map(
+    (trainer): IPresentationCardProps => {
+      return {
+        id: trainer.id,
+        description: trainer.description,
+        image: trainer.image,
+        rating: trainer.rating,
+        numberOfRatings: trainer.totalRates,
+        location: 'test',
+        descriptionShowMoreText: 'Dowiedz się więcej',
+        actionText: 'Akcja',
+        header: `${trainer.name} ${trainer.lastName}`,
+      };
+    },
   );
+
+  // const trainers = useMappedData(useSelector(getTrainers), (trainers): IPresentationCardProps[] =>
+  //   trainers.map(({ id, description, image, name, lastName, rating, numberOfRatings, location }) => ({
+  //     id,
+  //     description,
+  //     image,
+  //     rating,
+  //     numberOfRatings,
+  //     location,
+  //     descriptionShowMoreText: 'Dowiedz się więcej',
+  //     actionText: 'Akcja',
+  //     header: `${name} ${lastName}`,
+  //   })),
+  // );
 
   // eslint-disable-next-line @typescript-eslint/ban-types
   const onCityChangeCallback = (_event: React.ChangeEvent<{}>, city: IListItem) => {
@@ -108,6 +127,7 @@ export const TrainersPageContainer: React.FC = () => {
     <Layout>
       <TrainersPage
         trainers={trainers}
+        trainersLoading={trainersLoading}
         numberOfPages={10}
         cities={citiesData}
         citiesLoading={categoriesLoading}

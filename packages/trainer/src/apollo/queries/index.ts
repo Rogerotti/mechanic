@@ -1,7 +1,7 @@
 import { useMappedData } from '@api/hooks';
 import { gql, useQuery } from '@apollo/client';
 import { IListItem, IListItemGrouped } from '@ui/types/core';
-import { IGetAllCategoriesQuery, IGetAllCitiesQuery } from './types';
+import { IGetAllCategoriesQuery, IGetAllCitiesQuery, IGetAllTrainersQuery } from './types';
 
 export const PAYU_QUERY = gql`
   query Test {
@@ -41,6 +41,63 @@ export const GET_ALL_CATEGORIES = gql`
     }
   }
 `;
+
+export const GET_ALL_TRAINERS = gql`
+  query GetTrainers {
+    postgres {
+      trainers {
+        id
+        name
+        lastName
+        description
+        totalRates
+        rating
+        image
+        subcategories {
+          id
+          name
+          description
+        }
+      }
+    }
+  }
+`;
+
+export interface ITrainerData {
+  id: string;
+  name: string;
+  lastName: string;
+  description?: string;
+  image?: string;
+  rating: number;
+  totalRates: number;
+}
+
+export const useTrainers = (): {
+  loading: boolean;
+  trainers: ITrainerData[];
+} => {
+  const { data, loading } = useQuery<IGetAllTrainersQuery>(GET_ALL_TRAINERS);
+  console.log('trainer', data?.postgres?.trainers);
+  const allTrainers = useMappedData(data?.postgres?.trainers, (trainers): ITrainerData[] =>
+    trainers
+      ? trainers.map((trainer) => ({
+          id: trainer.id,
+          name: trainer.name,
+          lastName: trainer.lastName,
+          description: trainer.description,
+          rating: trainer.rating,
+          totalRates: trainer.totalRates,
+          image: trainer.image,
+        }))
+      : [],
+  );
+
+  return {
+    trainers: allTrainers,
+    loading,
+  };
+};
 
 export const useCategories = (): {
   loading: boolean;

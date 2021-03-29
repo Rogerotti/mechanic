@@ -6,6 +6,7 @@ type PayU {
 type Postgres {
   cities: [City]
   categories: [Category]
+  trainers: [Trainer]
 }
 
 type Query {
@@ -33,8 +34,26 @@ type Category {
   subcategories: [Subcategory!]
 }
 
+type Trainer {
+  id: String
+  name: String
+  lastName: String
+  description: String
+  image: String
+  rating: Float
+  totalRates: Int
+  subcategories: [Subcategory!]
+  comments: [Comment]
+}
+
 type Subcategory {
   id: String
   name: String
   description: String
+}
+
+type Comment {
+  id: String
+  description: String
+  rating: Float
 }

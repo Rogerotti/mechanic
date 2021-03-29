@@ -17,7 +17,6 @@ export const getPayUPayoutMethods = async (): Promise<IPayUAuthorizationRespond>
       },
     })
     .then((res) => {
-      console.log('methods');
       return res.data;
     })
     .catch((exception) => {

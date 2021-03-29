@@ -16,8 +16,6 @@ export const TrainerPageContainer: React.FC = () => {
   const id = '1';
   const { data, loading, error } = useQuery(PAYU_QUERY);
 
-  console.log('mamy to', data, loading, error);
-
   useEffect(() => {
     dispatch(searchTrainer(id));
     dispatch(searchTrainerComments(id, 2));

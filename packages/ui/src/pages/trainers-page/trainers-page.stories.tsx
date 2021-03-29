@@ -25,6 +25,7 @@ const Template: Story<ComponentProps<typeof TrainersPage>> = ({ ...args }) => {
 export const Basic = Template.bind({});
 
 Basic.args = {
+  trainersLoading: true,
   trainers: [trainer1, trainer2],
   categories: categories,
   cities: cities,

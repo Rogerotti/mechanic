@@ -5,9 +5,13 @@ import Box from '@material-ui/core/Box';
 import { ITrainersPageProps } from './trainers-page.types';
 import { PresentationList } from '../../composition/presentation-list';
 import { ExtendedSearch } from '../../composition/extended-search';
+import SpinnerLoader from '@core-components/spinner-loader';
+import { Theme, useMediaQuery } from '@material-ui/core';
 
 export const TrainersPage: React.FC<ITrainersPageProps> = ({
   trainers,
+  trainersLoading,
+
   numberOfPages,
   categories,
   generalCategories,
@@ -21,6 +25,8 @@ export const TrainersPage: React.FC<ITrainersPageProps> = ({
   onGeneralCategoryChange,
   onCityChange,
 }) => {
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('xs'));
+
   return (
     <Box bgcolor="primary.main">
       <ExtendedSearch
@@ -36,11 +42,17 @@ export const TrainersPage: React.FC<ITrainersPageProps> = ({
         selectedCategory={selectedCategory}
         selectedGeneralCategory={selectedGeneralCategory}
       />
-      <Box display="flex" justifyContent="center" pt={2}>
-        <Box width="80%">
-          <PresentationList items={trainers} numberOfPages={numberOfPages} />
+      {trainersLoading ? (
+        <Box minHeight={{ xs: '200px', sm: '400px', md: '600px' }} display="flex" alignItems="center">
+          <SpinnerLoader scale={isMobile ? 1 : 1.5} />
         </Box>
-      </Box>
+      ) : (
+        <Box display="flex" justifyContent="center" pt={2}>
+          <Box width="80%">
+            <PresentationList items={trainers} numberOfPages={numberOfPages} />
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 };

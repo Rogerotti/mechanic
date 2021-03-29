@@ -27,8 +27,6 @@ export const ExtendedSearch: React.FC<IExtendedSearchProps> = ({
 }) => {
   const classes = useStyles();
 
-  console.log('test', selectedCategory);
-
   // eslint-disable-next-line @typescript-eslint/ban-types
   const onCategoryChangeCallback = (_event: React.ChangeEvent<{}>, value: IListItemGrouped) => {
     onCategoryChange?.(value);
