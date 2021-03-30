@@ -1,3 +1,4 @@
+import { ILocation2 } from '..';
 import { ICategory, ICity, ISubcategory, ITrainerBasicDTO } from '../../../interfaces';
 
 export interface IGetAllCitiesQuery {
@@ -16,6 +17,7 @@ export interface IGetAllTrainersQuery {
       image?: string;
       rating: number;
       totalRates: number;
+      locations: ILocation2[];
       subcategories: ISubcategory[];
     }[];
   };

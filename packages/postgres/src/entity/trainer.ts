@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMany } from 'typeorm';
 import { Subcategory } from './subcategory';
 import { Comment } from './comment';
+import { Location } from './location';
 
 @Entity()
 export class Trainer {
@@ -36,4 +37,7 @@ export class Trainer {
 
   @OneToMany(() => Comment, (comment) => comment.trainer)
   comments: Comment[];
+
+  @OneToMany(() => Location, (location) => location.trainer)
+  locations: Location[];
 }

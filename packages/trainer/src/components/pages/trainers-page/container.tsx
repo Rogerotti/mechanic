@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../core/layout';
 import { TrainersPage } from '@ui/pages/trainers-page';
 import { IListItem, IListItemGrouped } from '@ui/types/core';
-import { useMappedData } from '@api/hooks';
-import { getCurrentCategory, getCurrentCity, getTrainers } from '@redux/selectors';
+import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { IPresentationCardProps } from '@ui/composition/presentation-card/presentation-card.types';
 import { setCategory, setCity } from '@redux/actions/search';
@@ -85,27 +84,13 @@ export const TrainersPageContainer: React.FC = () => {
         image: trainer.image,
         rating: trainer.rating,
         numberOfRatings: trainer.totalRates,
-        location: 'test',
+        location: `${trainer.locations[0].name}`,
         descriptionShowMoreText: 'Dowiedz się więcej',
-        actionText: 'Akcja',
+        actionText: 'Zarezerwuj',
         header: `${trainer.name} ${trainer.lastName}`,
       };
     },
   );
-
-  // const trainers = useMappedData(useSelector(getTrainers), (trainers): IPresentationCardProps[] =>
-  //   trainers.map(({ id, description, image, name, lastName, rating, numberOfRatings, location }) => ({
-  //     id,
-  //     description,
-  //     image,
-  //     rating,
-  //     numberOfRatings,
-  //     location,
-  //     descriptionShowMoreText: 'Dowiedz się więcej',
-  //     actionText: 'Akcja',
-  //     header: `${name} ${lastName}`,
-  //   })),
-  // );
 
   // eslint-disable-next-line @typescript-eslint/ban-types
   const onCityChangeCallback = (_event: React.ChangeEvent<{}>, city: IListItem) => {

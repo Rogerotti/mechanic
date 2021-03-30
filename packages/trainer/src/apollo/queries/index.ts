@@ -1,6 +1,7 @@
 import { useMappedData } from '@api/hooks';
 import { gql, useQuery } from '@apollo/client';
 import { IListItem, IListItemGrouped } from '@ui/types/core';
+import { ICity } from 'src/interfaces';
 import { IGetAllCategoriesQuery, IGetAllCitiesQuery, IGetAllTrainersQuery } from './types';
 
 export const PAYU_QUERY = gql`
@@ -53,6 +54,16 @@ export const GET_ALL_TRAINERS = gql`
         totalRates
         rating
         image
+        locations {
+          id
+          name
+          streetName
+          streetNumber
+          city {
+            id
+            name
+          }
+        }
         subcategories {
           id
           name
@@ -63,6 +74,14 @@ export const GET_ALL_TRAINERS = gql`
   }
 `;
 
+export interface ILocation2 {
+  id: string;
+  name?: string;
+  streetName: string;
+  streetNumber: number;
+  city: ICity;
+}
+
 export interface ITrainerData {
   id: string;
   name: string;
@@ -71,6 +90,7 @@ export interface ITrainerData {
   image?: string;
   rating: number;
   totalRates: number;
+  locations: ILocation2[];
 }
 
 export const useTrainers = (): {
@@ -88,6 +108,7 @@ export const useTrainers = (): {
           description: trainer.description,
           rating: trainer.rating,
           totalRates: trainer.totalRates,
+          locations: trainer.locations,
           image: trainer.image,
         }))
       : [],

@@ -22,6 +22,14 @@ export interface IComment {
   rating: number;
 }
 
+export interface ILocation {
+  id: number;
+  name?: string;
+  streetName: string;
+  streetNumber: number;
+  city: ICity;
+}
+
 export interface ITrainer {
   id: number;
   name: string;
@@ -32,6 +40,7 @@ export interface ITrainer {
   image: string;
   comments: IComment[];
   subcategories: ISubcategory[];
+  locations: ILocation[];
 }
 
 export interface IPostgresDataSource {
