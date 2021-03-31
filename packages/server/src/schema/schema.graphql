@@ -3,15 +3,11 @@ type PayU {
   payoutMethods: [PayoutMethod!]
 }
 
-type Postgres {
-  cities: [City]
-  categories: [Category]
-  trainers: [Trainer]
-}
-
 type Query {
   payU: PayU!
-  postgres: Postgres!
+  cities: [City]
+  categories: [Category]
+  trainers(cityId: String, categoryId: String, subcategoryId: String, offset: Int, limit: Int): PaginatedTrainers
 }
 
 type PayoutMethod {
@@ -27,11 +23,17 @@ type City {
   id: String
   name: String
 }
+
 type Category {
   id: String
   name: String
   description: String
   subcategories: [Subcategory!]
+}
+
+type PaginatedTrainers {
+  trainers: [Trainer]
+  trainersTotalNumber: Int
 }
 
 type Trainer {

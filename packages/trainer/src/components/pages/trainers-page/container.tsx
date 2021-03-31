@@ -7,16 +7,25 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IPresentationCardProps } from '@ui/composition/presentation-card/presentation-card.types';
 import { setCategory, setCity } from '@redux/actions/search';
 import { useCategories, useCities, useTrainers } from '../../../apollo/queries';
+import { usePagination } from '../../core/pagination';
 
 export const TrainersPageContainer: React.FC = () => {
   const dispatch = useDispatch();
 
+  const INITIAL_PAGE_PAGINATION = 2;
   const { loading: categoryLoading, categories: categoriesData, generalCategories } = useCategories();
   const { loading: categoriesLoading, cities: citiesData } = useCities();
-  const { loading: trainersLoading, trainers: trainersData } = useTrainers();
+  const { loading: trainersLoading, trainers: trainersData, trainersCount, getTrainers } = useTrainers();
+
+  const { limit, offset, pageNumber, totalPages, setPageNumber } = usePagination(
+    trainersCount,
+    INITIAL_PAGE_PAGINATION,
+    0,
+  );
+
+  const [selectedCity, setSelectedCity] = useState<IListItem | undefined>(useSelector(getCurrentCity));
 
   const currentCategorySelected = useSelector(getCurrentCategory);
-  currentCategorySelected;
 
   const [selectedGeneralCategory, setSelectedGeneralCategory] = useState<IListItem | undefined>(
     currentCategorySelected
@@ -37,10 +46,25 @@ export const TrainersPageContainer: React.FC = () => {
         }
       : null,
   );
-  const [selectedCity, setSelectedCity] = useState<IListItem | undefined>(useSelector(getCurrentCity));
+
+  const fetchTrainers = (): void => {
+    getTrainers({
+      variables: {
+        cityId: selectedCity?.id,
+        subcategoryId: selectedCategory?.id,
+        categoryId: selectedGeneralCategory?.id,
+        offset: offset,
+        limit: limit,
+      },
+    });
+  };
+
+  useEffect(() => {
+    fetchTrainers();
+  }, [offset]);
 
   const filteredCategories = categoriesData?.filter((x) =>
-    selectedGeneralCategory ? x.groupId === selectedGeneralCategory.id : true,
+    selectedGeneralCategory.id ? x.groupId === selectedGeneralCategory.id : true,
   );
 
   useEffect(() => {
@@ -74,8 +98,6 @@ export const TrainersPageContainer: React.FC = () => {
     }
   }, [selectedGeneralCategory]);
 
-  console.log(trainersData);
-
   const trainers = trainersData.map(
     (trainer): IPresentationCardProps => {
       return {
@@ -84,7 +106,8 @@ export const TrainersPageContainer: React.FC = () => {
         image: trainer.image,
         rating: trainer.rating,
         numberOfRatings: trainer.totalRates,
-        location: `${trainer.locations[0].name}`,
+        // TODO location
+        location: trainer.locations?.length > 0 ? `${trainer.locations[0].name}` : '',
         descriptionShowMoreText: 'Dowiedz się więcej',
         actionText: 'Zarezerwuj',
         header: `${trainer.name} ${trainer.lastName}`,
@@ -108,12 +131,21 @@ export const TrainersPageContainer: React.FC = () => {
     setSelectedGeneralCategory(category);
   };
 
+  const onSearchClick = () => {
+    fetchTrainers();
+  };
+
+  const onPageChange = (page: number) => {
+    setPageNumber(page);
+  };
+
   return (
     <Layout>
       <TrainersPage
+        page={pageNumber}
         trainers={trainers}
         trainersLoading={trainersLoading}
-        numberOfPages={10}
+        numberOfPages={totalPages}
         cities={citiesData}
         citiesLoading={categoriesLoading}
         categories={filteredCategories}
@@ -122,6 +154,8 @@ export const TrainersPageContainer: React.FC = () => {
         onCityChange={onCityChangeCallback}
         onCategoryChange={onCategoryChangeCallback}
         onGeneralCategoryChange={onGeneralCategoryChangeCallback}
+        onSearchClick={onSearchClick}
+        onPageChange={onPageChange}
         selectedCategory={selectedCategory}
         selectedCity={selectedCity}
         selectedGeneralCategory={selectedGeneralCategory}

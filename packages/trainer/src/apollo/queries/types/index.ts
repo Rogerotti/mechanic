@@ -1,14 +1,12 @@
 import { ILocation2 } from '..';
-import { ICategory, ICity, ISubcategory, ITrainerBasicDTO } from '../../../interfaces';
+import { ICategory, ICity, ISubcategory } from '../../../interfaces';
 
 export interface IGetAllCitiesQuery {
-  postgres: {
-    cities: ICity[];
-  };
+  cities: ICity[];
 }
 
 export interface IGetAllTrainersQuery {
-  postgres: {
+  trainers: {
     trainers: {
       id: string;
       name: string;
@@ -20,11 +18,21 @@ export interface IGetAllTrainersQuery {
       locations: ILocation2[];
       subcategories: ISubcategory[];
     }[];
+    trainersTotalNumber: number;
   };
 }
 
+export interface IPaginationQueryParams {
+  offset?: number;
+  limit?: number;
+}
+
+export interface IGetAllTrainersQueryParams extends IPaginationQueryParams {
+  categoryId?: string;
+  subcategoryId?: string;
+  cityId?: string;
+}
+
 export interface IGetAllCategoriesQuery {
-  postgres: {
-    categories: ICategory[];
-  };
+  categories: ICategory[];
 }

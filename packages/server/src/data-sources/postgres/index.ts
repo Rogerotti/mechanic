@@ -38,10 +38,10 @@ export class PostgresDB extends DataSource {
         };
       });
 
-      const totalRates = comments.length ?? 1;
+      const totalRates = comments.length && comments.length > 0 ? comments.length : 1;
       let rates = 0.0;
 
-      comments.forEach((comment) => {
+      comments?.forEach((comment) => {
         rates += comment.rating;
       });
 
@@ -49,7 +49,7 @@ export class PostgresDB extends DataSource {
         ...trainer,
         locations,
         rating: rates / totalRates,
-        totalRates: totalRates,
+        totalRates: comments.length,
       };
     });
   }

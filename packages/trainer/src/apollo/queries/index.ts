@@ -1,8 +1,8 @@
 import { useMappedData } from '@api/hooks';
-import { gql, useQuery } from '@apollo/client';
+import { gql, QueryLazyOptions, useLazyQuery, useQuery } from '@apollo/client';
 import { IListItem, IListItemGrouped } from '@ui/types/core';
 import { ICity } from 'src/interfaces';
-import { IGetAllCategoriesQuery, IGetAllCitiesQuery, IGetAllTrainersQuery } from './types';
+import { IGetAllCategoriesQuery, IGetAllCitiesQuery, IGetAllTrainersQuery, IGetAllTrainersQueryParams } from './types';
 
 export const PAYU_QUERY = gql`
   query Test {
@@ -17,35 +17,31 @@ export const PAYU_QUERY = gql`
 
 export const GET_ALL_CITIES = gql`
   query GetCities {
-    postgres {
-      cities {
-        id
-        name
-      }
+    cities {
+      id
+      name
     }
   }
 `;
 
 export const GET_ALL_CATEGORIES = gql`
   query GetCategories {
-    postgres {
-      categories {
+    categories {
+      id
+      name
+      description
+      subcategories {
         id
         name
         description
-        subcategories {
-          id
-          name
-          description
-        }
       }
     }
   }
 `;
 
 export const GET_ALL_TRAINERS = gql`
-  query GetTrainers {
-    postgres {
+  query GetTrainers($categoryId: String, $subcategoryId: String, $cityId: String, $offset: Int, $limit: Int) {
+    trainers(categoryId: $categoryId, cityId: $cityId, subcategoryId: $subcategoryId, offset: $offset, limit: $limit) {
       trainers {
         id
         name
@@ -70,6 +66,7 @@ export const GET_ALL_TRAINERS = gql`
           description
         }
       }
+      trainersTotalNumber
     }
   }
 `;
@@ -96,12 +93,16 @@ export interface ITrainerData {
 export const useTrainers = (): {
   loading: boolean;
   trainers: ITrainerData[];
+  trainersCount: number;
+  getTrainers: (options?: QueryLazyOptions<IGetAllTrainersQueryParams>) => void;
 } => {
-  const { data, loading } = useQuery<IGetAllTrainersQuery>(GET_ALL_TRAINERS);
-  console.log('trainer', data?.postgres?.trainers);
-  const allTrainers = useMappedData(data?.postgres?.trainers, (trainers): ITrainerData[] =>
+  const [getTrainers, { data, loading }] = useLazyQuery<IGetAllTrainersQuery, IGetAllTrainersQueryParams>(
+    GET_ALL_TRAINERS,
+  );
+
+  const allTrainers = useMappedData(data?.trainers, (trainers): ITrainerData[] =>
     trainers
-      ? trainers.map((trainer) => ({
+      ? trainers?.trainers.map((trainer) => ({
           id: trainer.id,
           name: trainer.name,
           lastName: trainer.lastName,
@@ -116,7 +117,9 @@ export const useTrainers = (): {
 
   return {
     trainers: allTrainers,
+    trainersCount: data?.trainers?.trainersTotalNumber || 0,
     loading,
+    getTrainers,
   };
 };
 
@@ -129,7 +132,7 @@ export const useCategories = (): {
   const generalCategories: IListItem[] = [];
   const subCategories: IListItemGrouped[] = [];
 
-  categoryData?.postgres?.categories?.forEach((category) => {
+  categoryData?.categories?.forEach((category) => {
     generalCategories.push({
       id: category.id,
       value: category.name,
@@ -166,7 +169,7 @@ export const useCities = (): {
   cities: IListItem[];
 } => {
   const { data, loading } = useQuery<IGetAllCitiesQuery>(GET_ALL_CITIES);
-  const allCities = useMappedData(data?.postgres?.cities, (cities): IListItem[] =>
+  const allCities = useMappedData(data?.cities, (cities): IListItem[] =>
     cities ? cities.map((city) => ({ id: city.id, value: city.name })) : [],
   );
 

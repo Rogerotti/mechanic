@@ -1,11 +1,13 @@
 import { IResolvers } from 'graphql-tools';
 import { PayoutMethodResolver, payUResolver } from './payU';
-import { postgresResolver } from './postgres';
+import { categoriesResolver, citiesResolver, trainersResolver } from './postgres';
 
 export const resolver: IResolvers = {
   Query: {
     payU: payUResolver,
-    postgres: postgresResolver,
+    cities: citiesResolver,
+    categories: categoriesResolver,
+    trainers: trainersResolver,
   },
   PayoutMethod: PayoutMethodResolver,
 };

@@ -13,6 +13,9 @@ export const TrainersPage: React.FC<ITrainersPageProps> = ({
   trainersLoading,
 
   numberOfPages,
+  page,
+  onPageChange,
+
   categories,
   generalCategories,
   categoriesLoading,
@@ -24,6 +27,7 @@ export const TrainersPage: React.FC<ITrainersPageProps> = ({
   onCategoryChange,
   onGeneralCategoryChange,
   onCityChange,
+  onSearchClick,
 }) => {
   const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('xs'));
 
@@ -41,6 +45,7 @@ export const TrainersPage: React.FC<ITrainersPageProps> = ({
         selectedCity={selectedCity}
         selectedCategory={selectedCategory}
         selectedGeneralCategory={selectedGeneralCategory}
+        onSearchClick={onSearchClick}
       />
       {trainersLoading ? (
         <Box minHeight={{ xs: '200px', sm: '400px', md: '600px' }} display="flex" alignItems="center">
@@ -49,7 +54,7 @@ export const TrainersPage: React.FC<ITrainersPageProps> = ({
       ) : (
         <Box display="flex" justifyContent="center" pt={2}>
           <Box width="80%">
-            <PresentationList items={trainers} numberOfPages={numberOfPages} />
+            <PresentationList items={trainers} numberOfPages={numberOfPages} page={page} onPageChange={onPageChange} />
           </Box>
         </Box>
       )}

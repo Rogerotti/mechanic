@@ -72,10 +72,10 @@ export function searchReducer(state = initialState, action: SearchActionTypes): 
       return {
         ...state,
         category: {
-          categoryId: action.payload.category.groupId,
-          categoryName: action.payload.category.groupValue,
-          subcategoryId: action.payload.category.id,
-          subcategoryName: action.payload.category.value,
+          categoryId: action.payload.category?.groupId,
+          categoryName: action.payload.category?.groupValue,
+          subcategoryId: action.payload.category?.id,
+          subcategoryName: action.payload.category?.value,
         },
         city: action.payload.city,
       };
@@ -98,10 +98,10 @@ export function searchReducer(state = initialState, action: SearchActionTypes): 
       return {
         ...state,
         category: {
-          categoryId: action.payload.category.groupId,
-          categoryName: action.payload.category.groupValue,
-          subcategoryId: action.payload.category.id,
-          subcategoryName: action.payload.category.value,
+          categoryId: action.payload.category?.groupId,
+          categoryName: action.payload.category?.groupValue,
+          subcategoryId: action.payload.category?.id,
+          subcategoryName: action.payload.category?.value,
         },
       };
 

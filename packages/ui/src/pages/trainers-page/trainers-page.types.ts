@@ -16,9 +16,13 @@ export interface ITrainersPageProps {
   selectedCity?: IListItem;
   selectedCategory?: IListItemGrouped;
   selectedGeneralCategory?: IListItem;
+
   onCityChange?: IExtendedSearchProps['onCityChange'];
   onCategoryChange?: IExtendedSearchProps['onCategoryChange'];
   onGeneralCategoryChange?: IExtendedSearchProps['onGeneralCategoryChange'];
+  onSearchClick?: IExtendedSearchProps['onSearchClick'];
 
   numberOfPages: number;
+  page?: number;
+  onPageChange?: (page: number) => void;
 }
