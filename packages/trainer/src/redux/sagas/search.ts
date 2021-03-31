@@ -36,8 +36,8 @@ function* searchTrainer(action: SearchTrainerRequestAction) {
 
 function* searchTrainers(action: SearchTrainersRequestAction) {
   try {
-    const trainers: ITrainerBasicDTO[] = yield call(fetchTrainers, action.payload.city.id, action.payload.category.id);
-    yield put(searchTrainersSuccess(trainers));
+    // const trainers: ITrainerBasicDTO[] = yield call(fetchTrainers, action.payload.city.id, action.payload.category.id);
+    // yield put(searchTrainersSuccess(trainers));
     yield put(navigationRequest('/trainers'));
   } catch (e) {
     yield put(searchTrainersFailure());

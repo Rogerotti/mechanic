@@ -64,7 +64,7 @@ export const TrainersPageContainer: React.FC = () => {
   }, [offset]);
 
   const filteredCategories = categoriesData?.filter((x) =>
-    selectedGeneralCategory.id ? x.groupId === selectedGeneralCategory.id : true,
+    selectedGeneralCategory?.id ? x.groupId === selectedGeneralCategory.id : true,
   );
 
   useEffect(() => {
