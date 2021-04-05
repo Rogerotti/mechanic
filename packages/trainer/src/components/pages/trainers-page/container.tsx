@@ -8,10 +8,11 @@ import { IPresentationCardProps } from '@ui/composition/presentation-card/presen
 import { setCategory, setCity } from '@redux/actions/search';
 import { useCategories, useCities, useTrainers } from '../../../apollo/queries';
 import { usePagination } from '../../core/pagination';
+import { useHistory } from 'react-router-dom';
 
 export const TrainersPageContainer: React.FC = () => {
   const dispatch = useDispatch();
-
+  const history = useHistory();
   const INITIAL_PAGE_PAGINATION = 2;
   const { loading: categoryLoading, categories: categoriesData, generalCategories } = useCategories();
   const { loading: categoriesLoading, cities: citiesData } = useCities();
@@ -111,6 +112,9 @@ export const TrainersPageContainer: React.FC = () => {
         descriptionShowMoreText: 'Dowiedz się więcej',
         actionText: 'Zarezerwuj',
         header: `${trainer.name} ${trainer.lastName}`,
+        onActionClick: () => {
+          history.push(`/trainers/${trainer.id}`);
+        },
       };
     },
   );

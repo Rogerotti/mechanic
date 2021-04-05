@@ -41,9 +41,6 @@ const Index = () => {
                   <TrainersPageContainer />
                 </ErrorBoundary>
               </Route>
-              <Route exact path="/roger">
-                <TrainerPageContainer />
-              </Route>
 
               <Route exact path="/login">
                 <LoginPageContainer />
@@ -51,6 +48,12 @@ const Index = () => {
 
               <Route exact path="/register">
                 <RegisterPageContainer />
+              </Route>
+
+              <Route path="/trainers/:id">
+                <ErrorBoundary FallbackComponent={(props) => <Error error={props.error} />}>
+                  <TrainerPageContainer />
+                </ErrorBoundary>
               </Route>
             </Router>
           </ThemeProvider>

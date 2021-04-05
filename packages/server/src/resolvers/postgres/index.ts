@@ -6,6 +6,10 @@ export interface IPagination {
   limit?: number;
 }
 
+export interface ITrainerFilters {
+  id: string;
+}
+
 export interface ITrainersFilters extends IPagination {
   cityId?: string;
   categoryId?: string;
@@ -24,6 +28,16 @@ export const categoriesResolver = async (
 ): Promise<ICategory[]> => {
   const categories = await dataSources.postgres.getCategories();
   return categories;
+};
+
+export const trainerResolver = async (
+  _source: void,
+  args: ITrainerFilters,
+  { dataSources }: IContext,
+): Promise<ITrainer> => {
+  const trainer = await dataSources.postgres.getTrainer(args.id);
+
+  return trainer;
 };
 
 export const trainersResolver = async (

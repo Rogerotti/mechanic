@@ -8,6 +8,7 @@ type Query {
   cities: [City]
   categories: [Category]
   trainers(cityId: String, categoryId: String, subcategoryId: String, offset: Int, limit: Int): PaginatedTrainers
+  trainer(id: String): Trainer
 }
 
 type PayoutMethod {

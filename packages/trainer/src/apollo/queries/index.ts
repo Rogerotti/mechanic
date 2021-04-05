@@ -2,7 +2,14 @@ import { useMappedData } from '@api/hooks';
 import { gql, QueryLazyOptions, useLazyQuery, useQuery } from '@apollo/client';
 import { IListItem, IListItemGrouped } from '@ui/types/core';
 import { ICity } from 'src/interfaces';
-import { IGetAllCategoriesQuery, IGetAllCitiesQuery, IGetAllTrainersQuery, IGetAllTrainersQueryParams } from './types';
+import {
+  IGetAllCategoriesQuery,
+  IGetAllCitiesQuery,
+  IGetAllTrainersQuery,
+  IGetAllTrainersQueryParams,
+  IGeTrainerQuery,
+  IGetTrainerQueryParams,
+} from './types';
 
 export const PAYU_QUERY = gql`
   query Test {
@@ -30,6 +37,35 @@ export const GET_ALL_CATEGORIES = gql`
       id
       name
       description
+      subcategories {
+        id
+        name
+        description
+      }
+    }
+  }
+`;
+
+export const GET_TRAINER = gql`
+  query GetTrainer($id: String) {
+    trainer(id: $id) {
+      id
+      name
+      lastName
+      description
+      totalRates
+      rating
+      image
+      locations {
+        id
+        name
+        streetName
+        streetNumber
+        city {
+          id
+          name
+        }
+      }
       subcategories {
         id
         name
@@ -89,6 +125,34 @@ export interface ITrainerData {
   totalRates: number;
   locations: ILocation2[];
 }
+
+export const useTrainer = (
+  id: string,
+): {
+  loading: boolean;
+  trainer: ITrainerData;
+} => {
+  const { data, loading } = useQuery<IGeTrainerQuery, IGetTrainerQueryParams>(GET_TRAINER, { variables: { id: id } });
+  const trainer = data?.trainer;
+  const trainerData = trainer
+    ? {
+        id: trainer.id,
+        name: trainer.name,
+        lastName: trainer.lastName,
+        description: trainer.description,
+        rating: trainer.rating,
+        totalRates: trainer.totalRates,
+        locations: trainer.locations,
+        image: trainer.image,
+      }
+    : null;
+
+  return {
+    trainer: trainerData,
+
+    loading,
+  };
+};
 
 export const useTrainers = (): {
   loading: boolean;

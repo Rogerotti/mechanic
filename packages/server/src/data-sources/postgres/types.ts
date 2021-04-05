@@ -47,4 +47,5 @@ export interface IPostgresDataSource {
   getCities(): ICity[];
   getCategories(): ICategory[];
   getTrainers(): ITrainer[];
+  getTrainer(id: string): ITrainer;
 }
