@@ -9,37 +9,42 @@ import { useMappedData } from '@api/hooks';
 import { getTrainerComments, getTrainerEvents } from '@redux/selectors';
 import { getPayUPayoutMethods } from '@api/transfers';
 import { useTrainer } from '../../../apollo/queries';
+import { IEventDTO } from 'src/interfaces';
 
 export const TrainerPageContainer: React.FC = () => {
   const dispatch = useDispatch();
   const id = '942557';
-  const { trainer, loading } = useTrainer(id);
+  const { trainer, comments, loading } = useTrainer(id);
 
   useEffect(() => {
+    console.log('test');
     dispatch(searchTrainer(id));
     dispatch(searchTrainerComments(id, 2));
   }, [id]);
 
   // TODO events / comments / images
-  const events = useSelector(getTrainerEvents);
-  const comments: ICommentsSectionProps['comments'] = useMappedData(
-    useSelector(getTrainerComments),
-    (comments): ICommentsSectionProps['comments'] =>
-      comments
-        ? comments.map((comment) => ({
-            id: comment.id,
-            image: comment.userImage,
-            header: comment.header,
-            description: comment.description,
-            date: comment.date,
-            rating: comment.rating,
-          }))
-        : [],
-  );
+  const events: IEventDTO[] = [];
+  useSelector(getTrainerEvents) ?? [];
+  // const comments: ICommentsSectionProps['comments'] = useMappedData(
+  //   trainerComments,
+  //   (comments): ICommentsSectionProps['comments'] =>
+  //     comments
+  //       ? comments.map((comment) => ({
+  //           id: comment.id,
+  //           image: comment.userImage,
+  //           header: comment.header,
+  //           description: comment.description,
+  //           date: comment.date,
+  //           rating: comment.rating,
+  //         }))
+  //       : [],
+  // );
 
   if (!trainer) {
     return null;
   }
+
+  console.log(comments);
 
   const userContactSection = {
     accountCreationDate: new Date(), // trainer?.creationDate,

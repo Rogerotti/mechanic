@@ -5,6 +5,16 @@ export interface IGetAllCitiesQuery {
   cities: ICity[];
 }
 
+export interface IQueryComment {
+  id: string;
+  description: string;
+  userImage: string;
+  userFirstName: string;
+  userLastName: string;
+  date: string;
+  rating: number;
+}
+
 export interface IQueryTrainer {
   id: string;
   name: string;
@@ -15,6 +25,7 @@ export interface IQueryTrainer {
   totalRates: number;
   locations: ILocation2[];
   subcategories: ISubcategory[];
+  comments: IQueryComment[];
 }
 
 export interface IGeTrainerQuery {

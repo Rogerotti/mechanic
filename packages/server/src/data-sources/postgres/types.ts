@@ -20,6 +20,10 @@ export interface IComment {
   id: number;
   description: string;
   rating: number;
+  date: Date;
+  userImage: string;
+  userFirstName: string;
+  userLastName: string;
 }
 
 export interface ILocation {
@@ -29,6 +33,10 @@ export interface ILocation {
   streetNumber: number;
   city: ICity;
 }
+
+// export interface IUser {
+
+// }
 
 export interface ITrainer {
   id: number;

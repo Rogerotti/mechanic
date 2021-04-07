@@ -11,7 +11,17 @@ export class PostgresDB extends DataSource {
   }
 
   mapTrainer(trainer: Trainer): ITrainer {
-    const comments = trainer.comments;
+    const comments = trainer.comments.map((comment) => {
+      return {
+        id: comment.id,
+        date: comment.date,
+        description: comment.description,
+        rating: comment.rating,
+        userImage: comment.user.image,
+        userFirstName: comment.user.firstName,
+        userLastName: comment.user.lastName,
+      };
+    });
 
     const locations: ILocation[] = trainer.locations?.map((location) => {
       return {
@@ -35,6 +45,7 @@ export class PostgresDB extends DataSource {
 
     return {
       ...trainer,
+      comments,
       locations,
       rating: rates / totalRates,
       totalRates: comments.length,
@@ -51,7 +62,7 @@ export class PostgresDB extends DataSource {
 
   async getTrainers(): Promise<ITrainer[]> {
     const trainers = await getRepository(Trainer).find({
-      relations: ['subcategories', 'comments', 'locations', 'locations.city'],
+      relations: ['subcategories', 'comments', 'comments.user', 'locations', 'locations.city'],
     });
 
     return trainers.map((trainer) => {
@@ -61,7 +72,7 @@ export class PostgresDB extends DataSource {
 
   async getTrainer(id: string): Promise<ITrainer> {
     const trainer = await getRepository(Trainer).findOne(id, {
-      relations: ['subcategories', 'comments', 'locations', 'locations.city'],
+      relations: ['subcategories', 'comments', 'comments.user', 'locations', 'locations.city'],
     });
 
     return this.mapTrainer(trainer);

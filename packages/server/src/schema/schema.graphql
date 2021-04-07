@@ -60,6 +60,10 @@ type Comment {
   id: String
   description: String
   rating: Float
+  date: String
+  userImage: String
+  userFirstName: String
+  userLastName: String
 }
 
 type Location {

@@ -3,7 +3,7 @@ import { IEventDTO, ITrainerBasicDTO, ITrainerExtendedDTO } from 'src/interfaces
 
 export interface ICommentDTO {
   id: string;
-  userImage: string;
+  image: string;
   header: string;
   description: string;
   date: Date;

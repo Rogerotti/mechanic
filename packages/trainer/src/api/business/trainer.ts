@@ -136,7 +136,7 @@ export const fetchTrainerComments = async (id: string, length: number): Promise<
       description: 'eeee',
       header: 'eeee',
       rating: 3.5,
-      userImage: null,
+      image: null,
     },
     {
       id: '2',
@@ -144,7 +144,7 @@ export const fetchTrainerComments = async (id: string, length: number): Promise<
       description: 'eeee',
       header: 'eeee',
       rating: 3.5,
-      userImage: null,
+      image: null,
     },
     {
       id: '3',
@@ -152,7 +152,7 @@ export const fetchTrainerComments = async (id: string, length: number): Promise<
       description: 'eeee',
       header: 'eeee',
       rating: 3.5,
-      userImage: null,
+      image: null,
     },
     {
       id: '4',
@@ -160,7 +160,7 @@ export const fetchTrainerComments = async (id: string, length: number): Promise<
       description: 'eeee',
       header: 'eeee',
       rating: 3.5,
-      userImage: null,
+      image: null,
     },
     {
       id: '5',
@@ -168,7 +168,7 @@ export const fetchTrainerComments = async (id: string, length: number): Promise<
       description: 'eeee',
       header: 'eeee',
       rating: 3.5,
-      userImage: null,
+      image: null,
     },
     {
       id: '6',
@@ -176,7 +176,7 @@ export const fetchTrainerComments = async (id: string, length: number): Promise<
       description: 'eeee',
       header: 'eeee',
       rating: 3.5,
-      userImage: null,
+      image: null,
     },
   ];
 

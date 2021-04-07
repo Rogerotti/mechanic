@@ -1,5 +1,6 @@
 import { useMappedData } from '@api/hooks';
 import { gql, QueryLazyOptions, useLazyQuery, useQuery } from '@apollo/client';
+import { ICommentDTO } from '@redux/types/search';
 import { IListItem, IListItemGrouped } from '@ui/types/core';
 import { ICity } from 'src/interfaces';
 import {
@@ -56,6 +57,15 @@ export const GET_TRAINER = gql`
       totalRates
       rating
       image
+      comments {
+        id
+        description
+        userImage
+        userFirstName
+        userLastName
+        date
+        rating
+      }
       locations {
         id
         name
@@ -131,9 +141,23 @@ export const useTrainer = (
 ): {
   loading: boolean;
   trainer: ITrainerData;
+  comments: ICommentDTO[];
 } => {
   const { data, loading } = useQuery<IGeTrainerQuery, IGetTrainerQueryParams>(GET_TRAINER, { variables: { id: id } });
   const trainer = data?.trainer;
+  console.log(data?.trainer);
+  const comments = data?.trainer?.comments
+    ? data.trainer.comments.map((c) => {
+        return {
+          id: c.id,
+          image: c.userImage,
+          header: `${c.userFirstName} ${c.userLastName}`,
+          description: c.description,
+          date: new Date(Number(c.date)),
+          rating: c.rating,
+        };
+      })
+    : [];
   const trainerData = trainer
     ? {
         id: trainer.id,
@@ -149,7 +173,7 @@ export const useTrainer = (
 
   return {
     trainer: trainerData,
-
+    comments,
     loading,
   };
 };
