@@ -12,9 +12,10 @@ import useTranslation from '../../../translations/hooks';
 import Layout from '../../core/layout';
 import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
 import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
-import { useCategories, useCities } from '../../../apollo/queries';
 import { mainCategoriesList } from './utils';
 import { useHistory } from 'react-router-dom';
+import { useCategories } from '@queries/categories/hooks';
+import { useCities } from '@queries/cities/hooks';
 
 export const HomePageContainer: React.FC = () => {
   const dispatch = useDispatch();

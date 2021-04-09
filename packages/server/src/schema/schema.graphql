@@ -9,6 +9,7 @@ type Query {
   categories: [Category]
   trainers(cityId: String, categoryId: String, subcategoryId: String, offset: Int, limit: Int): PaginatedTrainers
   trainer(id: String): Trainer
+  comments(trainerId: String): [Comment]
 }
 
 type PayoutMethod {
@@ -46,7 +47,6 @@ type Trainer {
   rating: Float
   totalRates: Int
   subcategories: [Subcategory!]
-  comments: [Comment]
   locations: [Location]
 }
 
@@ -64,6 +64,8 @@ type Comment {
   userImage: String
   userFirstName: String
   userLastName: String
+  trainerId: String
+  userId: String
 }
 
 type Location {

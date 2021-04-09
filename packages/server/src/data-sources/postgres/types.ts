@@ -21,6 +21,8 @@ export interface IComment {
   description: string;
   rating: number;
   date: Date;
+  trainerId: number;
+  userId: number;
   userImage: string;
   userFirstName: string;
   userLastName: string;
@@ -34,10 +36,6 @@ export interface ILocation {
   city: ICity;
 }
 
-// export interface IUser {
-
-// }
-
 export interface ITrainer {
   id: number;
   name: string;
@@ -46,7 +44,6 @@ export interface ITrainer {
   rating: number;
   totalRates: number;
   image: string;
-  comments: IComment[];
   subcategories: ISubcategory[];
   locations: ILocation[];
 }
@@ -56,4 +53,5 @@ export interface IPostgresDataSource {
   getCategories(): ICategory[];
   getTrainers(): ITrainer[];
   getTrainer(id: string): ITrainer;
+  getComments(): IComment[];
 }

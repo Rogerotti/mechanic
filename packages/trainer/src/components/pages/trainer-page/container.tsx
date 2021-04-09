@@ -5,46 +5,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ICommentsSectionProps } from '@ui/composition/comments-section/comments-section.types';
 // import { getDistance } from '../../../utils/geographic';
 import { searchTrainer, searchTrainerComments, searchTrainerEvents } from '@redux/actions/search';
-import { useMappedData } from '@api/hooks';
-import { getTrainerComments, getTrainerEvents } from '@redux/selectors';
+import { getTrainerEvents } from '@redux/selectors';
 import { getPayUPayoutMethods } from '@api/transfers';
-import { useTrainer } from '../../../apollo/queries';
 import { IEventDTO } from 'src/interfaces';
+import { useTrainer } from '@queries/trainer/hooks';
+import { useComments } from '@queries/comments/hooks';
 
 export const TrainerPageContainer: React.FC = () => {
   const dispatch = useDispatch();
   const id = '942557';
-  const { trainer, comments, loading } = useTrainer(id);
+  const { trainer, loading } = useTrainer(id);
+  const { comments } = useComments(id);
 
   useEffect(() => {
-    console.log('test');
     dispatch(searchTrainer(id));
     dispatch(searchTrainerComments(id, 2));
   }, [id]);
 
-  // TODO events / comments / images
+  // TODO events / images
   const events: IEventDTO[] = [];
   useSelector(getTrainerEvents) ?? [];
-  // const comments: ICommentsSectionProps['comments'] = useMappedData(
-  //   trainerComments,
-  //   (comments): ICommentsSectionProps['comments'] =>
-  //     comments
-  //       ? comments.map((comment) => ({
-  //           id: comment.id,
-  //           image: comment.userImage,
-  //           header: comment.header,
-  //           description: comment.description,
-  //           date: comment.date,
-  //           rating: comment.rating,
-  //         }))
-  //       : [],
-  // );
 
   if (!trainer) {
     return null;
   }
-
-  console.log(comments);
 
   const userContactSection = {
     accountCreationDate: new Date(), // trainer?.creationDate,

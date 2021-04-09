@@ -6,9 +6,11 @@ import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { IPresentationCardProps } from '@ui/composition/presentation-card/presentation-card.types';
 import { setCategory, setCity } from '@redux/actions/search';
-import { useCategories, useCities, useTrainers } from '../../../apollo/queries';
 import { usePagination } from '../../core/pagination';
 import { useHistory } from 'react-router-dom';
+import { useTrainers } from '@queries/trainer/hooks';
+import { useCategories } from '@queries/categories/hooks';
+import { useCities } from '@queries/cities/hooks';
 
 export const TrainersPageContainer: React.FC = () => {
   const dispatch = useDispatch();

@@ -3,7 +3,8 @@ import { getRepository } from 'typeorm';
 import { City } from '@postgres/entity/city';
 import { Category } from '@postgres/entity/category';
 import { Trainer } from '@postgres/entity/trainer';
-import { ICategory, ICity, ILocation, ITrainer } from './types';
+import { ICategory, ICity, IComment, ILocation, ITrainer } from './types';
+import { Comment } from '@postgres/entity/comment';
 
 export class PostgresDB extends DataSource {
   constructor() {
@@ -45,7 +46,6 @@ export class PostgresDB extends DataSource {
 
     return {
       ...trainer,
-      comments,
       locations,
       rating: rates / totalRates,
       totalRates: comments.length,
@@ -76,5 +76,25 @@ export class PostgresDB extends DataSource {
     });
 
     return this.mapTrainer(trainer);
+  }
+
+  async getComments(): Promise<IComment[]> {
+    const comments = await getRepository(Comment).find({
+      relations: ['trainer', 'user'],
+    });
+
+    return comments.map((comment) => {
+      return {
+        id: comment.id,
+        description: comment.description,
+        rating: comment.rating,
+        date: comment.date,
+        userImage: comment?.user?.image,
+        userFirstName: comment?.user?.firstName,
+        userLastName: comment?.user?.lastName,
+        userId: comment?.user.id,
+        trainerId: comment?.trainer.id,
+      };
+    });
   }
 }

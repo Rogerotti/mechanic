@@ -1,18 +1,13 @@
-import { ILocation2 } from '..';
-import { ICategory, ICity, ISubcategory } from '../../../interfaces';
+import { ICity, ISubcategory } from 'src/interfaces';
+import { IPaginationQueryParams } from '../types';
 
-export interface IGetAllCitiesQuery {
-  cities: ICity[];
-}
-
-export interface IQueryComment {
+//TODO change it
+export interface ILocation2 {
   id: string;
-  description: string;
-  userImage: string;
-  userFirstName: string;
-  userLastName: string;
-  date: string;
-  rating: number;
+  name?: string;
+  streetName: string;
+  streetNumber: number;
+  city: ICity;
 }
 
 export interface IQueryTrainer {
@@ -25,7 +20,6 @@ export interface IQueryTrainer {
   totalRates: number;
   locations: ILocation2[];
   subcategories: ISubcategory[];
-  comments: IQueryComment[];
 }
 
 export interface IGeTrainerQuery {
@@ -39,21 +33,23 @@ export interface IGetAllTrainersQuery {
   };
 }
 
-export interface IPaginationQueryParams {
-  offset?: number;
-  limit?: number;
-}
-
 export interface IGetTrainerQueryParams {
   id: string;
+}
+
+export interface ITrainerData {
+  id: string;
+  name: string;
+  lastName: string;
+  description?: string;
+  image?: string;
+  rating: number;
+  totalRates: number;
+  locations: ILocation2[];
 }
 
 export interface IGetAllTrainersQueryParams extends IPaginationQueryParams {
   categoryId?: string;
   subcategoryId?: string;
   cityId?: string;
-}
-
-export interface IGetAllCategoriesQuery {
-  categories: ICategory[];
 }

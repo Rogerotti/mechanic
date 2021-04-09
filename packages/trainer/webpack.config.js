@@ -81,6 +81,7 @@ module.exports = {
       '@assets': path.resolve(__dirname, 'src/public/'),
       '@redux': path.resolve(__dirname, 'src/redux/'),
       '@api': path.resolve(__dirname, 'src/api/'),
+      '@queries': path.resolve(__dirname, 'src/queries/'),
     },
     extensions: ['.tsx', '.ts', '.js'],
   },

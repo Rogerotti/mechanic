@@ -1,9 +1,13 @@
-import { ICategory, ICity, ITrainer } from '@dataSource/postgres/types';
+import { ICategory, ICity, IComment, ITrainer } from '@dataSource/postgres/types';
 import { IContext } from '../types';
 
 export interface IPagination {
   offset?: number;
   limit?: number;
+}
+
+export interface ICommentsFilters {
+  trainerId: string;
 }
 
 export interface ITrainerFilters {
@@ -28,6 +32,20 @@ export const categoriesResolver = async (
 ): Promise<ICategory[]> => {
   const categories = await dataSources.postgres.getCategories();
   return categories;
+};
+
+export const commentsResolver = async (
+  _source: void,
+  args: ICommentsFilters,
+  { dataSources }: IContext,
+): Promise<IComment[]> => {
+  let comments = await dataSources.postgres.getComments();
+
+  if (args.trainerId) {
+    comments = comments.filter((comment) => comment.trainerId === Number(args.trainerId));
+  }
+
+  return comments;
 };
 
 export const trainerResolver = async (

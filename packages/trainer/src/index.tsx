@@ -20,7 +20,7 @@ import SagaNavigation from './components/core/navigation';
 import TrainersPageContainer from './components/pages/trainers-page/container';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './redux/store';
-import { apolloClient } from './apollo';
+import { apolloClient } from '@queries';
 
 const Index = () => {
   return (

@@ -18,6 +18,8 @@
       "@assets/*": ["./src/public/*"],
       "@redux/*": ["./src/redux/*"],
       "@api/*": ["./src/api/*"],
+      "@queries": ["./src/queries"],
+      "@queries/*": ["./src/queries/*"]
     }
   },
   "include": [
