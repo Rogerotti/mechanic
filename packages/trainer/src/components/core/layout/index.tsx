@@ -1,11 +1,12 @@
 import React from 'react';
-import { Layout as UILayout } from '@ui/composition/layout';
-import headerLogo from '@assets/logo.svg';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import headerLogo from '@assets/logo.svg';
+import { Layout as UILayout } from '@ui/composition/layout';
 
 import { getHeaderLinks, getHeaderRightMenuLinks } from '../../../content-data/header';
 import { getAuthorization } from '../../../redux/selectors';
-import { useSelector } from 'react-redux';
 
 export const Layout: React.FC<unknown> = ({ children }) => {
   const isAuthenticated = useSelector(getAuthorization);

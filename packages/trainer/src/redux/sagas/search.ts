@@ -1,5 +1,4 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { fetchTrainers } from '@api/business/trainers';
 import {
   SearchTrainerEventsRequestAction,
   SearchTrainerRequestAction,
@@ -18,7 +17,6 @@ import {
   searchTrainerEventsSuccess,
   searchTrainerFailure,
   searchTrainersFailure,
-  searchTrainersSuccess,
   searchTrainerSuccess,
 } from '@redux/actions/search';
 import { navigationRequest } from '@redux/actions/navigation';

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { LoginPage } from '@ui/pages/login-page';
 import { loginRequest } from '@redux/actions/authentication';
+import { LoginPage } from '@ui/pages/login-page';
 
 import Layout from '../../core/layout';
 

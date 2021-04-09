@@ -41,8 +41,6 @@ export const getHowItWorksTabs = (): ITabItem[] => {
 };
 
 export const getHowItWorksSteps = (value: string): IStep[] => {
-  const { getText } = useTranslation();
-
   if (value === PROTEGE_ID) {
     return [
       {

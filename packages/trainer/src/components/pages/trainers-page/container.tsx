@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import Layout from '../../core/layout';
-import { TrainersPage } from '@ui/pages/trainers-page';
-import { IListItem, IListItemGrouped } from '@ui/types/core';
-import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { IPresentationCardProps } from '@ui/composition/presentation-card/presentation-card.types';
-import { setCategory, setCity } from '@redux/actions/search';
-import { usePagination } from '../../core/pagination';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setCategory, setCity } from '@redux/actions/search';
+import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
+
+import { IListItem, IListItemGrouped } from '@ui/types/core';
+import { TrainersPage } from '@ui/pages/trainers-page';
+import { IPresentationCardProps } from '@ui/composition/presentation-card/presentation-card.types';
+
 import { useTrainers } from '@queries/trainer/hooks';
 import { useCategories } from '@queries/categories/hooks';
 import { useCities } from '@queries/cities/hooks';
+
+import { usePagination } from '../../core/pagination';
+import Layout from '../../core/layout';
 
 export const TrainersPageContainer: React.FC = () => {
   const dispatch = useDispatch();

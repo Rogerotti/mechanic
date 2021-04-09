@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { HomePage } from '@ui/pages/home-page';
 import { IListItem, IListItemGrouped } from '@ui/types/core';
 
 import searchBackground from '@assets/searchBackground.jpg';
 import { searchTrainers, setCategory as setReduxCategory, setCity as setReduxCity } from '@redux/actions/search';
-
-import useTranslation from '../../../translations/hooks';
-
-import Layout from '../../core/layout';
-import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
 import { getCurrentCategory, getCurrentCity } from '@redux/selectors';
-import { mainCategoriesList } from './utils';
-import { useHistory } from 'react-router-dom';
+
 import { useCategories } from '@queries/categories/hooks';
 import { useCities } from '@queries/cities/hooks';
+
+import useTranslation from '../../../translations/hooks';
+import Layout from '../../core/layout';
+import { getHowItWorksSteps, getHowItWorksTabs } from '../../../content-data/how-it-works';
+import { mainCategoriesList } from './utils';
 
 export const HomePageContainer: React.FC = () => {
   const dispatch = useDispatch();
