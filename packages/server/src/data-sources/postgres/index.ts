@@ -6,7 +6,8 @@ import { Category } from '@postgres/entity/category';
 import { Trainer } from '@postgres/entity/trainer';
 import { Comment } from '@postgres/entity/comment';
 
-import { ICategory, ICity, IComment, ILocation, ITrainer } from './types';
+import { ICategory, ICity, IComment, IEvent, ILocation, ITrainer } from './types';
+import { Event } from '@postgres/entity/event';
 
 export class PostgresDB extends DataSource {
   constructor() {
@@ -96,6 +97,22 @@ export class PostgresDB extends DataSource {
         userLastName: comment?.user?.lastName,
         userId: comment?.user.id,
         trainerId: comment?.trainer.id,
+      };
+    });
+  }
+
+  async getEvents(): Promise<IEvent[]> {
+    const events = await getRepository(Event).find({
+      relations: ['trainer'],
+    });
+
+    return events.map((event) => {
+      return {
+        id: event.id,
+        trainerId: event.trainer.id,
+        description: event.description,
+        startDate: event.startDate,
+        endDate: event.endDate,
       };
     });
   }

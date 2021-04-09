@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToMan
 import { Subcategory } from './subcategory';
 import { Comment } from './comment';
 import { Location } from './location';
+import { Event } from './event';
 
 @Entity()
 export class Trainer {
@@ -40,4 +41,7 @@ export class Trainer {
 
   @OneToMany(() => Location, (location) => location.trainer)
   locations: Location[];
+
+  @OneToMany(() => Event, (event) => event.trainer)
+  events: Event;
 }

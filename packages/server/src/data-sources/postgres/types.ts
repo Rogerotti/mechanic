@@ -28,6 +28,14 @@ export interface IComment {
   userLastName: string;
 }
 
+export interface IEvent {
+  id: number;
+  trainerId: number;
+  description: string;
+  startDate: Date;
+  endDate: Date;
+}
+
 export interface ILocation {
   id: number;
   name?: string;
@@ -54,4 +62,5 @@ export interface IPostgresDataSource {
   getTrainers(): ITrainer[];
   getTrainer(id: string): ITrainer;
   getComments(): IComment[];
+  getEvents(): IEvent[];
 }

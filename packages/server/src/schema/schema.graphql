@@ -10,6 +10,7 @@ type Query {
   trainers(cityId: String, categoryId: String, subcategoryId: String, offset: Int, limit: Int): PaginatedTrainers
   trainer(id: String): Trainer
   comments(trainerId: String): [Comment]
+  events(trainerId: String): [Event]
 }
 
 type PayoutMethod {
@@ -66,6 +67,14 @@ type Comment {
   userLastName: String
   trainerId: String
   userId: String
+}
+
+type Event {
+  id: String
+  trainerId: String
+  description: String
+  startDate: String
+  endDate: String
 }
 
 type Location {
