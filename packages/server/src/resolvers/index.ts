@@ -1,6 +1,11 @@
 import { IResolvers } from 'graphql-tools';
+
 import { PayoutMethodResolver, payUResolver } from './payU';
-import { categoriesResolver, citiesResolver, commentsResolver, trainerResolver, trainersResolver } from './postgres';
+
+import { categoriesResolver } from './postgres/categories';
+import { citiesResolver } from './postgres/cities';
+import { commentsResolver } from './postgres/comments';
+import { trainerResolver, trainersResolver } from './postgres/trainers';
 
 export const resolver: IResolvers = {
   Query: {

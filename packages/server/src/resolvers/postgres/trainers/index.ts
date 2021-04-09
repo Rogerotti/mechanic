@@ -1,52 +1,6 @@
-import { ICategory, ICity, IComment, ITrainer } from '@dataSource/postgres/types';
-import { IContext } from '../types';
-
-export interface IPagination {
-  offset?: number;
-  limit?: number;
-}
-
-export interface ICommentsFilters {
-  trainerId: string;
-}
-
-export interface ITrainerFilters {
-  id: string;
-}
-
-export interface ITrainersFilters extends IPagination {
-  cityId?: string;
-  categoryId?: string;
-  subcategoryId?: string;
-}
-
-export const citiesResolver = async (_source: void, _args: void, { dataSources }: IContext): Promise<ICity[]> => {
-  const cities = await dataSources.postgres.getCities();
-  return cities;
-};
-
-export const categoriesResolver = async (
-  _source: void,
-  _args: void,
-  { dataSources }: IContext,
-): Promise<ICategory[]> => {
-  const categories = await dataSources.postgres.getCategories();
-  return categories;
-};
-
-export const commentsResolver = async (
-  _source: void,
-  args: ICommentsFilters,
-  { dataSources }: IContext,
-): Promise<IComment[]> => {
-  let comments = await dataSources.postgres.getComments();
-
-  if (args.trainerId) {
-    comments = comments.filter((comment) => comment.trainerId === Number(args.trainerId));
-  }
-
-  return comments;
-};
+import { ITrainer } from '@dataSource/postgres/types';
+import { IContext } from '@resolver/types';
+import { ITrainerFilters, ITrainersFilters } from './types';
 
 export const trainerResolver = async (
   _source: void,

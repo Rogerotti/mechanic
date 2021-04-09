@@ -1,10 +1,12 @@
 import { DataSource } from 'apollo-datasource';
 import { getRepository } from 'typeorm';
+
 import { City } from '@postgres/entity/city';
 import { Category } from '@postgres/entity/category';
 import { Trainer } from '@postgres/entity/trainer';
-import { ICategory, ICity, IComment, ILocation, ITrainer } from './types';
 import { Comment } from '@postgres/entity/comment';
+
+import { ICategory, ICity, IComment, ILocation, ITrainer } from './types';
 
 export class PostgresDB extends DataSource {
   constructor() {

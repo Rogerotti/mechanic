@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import Layout from '../../core/layout';
-import { TrainerPage } from '@ui/pages/trainer-page';
 import { useDispatch, useSelector } from 'react-redux';
-import { ICommentsSectionProps } from '@ui/composition/comments-section/comments-section.types';
-// import { getDistance } from '../../../utils/geographic';
 import { searchTrainer, searchTrainerComments, searchTrainerEvents } from '@redux/actions/search';
 import { getTrainerEvents } from '@redux/selectors';
 import { getPayUPayoutMethods } from '@api/transfers';
+
+import Layout from '../../core/layout';
+import { TrainerPage } from '@ui/pages/trainer-page';
+import { ICommentsSectionProps } from '@ui/composition/comments-section/comments-section.types';
+// import { getDistance } from '../../../utils/geographic';
 import { IEventDTO } from 'src/interfaces';
 import { useTrainer } from '@queries/trainer/hooks';
 import { useComments } from '@queries/comments/hooks';
