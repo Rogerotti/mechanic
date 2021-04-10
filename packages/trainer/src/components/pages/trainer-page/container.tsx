@@ -1,31 +1,34 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { searchTrainer, searchTrainerComments, searchTrainerEvents } from '@redux/actions/search';
-import { getTrainerEvents } from '@redux/selectors';
 import { getPayUPayoutMethods } from '@api/transfers';
 
 import Layout from '../../core/layout';
 import { TrainerPage } from '@ui/pages/trainer-page';
 import { ICommentsSectionProps } from '@ui/composition/comments-section/comments-section.types';
 // import { getDistance } from '../../../utils/geographic';
-import { IEventDTO } from 'src/interfaces';
 import { useTrainer } from '@queries/trainer/hooks';
 import { useComments } from '@queries/comments/hooks';
+import { useEvents } from '@queries/events/hooks';
 
 export const TrainerPageContainer: React.FC = () => {
   const dispatch = useDispatch();
-  const id = '942557';
+
+  const url = window?.location?.href ?? '';
+  const id = url.substr(url.lastIndexOf('/') + 1);
+
   const { trainer, loading } = useTrainer(id);
+  // make it lazy fetch
   const { comments } = useComments(id);
+  // make it lazy
+  const { events } = useEvents(id);
 
   useEffect(() => {
     dispatch(searchTrainer(id));
     dispatch(searchTrainerComments(id, 2));
   }, [id]);
 
-  // TODO events / images
-  const events: IEventDTO[] = [];
-  useSelector(getTrainerEvents) ?? [];
+  // TODO images
 
   if (!trainer) {
     return null;
@@ -86,6 +89,8 @@ export const TrainerPageContainer: React.FC = () => {
   //   y: 19.984250240851726,
   // };
 
+  console.log(events);
+
   const distance = '25km od ciebie'; // todo `${getDistance(trainer.location.position, currentUserPosition)}km Od`;
 
   const bannerTitle = `${trainer?.name} ${trainer?.lastName}`;
@@ -94,7 +99,7 @@ export const TrainerPageContainer: React.FC = () => {
   return (
     <Layout>
       {loading || !trainer ? (
-        <div>Dupa</div>
+        <div></div>
       ) : (
         <TrainerPage
           bookText={'Zarezerwuj'}
@@ -112,7 +117,7 @@ export const TrainerPageContainer: React.FC = () => {
               x: 55,
               y: 55,
             }, // location.position,
-            street: location.streetName,
+            street: location?.streetName,
             zoom: 15,
           }}
           hero={{

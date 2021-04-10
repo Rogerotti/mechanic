@@ -2,7 +2,7 @@ import { BoxProps } from '@material-ui/core';
 
 export interface IEvent {
   id: string;
-  starDate: Date;
+  startDate: Date;
   endDate: Date;
   description: string;
 }

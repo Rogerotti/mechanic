@@ -51,9 +51,9 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
   const hours = Array.from({ length: numberOfHours }, (_, i) => i + startHour);
 
   const currentEvents = events
-    .filter((event) => isTheSameDay(event.starDate, event.endDate))
+    .filter((event) => isTheSameDay(event.startDate, event.endDate))
     .filter((event) => {
-      return currentMondayDate <= event.starDate && event.endDate <= currentSaturday;
+      return currentMondayDate <= event.startDate && event.endDate <= currentSaturday;
     });
 
   return (
@@ -115,8 +115,10 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
                     // only find 1 event for each hours so no overlapping implemented i would need to create logic with filter and styling for more then 1 event
                     const currentHourEvent = currentEvents.find(
                       (event) =>
-                        (event.starDate.getDay() === 0 ? 6 === dayNumber : event.starDate.getDay() - 1 == dayNumber) &&
-                        currentHour >= event.starDate.getHours() &&
+                        (event.startDate.getDay() === 0
+                          ? 6 === dayNumber
+                          : event.startDate.getDay() - 1 == dayNumber) &&
+                        currentHour >= event.startDate.getHours() &&
                         currentHour < event.endDate.getHours(),
                     );
 
@@ -124,7 +126,7 @@ export const Scheduler: React.FC<ISchedulerProps> = ({
                     const multiLineEvent = isMultilineEvent(currentHourEvent);
 
                     const isFirstEvent =
-                      !multiLineEvent || (multiLineEvent && currentHour === currentHourEvent.starDate.getHours());
+                      !multiLineEvent || (multiLineEvent && currentHour === currentHourEvent.startDate.getHours());
 
                     if (!isFirstEvent || !currentHourEvent) return <div style={{ width: '85%' }} />;
 

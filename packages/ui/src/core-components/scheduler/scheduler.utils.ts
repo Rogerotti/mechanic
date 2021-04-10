@@ -4,7 +4,7 @@ export const isMultilineEvent = (event: IEvent): boolean =>
   event &&
   event.endDate.getHours() +
     event.endDate.getMinutes() / 60 -
-    (event.starDate.getHours() + event.starDate.getMinutes() / 60) >
+    (event.startDate.getHours() + event.startDate.getMinutes() / 60) >
     1;
 
 export const setMidnight = (date: Date): Date => {
@@ -27,9 +27,9 @@ export const addDays = (date: Date, days: number): Date => {
 };
 
 export const getEventLength = (event: IEvent): number => {
-  const hourDiff = event ? event.endDate.getHours() - event.starDate.getHours() : 0;
+  const hourDiff = event ? event.endDate.getHours() - event.startDate.getHours() : 0;
 
-  const minutesDiff = event ? event.endDate.getMinutes() - event.starDate.getMinutes() : 0;
+  const minutesDiff = event ? event.endDate.getMinutes() - event.startDate.getMinutes() : 0;
 
   return hourDiff + minutesDiff / 60;
 };
