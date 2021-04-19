@@ -3,7 +3,9 @@ export interface IGeEventsQuery {
 }
 
 export interface IGetEventsQueryParams {
-  trainerId: string;
+  trainerId?: string;
+  startDate?: Date;
+  endDate?: Date;
 }
 
 export interface IEvent {

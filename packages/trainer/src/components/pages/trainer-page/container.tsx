@@ -21,7 +21,7 @@ export const TrainerPageContainer: React.FC = () => {
   // make it lazy fetch
   const { comments } = useComments(id);
   // make it lazy
-  const { events } = useEvents(id);
+  const { events, getEvents } = useEvents(id);
 
   useEffect(() => {
     dispatch(searchTrainer(id));
@@ -80,6 +80,14 @@ export const TrainerPageContainer: React.FC = () => {
     const startDate = date;
 
     const endDate = new Date(new Date(startDate).setDate(date.getDate() + 7));
+
+    getEvents({
+      variables: {
+        startDate: startDate,
+        endDate: endDate,
+        trainerId: id,
+      },
+    });
 
     dispatch(searchTrainerEvents(id, startDate, endDate));
   };
