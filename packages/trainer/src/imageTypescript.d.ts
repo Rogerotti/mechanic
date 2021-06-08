@@ -13,6 +13,11 @@ declare module '*.ttf' {
   export default content2;
 }
 
+declare module '*.woff2' {
+  const content2: string;
+  export default content2;
+}
+
 declare module '*.svg' {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const content: any;
