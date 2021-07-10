@@ -1,5 +1,7 @@
+import { DataSource } from 'apollo-datasource';
+
 export interface ICity {
-  id: number;
+  id: string;
   name: string;
 }
 
@@ -56,11 +58,13 @@ export interface ITrainer {
   locations: ILocation[];
 }
 
-export interface IPostgresDataSource {
-  getCities(): ICity[];
-  getCategories(): ICategory[];
-  getTrainers(): ITrainer[];
-  getTrainer(id: string): ITrainer;
-  getComments(): IComment[];
-  getEvents(): IEvent[];
+export interface IPostgresDataSource extends DataSource {
+  getCities(): Promise<ICity[]>;
+  createCity(name: string): Promise<ICity>;
+  deleteCity(id: string): Promise<boolean>;
+  getCategories(): Promise<ICategory[]>;
+  getTrainers(): Promise<ITrainer[]>;
+  getTrainer(id: string): Promise<ITrainer>;
+  getComments(): Promise<IComment[]>;
+  getEvents(): Promise<IEvent[]>;
 }

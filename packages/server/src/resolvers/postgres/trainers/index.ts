@@ -26,7 +26,7 @@ export const trainersResolver = async (
     trainers = trainers.filter((x) => {
       let result = false;
       x.locations?.forEach((l) => {
-        if (l.city.id === Number(args.cityId)) {
+        if (l.city.id === args.cityId) {
           result = true;
           return;
         }

@@ -17,7 +17,7 @@ createPostgresClient().then(() => {
     validationRules: [depthLimit(7)],
     dataSources: () => {
       return {
-        payUAPI: new PayUAPI(),
+        // payUAPI: new PayUAPI(),
         postgres: new PostgresDB(),
       };
     },

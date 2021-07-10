@@ -13,6 +13,11 @@ type Query {
   events(trainerId: String, startDate: String, endDate: String): [Event]
 }
 
+type Mutation {
+  createCity(name: String): City
+  deleteCity(id: String): Boolean
+}
+
 type PayoutMethod {
   value: String
   brandImageUrl: String

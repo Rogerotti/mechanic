@@ -1,6 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
 import { DataSource } from 'apollo-datasource';
 import { getRepository } from 'typeorm';
-
+import { IPostgresDataSource } from './types';
 import { City } from '@postgres/entity/city';
 import { Category } from '@postgres/entity/category';
 import { Trainer } from '@postgres/entity/trainer';
@@ -9,7 +10,7 @@ import { Comment } from '@postgres/entity/comment';
 import { ICategory, ICity, IComment, IEvent, ILocation, ITrainer } from './types';
 import { Event } from '@postgres/entity/event';
 
-export class PostgresDB extends DataSource {
+export class PostgresDB extends DataSource implements IPostgresDataSource {
   constructor() {
     super();
   }
@@ -115,5 +116,27 @@ export class PostgresDB extends DataSource {
         endDate: event.endDate,
       };
     });
+  }
+
+  async createCity(name: string): Promise<ICity> {
+    const citiesRepository = await getRepository(City);
+    const cities = await getRepository(City).find();
+
+    if (cities.find((x) => x.name.toLowerCase() === name.toLowerCase())) {
+      throw new Error(`city exist ${name}`);
+    }
+
+    const city: ICity = {
+      name: name,
+      id: uuidv4(),
+    };
+    await citiesRepository.insert(city);
+
+    return city;
+  }
+
+  async deleteCity(id: string): Promise<boolean> {
+    const result = await getRepository(City).delete(id);
+    return result.affected > 0;
   }
 }

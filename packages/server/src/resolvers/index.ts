@@ -3,7 +3,7 @@ import { IResolvers } from 'graphql-tools';
 import { PayoutMethodResolver, payUResolver } from './payU';
 
 import { categoriesResolver } from './postgres/categories';
-import { citiesResolver } from './postgres/cities';
+import { createCityMutationResolver, citiesResolver, deleteCityMutationResolver } from './postgres/cities';
 import { commentsResolver } from './postgres/comments';
 import { eventsResolver } from './postgres/events';
 import { trainerResolver, trainersResolver } from './postgres/trainers';
@@ -17,6 +17,10 @@ export const resolver: IResolvers = {
     trainer: trainerResolver,
     comments: commentsResolver,
     events: eventsResolver,
+  },
+  Mutation: {
+    createCity: createCityMutationResolver,
+    deleteCity: deleteCityMutationResolver,
   },
   PayoutMethod: PayoutMethodResolver,
 };
