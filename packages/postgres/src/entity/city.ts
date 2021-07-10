@@ -3,7 +3,7 @@ import { Location } from './location';
 @Entity()
 export class City {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: string;
 
   @Column({
     length: 50,
